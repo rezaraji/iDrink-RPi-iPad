@@ -7,6 +7,8 @@ Ability to pick drink optios (glass type, fruits) that show up on the drink card
 Admin option is accessed through 3 taps on the logo
 Pour stats feature (kept in a seperate histry json file)
 New DARK mode
+Drink sugegstion engine with built in library of drink. Suggest based on the ingredient/bottle list available)
+Full backup and restor capability (wiht a PC browser) for the menus and pour history
 
 
 Run the setup.sh after loading a new RPi disk image
