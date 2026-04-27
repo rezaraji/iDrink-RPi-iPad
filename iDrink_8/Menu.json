@@ -17,6 +17,208 @@
       ],
       "Drink": [
         {
+          "Color": "#e22400",
+          "Disabled": false,
+          "Fruits": [
+            "lime",
+            "pomegranate"
+          ],
+          "Glass": "martini",
+          "Name": "TEQUILA POMEGRANATE",
+          "Recipe": [
+            0,
+            15,
+            0,
+            0,
+            3,
+            0,
+            25,
+            0
+          ]
+        },
+        {
+          "Color": "",
+          "Disabled": false,
+          "Fruits": [
+            "lime",
+            "pomegranate"
+          ],
+          "Glass": "martini",
+          "Name": "VODKA POMEGRANATE",
+          "Recipe": [
+            15,
+            0,
+            0,
+            0,
+            3,
+            0,
+            25,
+            0
+          ]
+        },
+        {
+          "Color": "#cbf0ff",
+          "Fruits": [],
+          "Glass": "",
+          "Name": "VODKA SHOT",
+          "Recipe": [
+            15,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "Color": "#fffbb9",
+          "Disabled": false,
+          "Fruits": [],
+          "Glass": "shot",
+          "Name": "TEQUILA SHOT",
+          "Recipe": [
+            0,
+            15,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "Color": "",
+          "Disabled": false,
+          "Fruits": [
+            "grapefruit"
+          ],
+          "Glass": "rocks",
+          "Name": "TEQUILA GRAPEFRUIT",
+          "Recipe": [
+            0,
+            15,
+            0,
+            0,
+            0,
+            30,
+            0,
+            0
+          ]
+        },
+        {
+          "Color": "#cce8b5",
+          "Disabled": false,
+          "Fruits": [
+            "lime"
+          ],
+          "Glass": "rocks",
+          "Name": "Gin & Tonic",
+          "Recipe": [
+            0,
+            0,
+            15,
+            0,
+            3,
+            0,
+            0,
+            30
+          ]
+        },
+        {
+          "Color": "",
+          "Disabled": false,
+          "Fruits": [
+            "grapefruit"
+          ],
+          "Glass": "rocks",
+          "Name": "Gin Grapefruit",
+          "Recipe": [
+            0,
+            0,
+            15,
+            0,
+            0,
+            30,
+            0,
+            0
+          ]
+        }
+      ],
+      "MenuDescription": "Default Menu Description 1",
+      "MenuName": "Pool Party",
+      "StrengthEnabled": true
+    },
+    {
+      "Active": false,
+      "Bottles": [
+        "Strawberry",
+        "Raspberry",
+        "Blackberry",
+        "Peach",
+        "Lime",
+        "Mango",
+        "Passion Fruit",
+        "Water"
+      ],
+      "Drink": [
+        {
+          "Color": "#e32400",
+          "Fruits": [
+            "strawberry"
+          ],
+          "Glass": "",
+          "Name": "Strawberry",
+          "Recipe": [
+            10,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            60
+          ]
+        },
+        {
+          "Color": "#e32400",
+          "Fruits": [
+            "raspberry"
+          ],
+          "Glass": "",
+          "Name": "Raspberry",
+          "Recipe": [
+            0,
+            20,
+            0,
+            0,
+            0,
+            0,
+            0,
+            60
+          ]
+        }
+      ],
+      "MenuDescription": "Default Menu Description 2",
+      "MenuName": "Kid's Ice Drinks",
+      "StrengthEnabled": true
+    },
+    {
+      "Active": false,
+      "Bottles": [
+        "Vodka",
+        "Tequila",
+        "Gin",
+        "Orange",
+        "Lime",
+        "Grapefruit",
+        "Pomegranate",
+        "Tonic"
+      ],
+      "Drink": [
+        {
           "Color": "#b51a00",
           "Disabled": false,
           "Fruits": [
@@ -310,7 +512,6 @@
           "Color": "",
           "Disabled": false,
           "Fruits": [
-            "ginger",
             "lime"
           ],
           "Glass": "highball",
@@ -325,114 +526,29 @@
             0,
             0
           ]
+        },
+        {
+          "Color": "",
+          "Disabled": false,
+          "Fruits": [
+            "lime"
+          ],
+          "Glass": "martini",
+          "Name": "Vodka Gimlet",
+          "Recipe": [
+            20,
+            0,
+            0,
+            0,
+            10,
+            0,
+            0,
+            0
+          ]
         }
       ],
       "MenuDescription": "Default Menu Description 1",
-      "MenuName": "Pool Party",
-      "StrengthEnabled": true
-    },
-    {
-      "Active": false,
-      "Bottles": [
-        "Strawberry",
-        "Raspberry",
-        "Blackberry",
-        "Peach",
-        "Lime",
-        "Mango",
-        "Passion Fruit",
-        "Water"
-      ],
-      "Drink": [
-        {
-          "Color": "#e32400",
-          "Fruits": [
-            "strawberry"
-          ],
-          "Glass": "",
-          "Name": "Strawberry",
-          "Recipe": [
-            10,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            60
-          ]
-        },
-        {
-          "Color": "#e32400",
-          "Fruits": [
-            "raspberry"
-          ],
-          "Glass": "",
-          "Name": "Raspberry",
-          "Recipe": [
-            0,
-            20,
-            0,
-            0,
-            0,
-            0,
-            0,
-            60
-          ]
-        }
-      ],
-      "MenuDescription": "Default Menu Description 2",
-      "MenuName": "Kid's Ice Drinks",
-      "StrengthEnabled": true
-    },
-    {
-      "Active": false,
-      "Bottles": [
-        "Bottle1",
-        "Bottle2",
-        "Bottle3",
-        "Bottle4",
-        "Bottle5",
-        "Bottle6",
-        "Bottle7",
-        "Bottle8"
-      ],
-      "Drink": [
-        {
-          "Color": "",
-          "Fruits": [],
-          "Glass": "",
-          "Name": "Default Recipe Name 5",
-          "Recipe": [
-            10,
-            20,
-            35,
-            0,
-            0,
-            0,
-            0,
-            0
-          ]
-        },
-        {
-          "Color": "",
-          "Fruits": [],
-          "Glass": "",
-          "Name": "Default Recipe Name 6",
-          "Recipe": [
-            10,
-            20,
-            35,
-            0,
-            0,
-            0,
-            0,
-            0
-          ]
-        }
-      ],
-      "MenuDescription": "Default Menu Description 3",
-      "MenuName": "Menu  3",
+      "MenuName": "Test Party",
       "StrengthEnabled": true
     }
   ],
