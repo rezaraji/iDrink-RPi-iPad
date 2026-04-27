@@ -7,3 +7,7 @@ Ability to pick drink optios (glass type, fruits) that show up on the drink card
 Admin option is accessed through 3 taps on the logo
 Pour stats feature (kept in a seperate histry json file)
 
+
+Run the setup.sh after loading a new RPi disk image
+Make sure the menu and history files r epreserved and written over.
+
