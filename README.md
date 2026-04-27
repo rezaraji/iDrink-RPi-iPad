@@ -10,7 +10,7 @@ Major new changes:
 - Drink sugegstion engine with built in library of drink. Suggest based on the ingredient/bottle list available)
 -F ull backup and restor capability (with a PC browser) for the menus and pour history
 
-
+Notes:
 - Run the setup.sh after loading a new RPi disk image
 - Make sure the menu and history files r epreserved and written over.
 
