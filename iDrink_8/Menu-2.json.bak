@@ -1,0 +1,400 @@
+{
+  "MenuCollectionName": "Default Menu Collection",
+  "DateLastModified": "2020-06-01T06:43:34.520Z",
+  "BottleCount": 8,
+  "Menu": [
+    {
+      "Active": true,
+      "Bottles": [
+        "Vodka",
+        "Tequila",
+        "Rum",
+        "Orange",
+        "Lime",
+        "Grapefruit",
+        "Pomegranate",
+        "Pineapple"
+      ],
+      "Drink": [
+        {
+          "Color": "#b51a00",
+          "Disabled": false,
+          "Fruits": [
+            "lemon",
+            "lime",
+            "orange",
+            "grapefruit",
+            "strawberry",
+            "pineapple"
+          ],
+          "Glass": "martini",
+          "Name": "TEQUILA POMEGRANATE",
+          "Recipe": [
+            0,
+            20,
+            0,
+            0,
+            3,
+            0,
+            20,
+            0
+          ]
+        },
+        {
+          "Color": "",
+          "Disabled": false,
+          "Fruits": [],
+          "Glass": "",
+          "Name": "VODKA POMEGRANATE",
+          "Recipe": [
+            20,
+            0,
+            0,
+            0,
+            3,
+            0,
+            21,
+            0
+          ]
+        },
+        {
+          "Color": "#cbf0ff",
+          "Fruits": [],
+          "Glass": "",
+          "Name": "VODKA SHOT",
+          "Recipe": [
+            15,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "Color": "#c4bc00",
+          "Disabled": false,
+          "Fruits": [
+            "lime"
+          ],
+          "Glass": "shot",
+          "Name": "DON JULIO SHOT",
+          "Recipe": [
+            0,
+            15,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "Color": "#ffaa00",
+          "Disabled": false,
+          "Fruits": [
+            "orange"
+          ],
+          "Glass": "rocks",
+          "Name": "SCREWDRIVER",
+          "Recipe": [
+            20,
+            0,
+            0,
+            25,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "Color": "",
+          "Disabled": false,
+          "Fruits": [
+            "grapefruit",
+            "lime"
+          ],
+          "Glass": "rocks",
+          "Name": "GREYHOUND",
+          "Recipe": [
+            20,
+            0,
+            0,
+            0,
+            3,
+            20,
+            0,
+            0
+          ]
+        }
+      ],
+      "MenuDescription": "Default Menu Description 1",
+      "MenuName": "Pool Party",
+      "StrengthEnabled": true
+    },
+    {
+      "Active": false,
+      "Bottles": [
+        "Strawberry",
+        "Raspberry",
+        "Blackberry",
+        "Peach",
+        "Lime",
+        "Mango",
+        "Passion Fruit",
+        "Water"
+      ],
+      "Drink": [
+        {
+          "Color": "#e32400",
+          "Fruits": [
+            "strawberry"
+          ],
+          "Glass": "",
+          "Name": "Strawberry",
+          "Recipe": [
+            10,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            60
+          ]
+        },
+        {
+          "Color": "#e32400",
+          "Fruits": [
+            "raspberry"
+          ],
+          "Glass": "",
+          "Name": "Raspberry",
+          "Recipe": [
+            0,
+            20,
+            0,
+            0,
+            0,
+            0,
+            0,
+            60
+          ]
+        }
+      ],
+      "MenuDescription": "Default Menu Description 2",
+      "MenuName": "Kid's Ice Drinks",
+      "StrengthEnabled": true
+    },
+    {
+      "Active": false,
+      "Bottles": [
+        "Bottle1",
+        "Bottle2",
+        "Bottle3",
+        "Bottle4",
+        "Bottle5",
+        "Bottle6",
+        "Bottle7",
+        "Bottle8"
+      ],
+      "Drink": [
+        {
+          "Color": "",
+          "Fruits": [],
+          "Glass": "",
+          "Name": "Default Recipe Name 5",
+          "Recipe": [
+            10,
+            20,
+            35,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "Color": "",
+          "Fruits": [],
+          "Glass": "",
+          "Name": "Default Recipe Name 6",
+          "Recipe": [
+            10,
+            20,
+            35,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "MenuDescription": "Default Menu Description 3",
+      "MenuName": "Menu  3",
+      "StrengthEnabled": true
+    },
+    {
+      "Active": false,
+      "Bottles": [
+        "Bottle1",
+        "Bottle2",
+        "Bottle3",
+        "Bottle4",
+        "Bottle5",
+        "Bottle6",
+        "Bottle7",
+        "Bottle8"
+      ],
+      "Drink": [
+        {
+          "Name": "Default Recipe Name 7",
+          "Recipe": [
+            10,
+            20,
+            35,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "Name": "Default Recipe Name 8",
+          "Recipe": [
+            10,
+            20,
+            35,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "MenuDescription": "Default Menu Description 4",
+      "MenuName": "Menu  4"
+    },
+    {
+      "Active": false,
+      "Bottles": [
+        "Bottle1",
+        "Bottle2",
+        "Bottle3",
+        "Bottle4",
+        "Bottle5",
+        "Bottle6",
+        "Bottle7",
+        "Bottle8"
+      ],
+      "Drink": [
+        {
+          "Color": "",
+          "Disabled": true,
+          "Fruits": [],
+          "Glass": "",
+          "Name": "Default Recipe Name 9",
+          "Recipe": [
+            10,
+            20,
+            35,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "Color": "",
+          "Fruits": [],
+          "Glass": "",
+          "Name": "Default Recipe Name 10",
+          "Recipe": [
+            10,
+            20,
+            35,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "MenuDescription": "Default Menu Description 5",
+      "MenuName": "Menu 5",
+      "StrengthEnabled": true
+    },
+    {
+      "Bottles": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "Drink": [
+        {
+          "Color": "#b51a00",
+          "Disabled": false,
+          "Fruits": [
+            "lemon",
+            "lime",
+            "orange",
+            "grapefruit",
+            "strawberry",
+            "pineapple"
+          ],
+          "Glass": "martini",
+          "Name": "TEQUILA POMEGRANATE",
+          "Recipe": [
+            0,
+            20,
+            0,
+            0,
+            3,
+            0,
+            20,
+            0
+          ]
+        },
+        {
+          "Color": "#c4bc00",
+          "Disabled": false,
+          "Fruits": [
+            "lime"
+          ],
+          "Glass": "shot",
+          "Name": "DON JULIO SHOT",
+          "Recipe": [
+            0,
+            15,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "MenuDescription": "",
+      "MenuName": "Test"
+    }
+  ]
+}ive": true
+    }
+  ]
+}

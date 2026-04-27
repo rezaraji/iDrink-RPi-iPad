@@ -1,0 +1,2933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>iDrink</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Epilogue:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f6f4f0; --surface:#fff; --border:#e8e5e0; --text:#111;
+  --sub:#999590; --accent:#e05c2a; --green:#2a9d5c; --blue:#2a6fe0;
+  --red:#d63228; --r:16px; --r-sm:10px;
+}
+[data-theme="dark"]{
+  --bg:#0f0e0c; --surface:#1c1a17; --border:#2e2b26; --text:#f0ede8;
+  --sub:#7a756e; --accent:#e8723a; --green:#2db86a; --blue:#4a8ff0;
+  --red:#e05050;
+}
+html,body{height:100%;background:var(--bg);color:var(--text);
+  font-family:'Epilogue',sans-serif;font-size:15px;overflow:hidden;
+  -webkit-tap-highlight-color:transparent;user-select:none}
+
+/* ── Shell ── */
+#app{display:flex;flex-direction:column;height:100vh;height:100dvh}
+header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 24px;background:rgba(246,244,240,.88);
+  backdrop-filter:blur(16px);border-bottom:1px solid var(--border);
+  flex-shrink:0;z-index:20
+}
+[data-theme="dark"] header{background:rgba(15,14,12,.88)}
+.logo{font-family:'Syne',sans-serif;font-weight:800;font-size:22px;
+  letter-spacing:-.5px;color:var(--text)}
+.logo em{color:var(--accent);font-style:normal}
+.logo-sep{color:var(--sub);font-size:20px;font-weight:700;margin:0 10px;line-height:1}
+.logo-menu{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;
+  color:var(--accent);letter-spacing:-.2px;max-width:200px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tab-bar{display:flex;gap:2px;background:var(--border);
+  border-radius:12px;padding:3px}
+.tab-btn{background:none;border:none;font-family:'Epilogue',sans-serif;
+  font-size:13px;font-weight:500;color:var(--sub);padding:7px 18px;
+  border-radius:9px;cursor:pointer;transition:background .18s,color .18s;
+  white-space:nowrap}
+.tab-btn.active{background:var(--surface);color:var(--text);
+  font-weight:600;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+#content{flex:1;overflow:hidden;display:flex;flex-direction:column}
+.view{display:none;flex:1;flex-direction:column;overflow:hidden;
+  animation:fadein .2s ease}
+.view.active{display:flex}
+@keyframes fadein{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+
+/* ══ BAR VIEW ══ */
+
+#drink-scroll{flex:1;overflow-y:auto;padding:16px 20px 24px}
+#drink-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:14px}
+
+/* Drink card */
+.drink-card{
+  background:var(--surface);border-radius:var(--r);
+  border:1.5px solid var(--border);padding:22px 16px 18px;
+  cursor:pointer;display:flex;flex-direction:column;
+  align-items:center;gap:10px;text-align:center;
+  transition:transform .12s,box-shadow .12s,border-color .12s}
+.drink-card:hover{border-color:#ccc;
+  box-shadow:0 6px 24px rgba(0,0,0,.09);transform:translateY(-2px)}
+.drink-card:active{transform:scale(.97);box-shadow:none}
+.drink-card-glass{width:80px;height:80px;flex-shrink:0}
+.drink-card-glass.glass-shot{width:60px;height:60px}
+.drink-card-glass svg{width:100%;height:100%}
+
+/* Glass + fruit decoration wrapper */
+.drink-icon-wrap{display:flex;flex-direction:row;align-items:center;gap:4px;flex-shrink:0}
+.drink-fruit-badges{display:flex;flex-direction:row;gap:2px;align-items:flex-end}
+.drink-fruit-col{display:flex;flex-direction:column;gap:2px}
+.drink-fruit-badges span{font-size:15px;line-height:1;
+  filter:drop-shadow(0 1px 2px rgba(0,0,0,.15))}
+.drink-fruit-badges svg{display:block}
+.drink-card-name{font-family:'Syne',sans-serif;font-size:15px;
+  font-weight:700;line-height:1.2;color:var(--text)}
+.drink-card-chips{display:flex;flex-wrap:wrap;gap:4px;justify-content:center}
+.chip{font-size:10px;font-weight:500;color:var(--sub);
+  background:var(--bg);border:1px solid var(--border);
+  border-radius:6px;padding:3px 7px;white-space:nowrap}
+.drink-card-hint{font-size:11px;color:var(--accent);font-weight:600;
+  letter-spacing:.3px;opacity:0;transition:opacity .15s}
+.drink-card:hover .drink-card-hint{opacity:1}
+
+/* ══ STRENGTH PANEL ══ */
+#strength-panel{
+  position:fixed;inset:0;z-index:90;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  background:rgba(0,0,0,0);pointer-events:none;
+  transition:background .25s}
+#strength-panel.show{background:rgba(0,0,0,.32);pointer-events:all}
+#strength-sheet{
+  background:var(--surface);border-radius:24px 24px 0 0;
+  padding:20px 24px 40px;
+  max-width:520px;width:100%;margin:0 auto;
+  transform:translateY(100%);transition:transform .3s cubic-bezier(.32,.72,0,1)}
+#strength-panel.show #strength-sheet{transform:translateY(0)}
+.sp-drag{width:36px;height:4px;background:var(--border);
+  border-radius:2px;margin:0 auto 20px}
+.sp-title{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;
+  letter-spacing:-.3px;color:var(--text);text-align:center;margin-bottom:20px}
+.sp-size-btns{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:10px;margin-bottom:12px}
+.sp-size-btn{border:1.5px solid var(--border);border-radius:14px;
+  padding:14px 4px 10px;background:var(--surface);cursor:pointer;
+  display:flex;flex-direction:column;align-items:center;gap:10px;
+  transition:border-color .12s,background .12s;-webkit-tap-highlight-color:transparent}
+.sp-size-btn.active{border:2px solid var(--accent);background:rgba(224,92,42,.08)}
+.sp-glass-stage{width:100%;height:68px;display:flex;
+  align-items:flex-end;justify-content:center}
+.sp-btn-label{font-size:12px;font-weight:600;color:var(--sub);transition:color .12s}
+.sp-size-btn.active .sp-btn-label{color:var(--accent)}
+.sp-details-row{text-align:center;margin-bottom:12px}
+.sp-details-link{font-size:11px;color:var(--sub);background:none;border:none;
+  cursor:pointer;font-family:'Epilogue',sans-serif;
+  text-decoration:underline;text-decoration-style:dotted;text-underline-offset:2px;
+  padding:0}
+.sp-vol-grid{display:none;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px}
+.sp-vol-grid.open{display:grid}
+.vol-row{background:var(--bg);border-radius:10px;padding:10px 12px}
+.vol-row-label{font-size:11px;font-weight:600;color:var(--sub);
+  margin-bottom:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.vol-bar-track{height:4px;background:var(--border);
+  border-radius:2px;margin-bottom:5px}
+.vol-bar-fill{height:4px;border-radius:2px;transition:width .22s ease}
+.vol-bar-fill.spirit{background:var(--accent)}
+.vol-bar-fill.mixer{background:var(--blue)}
+.vol-bar-fill.all{background:var(--green)}
+.vol-row-oz{font-size:12px;font-weight:600;color:var(--text)}
+.sp-pour-btn{width:100%;padding:16px;border:none;border-radius:100px;
+  background:var(--accent);color:#fff;font-family:'Syne',sans-serif;
+  font-size:22px;font-weight:800;cursor:pointer;transition:opacity .12s;
+  letter-spacing:.5px;
+  box-shadow:0 4px 18px rgba(224,92,42,.40)}
+.sp-pour-btn:active{opacity:.8}
+
+/* ══ POUR OVERLAY ══ */
+#pour-overlay{
+  position:fixed;inset:0;z-index:100;
+  background:rgba(246,244,240,.96);backdrop-filter:blur(20px);
+  display:none;flex-direction:column;align-items:center;
+  justify-content:center;gap:32px;padding:48px 32px}
+[data-theme="dark"] #pour-overlay{background:rgba(15,14,12,.96)}
+#pour-overlay.show{display:flex}
+.ring-wrap{position:relative;width:180px;height:180px;flex-shrink:0}
+.ring-wrap>svg{transform:rotate(-90deg)}
+.ring-bg{fill:none;stroke:var(--border);stroke-width:8}
+.ring-fg{fill:none;stroke:var(--accent);stroke-width:8;
+  stroke-linecap:round;stroke-dasharray:502;stroke-dashoffset:502;
+  transition:stroke-dashoffset .3s ease}
+.pour-glass-inner{position:absolute;inset:0;display:flex;
+  align-items:center;justify-content:center}
+.pour-glass-inner svg{width:80px;height:80px}
+/* pulse only shown on done state */
+.pour-glass-inner.done{animation:pulse 1.8s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+@keyframes glassflash{0%,100%{opacity:.4}50%{opacity:1}}
+.pour-name{font-family:'Syne',sans-serif;font-size:28px;font-weight:800;
+  letter-spacing:-.5px;color:var(--text);text-align:center}
+.pour-sub{font-size:13px;color:var(--sub);text-align:center}
+.pour-label{font-size:14px;color:var(--sub);font-weight:500}
+.done-msg{font-family:'Syne',sans-serif;font-size:20px;font-weight:700;
+  color:var(--accent);display:none;opacity:0;transition:opacity .4s}
+.done-msg.show{display:block;opacity:1}
+.btn-dismiss{background:var(--text);color:var(--bg);font-family:'Epilogue',sans-serif;
+  font-size:15px;font-weight:600;border:none;border-radius:100px;
+  padding:16px 48px;cursor:pointer;display:none;transition:opacity .15s}
+[data-theme="dark"] .btn-dismiss{background:var(--sub);color:var(--bg)}
+.btn-dismiss.show{display:block}
+.btn-dismiss:active{opacity:.75}
+.btn-stop{background:#fdf0ef;color:var(--red);border:1.5px solid #f5cec9;
+  font-family:'Epilogue',sans-serif;font-size:14px;font-weight:600;
+  border-radius:100px;padding:12px 36px;cursor:pointer;transition:opacity .15s}
+[data-theme="dark"] .btn-stop{background:rgba(214,50,40,.15);border-color:rgba(214,50,40,.3)}
+.btn-stop:active{opacity:.75}
+
+/* ══ ADMIN VIEW ══ */
+#admin-view{overflow-y:auto}
+.admin-inner{padding:24px}
+.page-heading{font-family:'Syne',sans-serif;font-size:26px;font-weight:800;
+  letter-spacing:-.5px;margin-bottom:4px}
+.page-sub{font-size:13px;color:var(--sub);margin-bottom:24px}
+.admin-toolbar{display:flex;gap:8px;align-items:center;
+  margin-bottom:20px;flex-wrap:wrap}
+.admin-save-bar{
+  position:sticky;top:0;z-index:40;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:8px;padding:10px 0;margin-bottom:8px;
+  background:var(--bg);border-bottom:1.5px solid var(--border)}
+.btn-save{background:var(--border);color:var(--sub);
+  font-family:'Epilogue',sans-serif;font-size:13px;font-weight:700;
+  padding:9px 20px;border-radius:var(--r-sm);border:none;cursor:pointer;
+  transition:background .2s,color .2s,box-shadow .2s}
+[data-theme="dark"] .btn-save:not(.dirty){background:#2a2825;border:1.5px solid #4a4740;color:var(--sub)}
+.btn-save.dirty{background:var(--accent);color:#fff;
+  box-shadow:0 4px 14px rgba(224,92,42,.35)}
+select.styled{
+  appearance:none;
+  background:var(--surface) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23999' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 12px center;
+  border:1.5px solid var(--border);color:var(--text);
+  font-family:'Epilogue',sans-serif;font-size:14px;font-weight:500;
+  padding:9px 36px 9px 14px;border-radius:var(--r-sm);cursor:pointer;
+  flex:1;min-width:160px;max-width:280px;outline:none}
+.section-card{background:var(--surface);border:1.5px solid var(--border);
+  border-radius:var(--r);padding:20px;margin-bottom:14px}
+.section-label{font-size:11px;font-weight:700;letter-spacing:.8px;
+  text-transform:uppercase;color:var(--sub);margin-bottom:14px}
+.field{margin-bottom:12px}
+.field label{display:block;font-size:12px;font-weight:600;
+  color:var(--sub);margin-bottom:5px}
+input[type=text],input[type=number],textarea{
+  width:100%;background:var(--bg);border:1.5px solid var(--border);
+  color:var(--text);font-family:'Epilogue',sans-serif;font-size:14px;
+  padding:10px 12px;border-radius:var(--r-sm);outline:none;
+  transition:border-color .15s}
+input:focus,textarea:focus{border-color:var(--text);background:var(--surface)}
+.bottles-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.bottle-cell{position:relative}
+.bottle-num{position:absolute;left:10px;top:50%;transform:translateY(-50%);
+  font-size:10px;font-weight:700;color:var(--sub);pointer-events:none;z-index:1}
+.bottle-cell input{padding-left:24px}
+
+/* Drink accordion */
+.drink-accordion{display:flex;flex-direction:column;gap:8px}
+.acc-item{background:var(--bg);border:1.5px solid var(--border);
+  border-radius:var(--r-sm)}
+.acc-header{border-radius:var(--r-sm)}
+.acc-item.open .acc-header{border-radius:var(--r-sm) var(--r-sm) 0 0}
+.acc-item.disabled{opacity:.45;border-style:dashed}
+.acc-header{display:flex;align-items:center;justify-content:space-between;
+  padding:13px 14px;cursor:pointer;transition:background .12s}
+.acc-header:hover{background:rgba(0,0,0,.025)}
+.acc-title{font-size:14px;font-weight:600}
+.acc-title-disabled{font-size:11px;font-weight:600;color:var(--sub);
+  margin-left:6px;text-transform:uppercase;letter-spacing:.4px}
+.acc-chevron{font-size:16px;color:var(--sub);transition:transform .2s}
+.acc-item.open .acc-chevron{transform:rotate(90deg)}
+.acc-body{display:none;padding:0 14px 16px;
+  border-top:1.5px solid var(--border);
+  border-radius:0 0 var(--r-sm) var(--r-sm)}
+.acc-item.open .acc-body{display:block}
+.toggle-switch{display:flex;align-items:center;gap:6px;cursor:pointer;
+  font-size:12px;font-weight:600;color:var(--sub);user-select:none}
+.toggle-track{width:32px;height:18px;border-radius:9px;
+  background:var(--border);position:relative;transition:background .2s;flex-shrink:0}
+.toggle-track.on{background:var(--green)}
+.toggle-thumb{width:14px;height:14px;border-radius:50%;background:#fff;
+  position:absolute;top:2px;left:2px;transition:left .2s;
+  box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.toggle-track.on .toggle-thumb{left:16px}
+.drag-handle{cursor:grab;padding:4px 2px;color:var(--border);
+  font-size:16px;line-height:1;flex-shrink:0;user-select:none}
+.drag-handle:active{cursor:grabbing}
+.acc-item.dragging{opacity:.4}
+.acc-item.drop-above{border-top:3px solid var(--accent)}
+.acc-item.drop-below{border-bottom:3px solid var(--accent)}
+.copy-to-wrap{position:relative}
+.copy-to-menu{position:absolute;right:0;top:calc(100% + 4px);
+  background:var(--surface);border:1.5px solid var(--border);
+  border-radius:var(--r-sm);box-shadow:0 4px 16px rgba(0,0,0,.12);
+  z-index:50;min-width:160px;overflow:hidden;display:none}
+.copy-to-menu.open{display:block}
+.copy-to-item{padding:9px 14px;font-size:13px;font-weight:500;
+  color:var(--text);cursor:pointer;white-space:nowrap}
+.copy-to-item:hover{background:var(--bg)}
+.recipe-grid{display:grid;grid-template-columns:repeat(4,1fr);
+  gap:8px;margin-top:12px}
+.recipe-cell label{display:block;font-size:10px;font-weight:600;
+  color:var(--sub);margin-bottom:4px;white-space:nowrap;
+  overflow:hidden;text-overflow:ellipsis}
+.recipe-cell input{text-align:center;padding:8px 4px}
+.recipe-hint{font-size:11px;color:var(--sub);margin-top:8px}
+
+/* Glass picker */
+.glass-picker-label{font-size:12px;font-weight:600;color:var(--sub);
+  margin:14px 0 8px;letter-spacing:.2px}
+.glass-picker{display:flex;flex-wrap:wrap;gap:8px}
+.glass-opt{
+  display:flex;flex-direction:column;align-items:center;gap:4px;
+  padding:8px 12px;border-radius:var(--r-sm);cursor:pointer;
+  border:2px solid var(--border);background:var(--surface);
+  transition:all .15s;min-width:64px}
+.glass-opt:hover{border-color:#aaa}
+.glass-opt.selected{border-color:var(--accent);background:#fdf0eb}
+[data-theme="dark"] .glass-opt.selected{background:rgba(224,92,42,.15)}
+.glass-opt svg{width:36px;height:36px;display:block}
+.glass-opt-label{font-size:10px;font-weight:600;color:var(--sub);
+  text-transform:uppercase;letter-spacing:.5px}
+.glass-opt.selected .glass-opt-label{color:var(--accent)}
+
+/* Color override */
+.color-row{display:flex;align-items:center;gap:10px;margin:14px 0 6px;flex-wrap:wrap}
+.color-row label{font-size:12px;font-weight:600;color:var(--sub)}
+.color-swatch{width:28px;height:28px;border-radius:6px;
+  border:1.5px solid var(--border);flex-shrink:0;cursor:pointer}
+.color-reset{font-size:11px;color:var(--accent);font-weight:600;
+  background:none;border:none;cursor:pointer;padding:0;text-decoration:underline}
+
+/* Toggle switch */
+.toggle-switch{position:relative;display:inline-flex;align-items:center;
+  flex-shrink:0;cursor:pointer}
+.toggle-switch input{opacity:0;width:0;height:0;position:absolute}
+.toggle-track{width:44px;height:26px;background:var(--border);border-radius:13px;
+  transition:background .2s;position:relative}
+.toggle-switch input:checked+.toggle-track{background:var(--accent)}
+.toggle-thumb{position:absolute;top:3px;left:3px;width:20px;height:20px;
+  background:#fff;border-radius:50%;transition:transform .2s;
+  box-shadow:0 1px 4px rgba(0,0,0,.18)}
+.toggle-switch input:checked+.toggle-track .toggle-thumb{transform:translateX(18px)}
+
+/* Fruit picker */
+.fruit-picker{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.fruit-opt{
+  display:flex;flex-direction:column;align-items:center;gap:2px;
+  padding:6px 8px;border-radius:var(--r-sm);cursor:pointer;
+  border:2px solid var(--border);background:var(--surface);
+  transition:all .15s;min-width:48px}
+.fruit-opt:hover{border-color:#aaa}
+.fruit-opt.selected{border-color:var(--accent);background:#fdf0eb}
+[data-theme="dark"] .fruit-opt.selected{background:rgba(224,92,42,.15)}
+.fruit-opt span:first-child{font-size:20px;line-height:1}
+.fruit-opt-label{font-size:9px;font-weight:600;color:var(--sub);
+  text-transform:uppercase;letter-spacing:.4px}
+.fruit-opt.selected .fruit-opt-label{color:var(--accent)}
+.fruit-none-opt span:first-child{font-size:14px;font-weight:700;color:var(--sub)}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:5px;
+  font-family:'Epilogue',sans-serif;font-size:13px;font-weight:600;
+  padding:9px 16px;border-radius:var(--r-sm);border:none;cursor:pointer;
+  transition:opacity .12s,transform .1s}
+.btn:active{opacity:.7;transform:scale(.98)}
+.btn-dark{background:var(--text);color:var(--bg)}
+[data-theme="dark"] .btn-dark{background:#2a2825;color:var(--text);border:1.5px solid #4a4740}
+.btn-ghost{background:var(--bg);border:1.5px solid var(--border);color:var(--text)}
+[data-theme="dark"] .btn-ghost{background:#2a2825;border-color:#4a4740;color:var(--text)}
+.btn-red{background:#fdf0ef;border:1.5px solid #f5cec9;color:var(--red)}
+[data-theme="dark"] .btn-red{background:rgba(214,50,40,.15);border-color:rgba(214,50,40,.3)}
+.btn-xs{font-size:11px;padding:6px 10px;border-radius:7px}
+.btn-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+
+/* ══ CONTROL VIEW ══ */
+#control-view{overflow-y:auto}
+.control-inner{padding:24px}
+.all-bar{display:grid;grid-template-columns:repeat(3,1fr);
+  gap:10px;margin-bottom:24px}
+.all-btn{padding:14px;border-radius:var(--r);border:none;
+  font-family:'Epilogue',sans-serif;font-size:14px;font-weight:700;
+  cursor:pointer;transition:opacity .12s;display:flex;
+  flex-direction:column;align-items:center;gap:4px}
+.all-btn span{font-size:10px;font-weight:500;opacity:.7;
+  letter-spacing:.5px;text-transform:uppercase}
+.all-btn:active{opacity:.75}
+.all-btn.fwd{background:#eaf7f0;color:var(--green);border:1.5px solid #c8edd9}
+.all-btn.rev{background:#eaf0fb;color:var(--blue);border:1.5px solid #c8d9f5}
+.all-btn.off{background:#fdf0ef;color:var(--red);border:1.5px solid #f5cec9}
+.pump-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.pump-card{background:var(--surface);border:1.5px solid var(--border);
+  border-radius:var(--r);padding:14px 10px;text-align:center}
+.pump-num{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;
+  color:var(--text);margin-bottom:2px}
+.pump-bottle{font-size:10px;color:var(--sub);font-weight:500;
+  margin-bottom:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pump-btn-col{display:flex;flex-direction:column;gap:5px}
+.p-btn{width:100%;padding:8px 0;border:none;border-radius:8px;
+  font-family:'Epilogue',sans-serif;font-size:12px;font-weight:700;
+  cursor:pointer;transition:opacity .12s}
+.p-btn:active{opacity:.7}
+.p-btn.fwd{background:#eaf7f0;color:var(--green)}
+.p-btn.rev{background:#eaf0fb;color:var(--blue)}
+.p-btn.off{background:#fdf0ef;color:var(--red)}
+
+/* Toast */
+#toast{position:fixed;bottom:28px;left:50%;
+  transform:translateX(-50%) translateY(60px);
+  background:#3a3730;color:#f0ede8;font-size:13px;font-weight:500;
+  padding:11px 22px;border-radius:100px;
+  transition:transform .25s,opacity .25s;opacity:0;z-index:300;
+  pointer-events:none;white-space:nowrap}
+#toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+
+/* Empty */
+.empty-state{grid-column:1/-1;padding:64px 24px;text-align:center;
+  display:flex;flex-direction:column;align-items:center;gap:10px}
+.empty-state .icon{font-size:44px}
+.empty-state p{font-size:15px;color:var(--sub);line-height:1.6}
+
+::-webkit-scrollbar{width:4px;height:4px}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
+::-webkit-scrollbar-track{background:transparent}
+
+/* ══ POUR HISTORY ══ */
+.history-list{display:flex;flex-direction:column;gap:0}
+.history-row{display:flex;align-items:center;justify-content:space-between;
+  padding:10px 0;border-bottom:1px solid var(--border);gap:12px}
+.history-row:last-child{border-bottom:none}
+.history-drink{font-size:14px;font-weight:600;color:var(--text)}
+.history-menu{font-size:11px;font-weight:500;color:var(--sub);margin-top:1px}
+.history-time{font-size:11px;color:var(--sub);white-space:nowrap;flex-shrink:0}
+.history-empty{font-size:13px;color:var(--sub);padding:8px 0;text-align:center}
+
+/* ══ STATS MODAL ══ */
+#stats-overlay{
+  position:fixed;inset:0;z-index:150;
+  background:var(--bg);display:none;flex-direction:column;overflow:hidden}
+#stats-overlay.show{display:flex}
+.stats-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px 24px;border-bottom:1px solid var(--border);flex-shrink:0}
+.stats-title{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;
+  letter-spacing:-.3px;color:var(--text)}
+.stats-close{background:none;border:none;font-size:22px;color:var(--sub);
+  cursor:pointer;padding:4px 8px;border-radius:8px;line-height:1;
+  transition:background .15s}
+.stats-close:hover{background:var(--border)}
+.stats-pills{display:flex;gap:6px;padding:16px 24px 0;flex-wrap:wrap;flex-shrink:0}
+.stats-pill{font-family:'Epilogue',sans-serif;font-size:12px;font-weight:600;
+  padding:6px 14px;border-radius:100px;border:1.5px solid var(--border);
+  background:var(--surface);color:var(--sub);cursor:pointer;transition:all .15s}
+.stats-pill.active{background:var(--accent);border-color:var(--accent);color:#fff}
+.stats-body{flex:1;overflow-y:auto;padding:20px 24px 32px}
+.stats-empty{font-size:14px;color:var(--sub);text-align:center;padding:48px 0}
+.stats-chart-wrap{position:relative;width:100%}
+.stats-bar-list{display:flex;flex-direction:column;gap:10px;margin-top:8px}
+.stats-bar-row{display:grid;grid-template-columns:160px 1fr 28px;align-items:center;gap:10px}
+.stats-bar-label{font-size:13px;font-weight:600;color:var(--text);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.stats-bar-track{flex:1;height:28px;background:var(--border);
+  border-radius:8px;overflow:hidden;position:relative}
+.stats-bar-fill{height:100%;border-radius:8px;
+  background:var(--accent);transition:width .4s cubic-bezier(.32,.72,0,1)}
+.stats-bar-count{font-size:12px;font-weight:700;color:var(--sub);
+  flex-shrink:0;min-width:24px;text-align:right}
+.stats-total{font-size:13px;color:var(--sub);margin-bottom:16px}
+
+/* ══ SETUP WIZARD ══ */
+#wizard-overlay{
+  position:fixed;inset:0;z-index:200;
+  background:var(--bg);display:none;flex-direction:column;
+  overflow:hidden}
+#wizard-overlay.show{display:flex}
+.wiz-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px 24px;border-bottom:1px solid var(--border);flex-shrink:0}
+.wiz-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:20px;
+  letter-spacing:-.5px;color:var(--text)}
+.wiz-logo em{color:var(--accent);font-style:normal}
+.wiz-steps{display:flex;gap:6px;align-items:center}
+.wiz-step-dot{width:8px;height:8px;border-radius:50%;background:var(--border);
+  transition:background .2s}
+.wiz-step-dot.active{background:var(--accent)}
+.wiz-step-dot.done{background:var(--green)}
+.wiz-body{flex:1;overflow-y:auto;padding:32px 24px}
+.wiz-screen{display:none}
+.wiz-screen.active{display:block}
+.wiz-title{font-family:'Syne',sans-serif;font-size:26px;font-weight:800;
+  color:var(--text);margin-bottom:8px;letter-spacing:-.3px}
+.wiz-sub{font-size:15px;color:var(--sub);line-height:1.6;margin-bottom:28px}
+.wiz-footer{display:flex;align-items:center;justify-content:space-between;
+  padding:16px 24px;border-top:1px solid var(--border);flex-shrink:0;gap:12px}
+.wiz-btn-primary{flex:1;padding:14px;border:none;border-radius:12px;
+  background:var(--accent);color:#fff;font-family:'Syne',sans-serif;
+  font-size:17px;font-weight:800;cursor:pointer;
+  box-shadow:0 4px 14px rgba(224,92,42,.35);transition:opacity .12s}
+.wiz-btn-primary:active{opacity:.8}
+.wiz-btn-skip{background:none;border:none;color:var(--sub);font-size:14px;
+  font-weight:500;cursor:pointer;padding:8px;white-space:nowrap}
+.wiz-bottles-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:8px}
+.wiz-bottle{display:flex;flex-direction:column;gap:6px}
+.wiz-bottle-num{font-size:11px;font-weight:700;color:var(--sub);
+  text-align:center;letter-spacing:.3px}
+.wiz-bottle input{width:100%;background:var(--bg);border:1.5px solid var(--border);
+  color:var(--text);font-family:'Epilogue',sans-serif;font-size:13px;
+  padding:9px 10px;border-radius:var(--r-sm);outline:none;text-align:center;
+  transition:border-color .15s}
+.wiz-bottle input:focus{border-color:var(--accent)}
+.wiz-drink-field{margin-bottom:16px}
+.wiz-drink-field label{display:block;font-size:12px;font-weight:600;
+  color:var(--sub);margin-bottom:6px;letter-spacing:.2px}
+.wiz-drink-field input{width:100%;background:var(--bg);border:1.5px solid var(--border);
+  color:var(--text);font-family:'Epilogue',sans-serif;font-size:15px;
+  padding:11px 14px;border-radius:var(--r-sm);outline:none;
+  transition:border-color .15s}
+.wiz-drink-field input:focus{border-color:var(--accent)}
+.wiz-recipe-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.wiz-recipe-cell{display:flex;flex-direction:column;gap:4px}
+.wiz-recipe-cell label{font-size:10px;font-weight:600;color:var(--sub);
+  text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.wiz-recipe-cell input{width:100%;background:var(--bg);border:1.5px solid var(--border);
+  color:var(--text);font-family:'Epilogue',sans-serif;font-size:14px;
+  padding:9px 6px;border-radius:var(--r-sm);outline:none;text-align:center;
+  transition:border-color .15s}
+.wiz-recipe-cell input:focus{border-color:var(--accent)}
+.wiz-hint{font-size:12px;color:var(--sub);margin-top:8px;line-height:1.5}
+.wiz-done-icon{font-size:56px;margin-bottom:16px}
+</style>
+</head>
+<body>
+<div id="app">
+  <header>
+    <div style="display:flex;align-items:baseline;gap:0">
+      <div class="logo" id="logo-tap" style="cursor:default;user-select:none">i<em>Drink</em></div>
+      <span class="logo-sep">·</span>
+      <span class="logo-menu" id="header-menu-name">—</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px">
+      <button id="btn-darkmode" onclick="setDarkMode(!menuData.DarkMode)"
+        style="display:none;background:none;border:none;cursor:pointer;
+               padding:6px;border-radius:8px;line-height:0;
+               transition:background .15s"
+        onmouseenter="this.style.background='var(--border)'"
+        onmouseleave="this.style.background='none'"></button>
+      <div class="tab-bar" id="tab-bar" style="display:none">
+        <button class="tab-btn active" data-view="bar-view">Bar</button>
+        <button class="tab-btn op-tab" data-view="admin-view">Admin</button>
+        <button class="tab-btn op-tab" data-view="control-view">Control</button>
+      </div>
+    </div>
+  </header>
+  <div id="content">
+
+    <!-- BAR -->
+    <div id="bar-view" class="view active">
+      <div id="drink-scroll"><div id="drink-grid"></div></div>
+    </div>
+
+    <!-- ADMIN -->
+    <div id="admin-view" class="view">
+      <div class="admin-inner">
+        <div class="page-heading">Menu Editor</div>
+        <div class="page-sub">Edit menus, bottle assignments, drink recipes and glass types.</div>
+        <div class="admin-toolbar">
+          <select id="admin-select" class="styled" onchange="switchAdminMenu()"></select>
+          <button class="btn btn-dark" onclick="addNewMenu()">+ New menu</button>
+          <button class="btn btn-ghost" onclick="duplicateCurrentMenu()">Duplicate</button>
+          <button class="btn btn-red btn-xs" onclick="deleteCurrentMenu()">Delete</button>
+        </div>
+        <div id="admin-panel"></div>
+      </div>
+    </div>
+
+    <!-- CONTROL -->
+    <div id="control-view" class="view">
+      <div class="control-inner">
+        <div class="page-heading">Pump Control</div>
+        <div class="page-sub" style="margin-bottom:20px">Prime and test individual pumps.</div>
+        <div class="all-bar">
+          <button class="all-btn fwd" onclick="allPumps('FORWARD')">▶▶<span>All Forward</span></button>
+          <button class="all-btn rev" onclick="allPumps('REVERSE')">◀◀<span>All Reverse</span></button>
+          <button class="all-btn off" onclick="allPumps('OFF')">■<span>All Off</span></button>
+        </div>
+        <div class="pump-grid" id="pump-grid"></div>
+        <div style="margin-top:32px;padding-top:20px;border-top:1px solid var(--border)">
+          <div style="font-size:13px;font-weight:600;color:var(--sub);margin-bottom:10px;letter-spacing:.2px">SETUP</div>
+          <button class="btn btn-ghost" onclick="wizStart()" style="width:100%;justify-content:center;gap:8px;display:flex;align-items:center">
+            <span style="font-size:16px">🧙</span> Run setup wizard
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- STRENGTH PANEL -->
+<div id="strength-panel" onclick="spBackdropClick(event)">
+  <div id="strength-sheet">
+    <div class="sp-drag"></div>
+    <div class="sp-title" id="sp-drink-name"></div>
+    <div class="sp-size-btns" id="sp-size-btns">
+      <button class="sp-size-btn" onclick="onStrengthSelect(0)">
+        <div class="sp-glass-stage" id="sp-glass-0"></div>
+        <div class="sp-btn-label" id="sp-lbl-0"></div>
+      </button>
+      <button class="sp-size-btn active" onclick="onStrengthSelect(1)">
+        <div class="sp-glass-stage" id="sp-glass-1"></div>
+        <div class="sp-btn-label" id="sp-lbl-1"></div>
+      </button>
+      <button class="sp-size-btn" onclick="onStrengthSelect(2)">
+        <div class="sp-glass-stage" id="sp-glass-2"></div>
+        <div class="sp-btn-label" id="sp-lbl-2"></div>
+      </button>
+    </div>
+    <div class="sp-details-row">
+      <button class="sp-details-link" onclick="spToggleDetails()">details</button>
+    </div>
+    <div class="sp-vol-grid" id="sp-vol-grid"></div>
+    <button class="sp-pour-btn" id="sp-pour-btn" onclick="confirmPour()"></button>
+    <div id="sp-pour-hint" style="display:flex;align-items:center;justify-content:center;gap:7px;margin-top:10px;font-size:13px;color:var(--sub);font-weight:600;animation:glassflash 1.6s ease-in-out infinite">
+      <span id="sp-hint-glass"></span> Glass under spout?
+    </div>
+  </div>
+</div>
+
+<!-- POUR OVERLAY -->
+<div id="pour-overlay">
+  <div class="ring-wrap">
+    <svg width="180" height="180" viewBox="0 0 180 180">
+      <circle class="ring-bg" cx="90" cy="90" r="80"/>
+      <circle class="ring-fg" id="ring-fg" cx="90" cy="90" r="80"/>
+    </svg>
+    <div class="pour-glass-inner" id="pour-glass"></div>
+  </div>
+  <div>
+    <div class="pour-name" id="pour-name">Pouring…</div>
+    <div class="pour-sub" id="pour-sub" style="margin-top:6px"></div>
+  </div>
+  <div class="pour-label" id="pour-label">Mixing your drink…</div>
+  <div class="done-msg" id="done-msg">Enjoy! 🥂</div>
+  <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:center">
+    <button class="btn-stop" id="btn-stop" onclick="stopPour()">■ Stop Pour</button>
+    <button class="btn-dismiss" id="btn-dismiss" onclick="closePour()">Done</button>
+  </div>
+</div>
+
+<!-- STATS MODAL -->
+<div id="stats-overlay">
+  <div class="stats-header">
+    <div class="stats-title">Pour Stats</div>
+    <button class="stats-close" onclick="closeStats()">✕</button>
+  </div>
+  <div class="stats-pills" id="stats-pills">
+    <button class="stats-pill active" data-period="3600"     onclick="setStatsPeriod(this)">Last hour</button>
+    <button class="stats-pill"        data-period="21600"    onclick="setStatsPeriod(this)">6 hours</button>
+    <button class="stats-pill"        data-period="43200"    onclick="setStatsPeriod(this)">12 hours</button>
+    <button class="stats-pill"        data-period="86400"    onclick="setStatsPeriod(this)">Today</button>
+    <button class="stats-pill"        data-period="604800"   onclick="setStatsPeriod(this)">This week</button>
+    <button class="stats-pill"        data-period="0"        onclick="setStatsPeriod(this)">All time</button>
+  </div>
+  <div class="stats-body" id="stats-body"></div>
+</div>
+
+<div id="toast"></div>
+
+<!-- SETUP WIZARD -->
+<div id="wizard-overlay">
+  <div class="wiz-header">
+    <div class="wiz-logo">i<em>Drink</em> Setup</div>
+    <div class="wiz-steps">
+      <div class="wiz-step-dot active" id="wdot-0"></div>
+      <div class="wiz-step-dot" id="wdot-1"></div>
+      <div class="wiz-step-dot" id="wdot-2"></div>
+    </div>
+  </div>
+  <div class="wiz-body">
+
+    <!-- Step 0: Welcome -->
+    <div class="wiz-screen active" id="wiz-screen-0">
+      <div style="font-size:52px;margin-bottom:20px">🍹</div>
+      <div class="wiz-title">Welcome to iDrink</div>
+      <div class="wiz-sub">Let's get your bartender set up in two quick steps — assign your bottles, then create your first drink.</div>
+      <div style="background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r);padding:16px 18px;margin-top:8px">
+        <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px">What you'll need</div>
+        <div style="font-size:13px;color:var(--sub);line-height:1.7">
+          • The bottles connected to each pump<br>
+          • A drink recipe in parts (e.g. 2 parts vodka, 1 part juice)
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 1: Assign Bottles -->
+    <div class="wiz-screen" id="wiz-screen-1">
+      <div class="wiz-title">Assign your bottles</div>
+      <div class="wiz-sub">Enter what's connected to each pump. Leave blank for unused pumps.</div>
+      <div class="wiz-bottles-grid" id="wiz-bottles-grid"></div>
+      <div class="wiz-hint">Tip: use simple names like "Vodka", "OJ", "Tonic" — these drive the colour and recipe suggestions.</div>
+    </div>
+
+    <!-- Step 2: First Drink -->
+    <div class="wiz-screen" id="wiz-screen-2">
+      <div class="wiz-title">Create your first drink</div>
+      <div class="wiz-sub">Give it a name and set how many parts to pour from each pump. Leave pumps at 0 to skip them.</div>
+      <div class="wiz-drink-field">
+        <label>DRINK NAME</label>
+        <input id="wiz-drink-name" type="text" placeholder="e.g. Screwdriver">
+      </div>
+      <div class="wiz-recipe-grid" id="wiz-recipe-grid"></div>
+      <div class="wiz-hint">Parts are relative — 2 parts + 1 part pours twice as much of the first ingredient.</div>
+    </div>
+
+    <!-- Step 3: Done -->
+    <div class="wiz-screen" id="wiz-screen-3">
+      <div class="wiz-done-icon">🎉</div>
+      <div class="wiz-title">You're all set!</div>
+      <div class="wiz-sub">Your bottles are assigned and your first drink is ready to pour. You can add more drinks and menus any time in the Admin tab.</div>
+    </div>
+
+  </div>
+  <div class="wiz-footer">
+    <button class="wiz-btn-skip" id="wiz-btn-skip" onclick="wizSkip()">Skip setup</button>
+    <button class="wiz-btn-primary" id="wiz-btn-next" onclick="wizNext()">Get started →</button>
+  </div>
+</div>
+
+<script>
+/* ════════════════════════════════════════════════════════
+   GLASS TYPES — 8 distinct shapes, each a pure SVG renderer
+   glassSVG(type, [r,g,b], size) → SVG string
+════════════════════════════════════════════════════════ */
+const GLASS_TYPES = [
+  { id:'martini',   label:'Martini'   },
+  { id:'rocks',     label:'Rocks'     },
+  { id:'highball',  label:'Highball'  },
+  { id:'flute',     label:'Flute'     },
+  { id:'wine',      label:'Wine'      },
+  { id:'hurricane', label:'Hurricane' },
+  { id:'margarita', label:'Margarita' },
+  { id:'shot',      label:'Shot'      },
+];
+
+/* ── Custom SVG fruit icons ── */
+
+function fruitSVG_lemon(s) { s=s||22; return `<svg viewBox="0 0 100 93" width="${s}" height="${s}" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <radialGradient id="lg${s}" cx="36%" cy="30%" r="70%">
+    <stop offset="0%"   stop-color="#fff59a"/>
+    <stop offset="22%"  stop-color="#f7e200"/>
+    <stop offset="55%"  stop-color="#d4a800"/>
+    <stop offset="80%"  stop-color="#a07000"/>
+    <stop offset="100%" stop-color="#6b4400"/>
+  </radialGradient>
+  <radialGradient id="lb${s}" cx="50%" cy="100%" r="55%">
+    <stop offset="0%"   stop-color="rgba(255,230,80,.22)"/>
+    <stop offset="100%" stop-color="rgba(255,230,80,0)"/>
+  </radialGradient>
+</defs>
+<!-- body shadow -->
+<ellipse cx="51" cy="64" rx="26" ry="31" fill="rgba(0,0,0,.18)"/>
+<!-- body -->
+<ellipse cx="50" cy="62" rx="26" ry="31" fill="url(#lg${s})"/>
+<!-- nubs — top and bottom -->
+<ellipse cx="50" cy="31" rx="3" ry="4.5"  fill="#b89000"/>
+<ellipse cx="50" cy="92" rx="3" ry="4.5"  fill="#c8a200"/>
+<!-- bounce light -->
+<ellipse cx="50" cy="62" rx="26" ry="31" fill="url(#lb${s})"/>
+<!-- specular highlight -->
+<ellipse cx="36" cy="46" rx="9" ry="7" fill="rgba(255,255,255,.72)" transform="rotate(-20,36,46)"/>
+<!-- stem -->
+<path d="M50,31 L50,37" fill="none" stroke="#5a3800" stroke-width="2" stroke-linecap="round"/>
+<!-- leaf -->
+<path d="M50,31 Q53,17 67,20 Q69,33 56,35 Q51,33 50,31 Z" fill="#4aaf14"/>
+<path d="M50,31 Q61,26 56,35" fill="none" stroke="#2a7008" stroke-width="1.5" stroke-linecap="round"/>
+<!-- leaf sheen -->
+<path d="M54,19 Q63,16 67,19" fill="none" stroke="rgba(255,255,255,.40)" stroke-width="1.6" stroke-linecap="round"/>
+</svg>`; }
+
+function fruitSVG_lime(s) { s=s||22; return `<svg viewBox="0 0 100 93" width="${s}" height="${s}" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <radialGradient id="limg${s}" cx="36%" cy="30%" r="70%">
+    <stop offset="0%"   stop-color="#d4f090"/>
+    <stop offset="20%"  stop-color="#7cc820"/>
+    <stop offset="52%"  stop-color="#4a9400"/>
+    <stop offset="78%"  stop-color="#2e6000"/>
+    <stop offset="100%" stop-color="#1a3800"/>
+  </radialGradient>
+  <radialGradient id="limb${s}" cx="50%" cy="100%" r="55%">
+    <stop offset="0%"   stop-color="rgba(120,210,40,.22)"/>
+    <stop offset="100%" stop-color="rgba(120,210,40,0)"/>
+  </radialGradient>
+</defs>
+<!-- body shadow -->
+<ellipse cx="51" cy="64" rx="26" ry="31" fill="rgba(0,0,0,.18)"/>
+<!-- body -->
+<ellipse cx="50" cy="62" rx="26" ry="31" fill="url(#limg${s})"/>
+<!-- nubs — top and bottom -->
+<ellipse cx="50" cy="31" rx="3" ry="4.5"  fill="#2e6000"/>
+<ellipse cx="50" cy="92" rx="3" ry="4.5"  fill="#3a7800"/>
+<!-- bounce light -->
+<ellipse cx="50" cy="62" rx="26" ry="31" fill="url(#limb${s})"/>
+<!-- specular highlight -->
+<ellipse cx="36" cy="46" rx="9" ry="7" fill="rgba(255,255,255,.65)" transform="rotate(-20,36,46)"/>
+<!-- stem -->
+<path d="M50,31 L50,37" fill="none" stroke="#1a3800" stroke-width="2" stroke-linecap="round"/>
+<!-- leaf -->
+<path d="M50,31 Q53,17 67,20 Q69,33 56,35 Q51,33 50,31 Z" fill="#3a9010"/>
+<path d="M50,31 Q61,26 56,35" fill="none" stroke="#1a5604" stroke-width="1.5" stroke-linecap="round"/>
+<!-- leaf sheen -->
+<path d="M54,19 Q63,16 67,19" fill="none" stroke="rgba(255,255,255,.30)" stroke-width="1.6" stroke-linecap="round"/>
+</svg>`; }
+
+function fruitSVG_orange(s) { s=s||22; return `<svg viewBox="0 0 100 91" width="${s}" height="${s}" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <radialGradient id="og${s}" cx="36%" cy="30%" r="70%">
+    <stop offset="0%"   stop-color="#ffe090"/>
+    <stop offset="20%"  stop-color="#ff9a00"/>
+    <stop offset="55%"  stop-color="#d85e00"/>
+    <stop offset="80%"  stop-color="#a03400"/>
+    <stop offset="100%" stop-color="#602000"/>
+  </radialGradient>
+  <radialGradient id="ob${s}" cx="50%" cy="100%" r="55%">
+    <stop offset="0%"   stop-color="rgba(255,160,40,.22)"/>
+    <stop offset="100%" stop-color="rgba(255,160,40,0)"/>
+  </radialGradient>
+</defs>
+<!-- body shadow -->
+<circle cx="51" cy="55" r="38" fill="rgba(0,0,0,.18)"/>
+<!-- body -->
+<circle cx="50" cy="53" r="38" fill="url(#og${s})"/>
+<!-- peel texture bumps -->
+<circle cx="30" cy="40" r="1.6" fill="rgba(0,0,0,.10)"/>
+<circle cx="42" cy="30" r="1.4" fill="rgba(0,0,0,.10)"/>
+<circle cx="60" cy="32" r="1.5" fill="rgba(0,0,0,.10)"/>
+<circle cx="69" cy="48" r="1.5" fill="rgba(0,0,0,.09)"/>
+<circle cx="62" cy="64" r="1.4" fill="rgba(0,0,0,.09)"/>
+<circle cx="38" cy="66" r="1.5" fill="rgba(0,0,0,.09)"/>
+<circle cx="28" cy="54" r="1.4" fill="rgba(0,0,0,.09)"/>
+<!-- bounce light -->
+<circle cx="50" cy="53" r="38" fill="url(#ob${s})"/>
+<!-- navel dimple -->
+<ellipse cx="50" cy="88" rx="5" ry="3" fill="rgba(80,20,0,.35)"/>
+<!-- specular highlight -->
+<ellipse cx="32" cy="33" rx="12" ry="8" fill="rgba(255,255,255,.72)" transform="rotate(-25,32,33)"/>
+<!-- stem -->
+<path d="M50,15 L50,23" fill="none" stroke="#5a3800" stroke-width="2.5" stroke-linecap="round"/>
+<!-- leaf -->
+<path d="M50,15 Q54,-3 72,1 Q74,19 58,21 Q51,19 50,15 Z" fill="#4aaf14"/>
+<path d="M50,15 Q64,9 58,21" fill="none" stroke="#2a7008" stroke-width="1.8" stroke-linecap="round"/>
+<!-- leaf sheen -->
+<path d="M55,3 Q66,-1 71,3" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="2" stroke-linecap="round"/>
+</svg>`; }
+
+function fruitSVG_grapefruit(s) { s=s||22; return `<svg viewBox="0 0 110 104" width="${s}" height="${s}" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <!-- ruby-red peel -->
+  <radialGradient id="grr${s}" cx="35%" cy="28%" r="72%">
+    <stop offset="0%"   stop-color="#ffe0d8"/>
+    <stop offset="18%"  stop-color="#f8a090"/>
+    <stop offset="45%"  stop-color="#e06050"/>
+    <stop offset="72%"  stop-color="#b03030"/>
+    <stop offset="100%" stop-color="#6a1010"/>
+  </radialGradient>
+  <radialGradient id="grb${s}" cx="50%" cy="100%" r="55%">
+    <stop offset="0%"   stop-color="rgba(240,120,100,.22)"/>
+    <stop offset="100%" stop-color="rgba(240,120,100,0)"/>
+  </radialGradient>
+</defs>
+<!-- shadow -->
+<circle cx="57" cy="59" r="48" fill="rgba(0,0,0,.18)"/>
+<!-- body -->
+<circle cx="55" cy="56" r="48" fill="url(#grr${s})"/>
+<!-- dimple top -->
+<ellipse cx="55" cy="8"  rx="7" ry="4.5" fill="rgba(80,10,10,.28)"/>
+<!-- dimple bottom -->
+<ellipse cx="55" cy="102" rx="7" ry="4.5" fill="rgba(80,10,10,.22)"/>
+<!-- peel stipple -->
+<circle cx="32" cy="38" r="2.0" fill="rgba(0,0,0,.11)"/>
+<circle cx="48" cy="26" r="1.7" fill="rgba(0,0,0,.10)"/>
+<circle cx="70" cy="30" r="1.8" fill="rgba(0,0,0,.10)"/>
+<circle cx="82" cy="52" r="1.9" fill="rgba(0,0,0,.09)"/>
+<circle cx="74" cy="76" r="1.7" fill="rgba(0,0,0,.09)"/>
+<circle cx="40" cy="80" r="1.8" fill="rgba(0,0,0,.09)"/>
+<circle cx="28" cy="60" r="1.7" fill="rgba(0,0,0,.09)"/>
+<!-- bounce light -->
+<circle cx="55" cy="56" r="48" fill="url(#grb${s})"/>
+<!-- specular highlight -->
+<ellipse cx="34" cy="32" rx="16" ry="10" fill="rgba(255,255,255,.70)" transform="rotate(-22,34,32)"/>
+<!-- stem -->
+<path d="M55,8 L55,17" fill="none" stroke="#5a3800" stroke-width="2.5" stroke-linecap="round"/>
+<!-- leaf -->
+<path d="M55,8 Q59,-12 81,-8 Q83,12 65,14 Q57,12 55,8 Z" fill="#4aaf14"/>
+<path d="M55,8 Q71,0 65,14" fill="none" stroke="#2a7008" stroke-width="1.8" stroke-linecap="round"/>
+<!-- leaf sheen -->
+<path d="M61,-4 Q73,-10 79,-6" fill="none" stroke="rgba(255,255,255,.38)" stroke-width="2" stroke-linecap="round"/>
+</svg>`; }
+
+function fruitSVG_cranberry(s) { s=s||22; return `<svg viewBox="0 0 200 110" width="${s}" height="${s}" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <radialGradient id="cb1${s}" cx="32%" cy="28%" r="68%">
+    <stop offset="0%"   stop-color="#ff6060"/>
+    <stop offset="20%"  stop-color="#e0001a"/>
+    <stop offset="55%"  stop-color="#a00010"/>
+    <stop offset="80%"  stop-color="#6a0008"/>
+    <stop offset="100%" stop-color="#380002"/>
+  </radialGradient>
+  <radialGradient id="cb2${s}" cx="30%" cy="26%" r="68%">
+    <stop offset="0%"   stop-color="#ff5050"/>
+    <stop offset="18%"  stop-color="#cc0014"/>
+    <stop offset="52%"  stop-color="#8c000c"/>
+    <stop offset="80%"  stop-color="#580006"/>
+    <stop offset="100%" stop-color="#2e0002"/>
+  </radialGradient>
+  <radialGradient id="cb3${s}" cx="34%" cy="30%" r="68%">
+    <stop offset="0%"   stop-color="#ff7070"/>
+    <stop offset="22%"  stop-color="#d80018"/>
+    <stop offset="56%"  stop-color="#980010"/>
+    <stop offset="82%"  stop-color="#620008"/>
+    <stop offset="100%" stop-color="#340002"/>
+  </radialGradient>
+</defs>
+<path d="M100,75 Q80,30 60,20 Q75,40 72,70 Z" fill="#2e8a08"/>
+<path d="M100,75 Q125,25 145,18 Q130,42 128,72 Z" fill="#3aaa0c"/>
+<path d="M100,75 Q60,60 40,75 Q60,68 80,80 Z" fill="#248006"/>
+<path d="M100,75 Q140,58 160,72 Q138,66 120,80 Z" fill="#2e8a08"/>
+<path d="M100,75 Q78,48 62,22" fill="none" stroke="#1e6004" stroke-width="1.2" stroke-linecap="round"/>
+<path d="M100,75 Q122,46 143,20" fill="none" stroke="#1e6004" stroke-width="1.2" stroke-linecap="round"/>
+<path d="M76,78 Q78,58 82,48" fill="none" stroke="#4a7a20" stroke-width="2" stroke-linecap="round"/>
+<path d="M100,72 Q100,52 100,40" fill="none" stroke="#4a7a20" stroke-width="2" stroke-linecap="round"/>
+<path d="M124,78 Q122,58 118,48" fill="none" stroke="#4a7a20" stroke-width="2" stroke-linecap="round"/>
+<circle cx="100" cy="52" r="22" fill="rgba(0,0,0,.15)"/>
+<circle cx="100" cy="50" r="22" fill="url(#cb2${s})"/>
+<circle cx="88"  cy="40" r="7"  fill="rgba(255,255,255,.22)"/>
+<circle cx="100" cy="32" r="3"  fill="#1a0002" opacity=".7"/>
+<path d="M96,32 Q100,28 104,32" fill="none" stroke="#2a5010" stroke-width="1.5" stroke-linecap="round"/>
+<circle cx="74"  cy="85" r="24" fill="rgba(0,0,0,.15)"/>
+<circle cx="72"  cy="83" r="24" fill="url(#cb1${s})"/>
+<circle cx="60"  cy="72" r="8"  fill="rgba(255,255,255,.22)"/>
+<circle cx="72"  cy="62" r="3"  fill="#1a0002" opacity=".7"/>
+<path d="M68,62 Q72,58 76,62" fill="none" stroke="#2a5010" stroke-width="1.5" stroke-linecap="round"/>
+<circle cx="128" cy="85" r="24" fill="rgba(0,0,0,.15)"/>
+<circle cx="126" cy="83" r="24" fill="url(#cb3${s})"/>
+<circle cx="114" cy="72" r="8"  fill="rgba(255,255,255,.22)"/>
+<circle cx="126" cy="62" r="3"  fill="#1a0002" opacity=".7"/>
+<path d="M122,62 Q126,58 130,62" fill="none" stroke="#2a5010" stroke-width="1.5" stroke-linecap="round"/>
+</svg>`; }
+
+function fruitSVG_raspberry(s) { s=s||22; return `<svg viewBox="0 0 100 88" width="${s}" height="${s}" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <!-- bright top drupelets -->
+  <radialGradient id="rbt${s}" cx="30%" cy="25%" r="70%">
+    <stop offset="0%"   stop-color="#ff8090"/>
+    <stop offset="40%"  stop-color="#e2003c"/>
+    <stop offset="100%" stop-color="#700016"/>
+  </radialGradient>
+  <!-- mid drupelets slightly darker -->
+  <radialGradient id="rbm${s}" cx="30%" cy="25%" r="70%">
+    <stop offset="0%"   stop-color="#f06070"/>
+    <stop offset="40%"  stop-color="#c80030"/>
+    <stop offset="100%" stop-color="#5a0012"/>
+  </radialGradient>
+  <!-- bottom drupelets darkest -->
+  <radialGradient id="rbd${s}" cx="30%" cy="25%" r="70%">
+    <stop offset="0%"   stop-color="#d84058"/>
+    <stop offset="40%"  stop-color="#a00024"/>
+    <stop offset="100%" stop-color="#44000e"/>
+  </radialGradient>
+</defs>
+<!-- overall drop shadow -->
+<ellipse cx="52" cy="88" rx="28" ry="6" fill="rgba(0,0,0,.18)"/>
+
+<!-- bottom row (2) -->
+<circle cx="36" cy="80" r="10" fill="url(#rbd${s})"/>
+<circle cx="64" cy="80" r="10" fill="url(#rbd${s})"/>
+<circle cx="31" cy="74" r="2.4" fill="rgba(255,255,255,.55)"/>
+<circle cx="59" cy="74" r="2.4" fill="rgba(255,255,255,.55)"/>
+
+<!-- row 3 (3) -->
+<circle cx="23" cy="65" r="11" fill="url(#rbd${s})"/>
+<circle cx="50" cy="63" r="11" fill="url(#rbd${s})"/>
+<circle cx="77" cy="65" r="11" fill="url(#rbd${s})"/>
+<circle cx="18" cy="59" r="2.5" fill="rgba(255,255,255,.52)"/>
+<circle cx="45" cy="57" r="2.5" fill="rgba(255,255,255,.52)"/>
+<circle cx="72" cy="59" r="2.5" fill="rgba(255,255,255,.52)"/>
+
+<!-- row 2 (4) -->
+<circle cx="13" cy="50" r="11" fill="url(#rbm${s})"/>
+<circle cx="37" cy="47" r="11" fill="url(#rbm${s})"/>
+<circle cx="63" cy="47" r="11" fill="url(#rbm${s})"/>
+<circle cx="87" cy="50" r="11" fill="url(#rbm${s})"/>
+<circle cx="8"  cy="44" r="2.5" fill="rgba(255,255,255,.57)"/>
+<circle cx="32" cy="41" r="2.5" fill="rgba(255,255,255,.57)"/>
+<circle cx="58" cy="41" r="2.5" fill="rgba(255,255,255,.57)"/>
+<circle cx="82" cy="44" r="2.5" fill="rgba(255,255,255,.57)"/>
+
+<!-- top row (3) -->
+<circle cx="26" cy="32" r="11" fill="url(#rbt${s})"/>
+<circle cx="50" cy="29" r="11" fill="url(#rbt${s})"/>
+<circle cx="74" cy="32" r="11" fill="url(#rbt${s})"/>
+<circle cx="21" cy="26" r="2.5" fill="rgba(255,255,255,.62)"/>
+<circle cx="45" cy="23" r="2.5" fill="rgba(255,255,255,.62)"/>
+<circle cx="69" cy="26" r="2.5" fill="rgba(255,255,255,.62)"/>
+
+<!-- apex (2 small) -->
+<circle cx="39" cy="16" r="9.5" fill="url(#rbt${s})"/>
+<circle cx="61" cy="16" r="9.5" fill="url(#rbt${s})"/>
+<circle cx="34" cy="10" r="2.2" fill="rgba(255,255,255,.65)"/>
+<circle cx="56" cy="10" r="2.2" fill="rgba(255,255,255,.65)"/>
+
+<!-- calyx leaves — 5 pointed, Apple-style -->
+<path d="M50,13 Q44,2 40,0 Q43,8 50,13 Z"  fill="#3da010"/>
+<path d="M50,13 Q58,2 62,0 Q59,8 50,13 Z"  fill="#3da010"/>
+<path d="M50,13 Q34,4 30,8  Q38,12 50,13 Z" fill="#2e8808"/>
+<path d="M50,13 Q66,4 70,8  Q62,12 50,13 Z" fill="#2e8808"/>
+<path d="M50,13 Q50,0 50,0  Q50,8 50,13 Z"  fill="#4ab814"/>
+<!-- stem -->
+<line x1="50" y1="13" x2="50" y2="7" stroke="#5a3800" stroke-width="2.5" stroke-linecap="round"/>
+</svg>`; }
+
+function fruitSVG_blackberry(s) { s=s||22; return `<svg viewBox="0 0 100 88" width="${s}" height="${s}" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <!-- top drupelets — deep purple with violet sheen -->
+  <radialGradient id="bbt${s}" cx="28%" cy="22%" r="70%">
+    <stop offset="0%"   stop-color="#9060c0"/>
+    <stop offset="38%"  stop-color="#400080"/>
+    <stop offset="100%" stop-color="#100020"/>
+  </radialGradient>
+  <!-- mid drupelets -->
+  <radialGradient id="bbm${s}" cx="28%" cy="22%" r="70%">
+    <stop offset="0%"   stop-color="#6840a0"/>
+    <stop offset="38%"  stop-color="#280058"/>
+    <stop offset="100%" stop-color="#08000e"/>
+  </radialGradient>
+  <!-- bottom drupelets darkest -->
+  <radialGradient id="bbd${s}" cx="28%" cy="22%" r="70%">
+    <stop offset="0%"   stop-color="#482880"/>
+    <stop offset="38%"  stop-color="#180038"/>
+    <stop offset="100%" stop-color="#040008"/>
+  </radialGradient>
+</defs>
+<!-- drop shadow -->
+<ellipse cx="52" cy="88" rx="28" ry="6" fill="rgba(0,0,0,.20)"/>
+
+<!-- bottom row (2) -->
+<circle cx="36" cy="80" r="10" fill="url(#bbd${s})"/>
+<circle cx="64" cy="80" r="10" fill="url(#bbd${s})"/>
+<circle cx="31" cy="74" r="2.2" fill="rgba(220,200,255,.32)"/>
+<circle cx="59" cy="74" r="2.2" fill="rgba(220,200,255,.32)"/>
+
+<!-- row 3 (3) -->
+<circle cx="23" cy="65" r="11" fill="url(#bbd${s})"/>
+<circle cx="50" cy="63" r="11" fill="url(#bbd${s})"/>
+<circle cx="77" cy="65" r="11" fill="url(#bbd${s})"/>
+<circle cx="18" cy="59" r="2.4" fill="rgba(220,200,255,.30)"/>
+<circle cx="45" cy="57" r="2.4" fill="rgba(220,200,255,.30)"/>
+<circle cx="72" cy="59" r="2.4" fill="rgba(220,200,255,.30)"/>
+
+<!-- row 2 (4) -->
+<circle cx="13" cy="50" r="11" fill="url(#bbm${s})"/>
+<circle cx="37" cy="47" r="11" fill="url(#bbm${s})"/>
+<circle cx="63" cy="47" r="11" fill="url(#bbm${s})"/>
+<circle cx="87" cy="50" r="11" fill="url(#bbm${s})"/>
+<circle cx="8"  cy="44" r="2.4" fill="rgba(220,205,255,.34)"/>
+<circle cx="32" cy="41" r="2.4" fill="rgba(220,205,255,.34)"/>
+<circle cx="58" cy="41" r="2.4" fill="rgba(220,205,255,.34)"/>
+<circle cx="82" cy="44" r="2.4" fill="rgba(220,205,255,.34)"/>
+
+<!-- top row (3) -->
+<circle cx="26" cy="32" r="11" fill="url(#bbt${s})"/>
+<circle cx="50" cy="29" r="11" fill="url(#bbt${s})"/>
+<circle cx="74" cy="32" r="11" fill="url(#bbt${s})"/>
+<circle cx="21" cy="26" r="2.4" fill="rgba(230,215,255,.40)"/>
+<circle cx="45" cy="23" r="2.4" fill="rgba(230,215,255,.40)"/>
+<circle cx="69" cy="26" r="2.4" fill="rgba(230,215,255,.40)"/>
+
+<!-- apex (2) -->
+<circle cx="39" cy="16" r="9.5" fill="url(#bbt${s})"/>
+<circle cx="61" cy="16" r="9.5" fill="url(#bbt${s})"/>
+<circle cx="34" cy="10" r="2.0" fill="rgba(235,220,255,.44)"/>
+<circle cx="56" cy="10" r="2.0" fill="rgba(235,220,255,.44)"/>
+
+<!-- calyx — 5 leaves, darker green (blackberry has deeper leaves) -->
+<path d="M50,13 Q44,2 40,0  Q43,8 50,13 Z"  fill="#2a7a08"/>
+<path d="M50,13 Q58,2 62,0  Q59,8 50,13 Z"  fill="#2a7a08"/>
+<path d="M50,13 Q34,4 30,8  Q38,12 50,13 Z" fill="#1e6204"/>
+<path d="M50,13 Q66,4 70,8  Q62,12 50,13 Z" fill="#1e6204"/>
+<path d="M50,13 Q50,0 50,0  Q50,8 50,13 Z"  fill="#349c0c"/>
+<!-- stem -->
+<line x1="50" y1="13" x2="50" y2="7" stroke="#3c2800" stroke-width="2.5" stroke-linecap="round"/>
+</svg>`; }
+
+function fruitSVG_passion(s) { s=s||22; return `<svg viewBox="0 0 100 93" width="${s}" height="${s}" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <!-- whole fruit — deep purple/maroon like a ripe passion fruit -->
+  <radialGradient id="pf${s}" cx="36%" cy="30%" r="72%">
+    <stop offset="0%"   stop-color="#c060e0"/>
+    <stop offset="22%"  stop-color="#7820a8"/>
+    <stop offset="52%"  stop-color="#420870"/>
+    <stop offset="78%"  stop-color="#220040"/>
+    <stop offset="100%" stop-color="#0c0018"/>
+  </radialGradient>
+  <!-- bounce light from below -->
+  <radialGradient id="pfb${s}" cx="50%" cy="100%" r="55%">
+    <stop offset="0%"   stop-color="rgba(180,80,220,.22)"/>
+    <stop offset="100%" stop-color="rgba(180,80,220,0)"/>
+  </radialGradient>
+  <!-- wrinkle texture overlay -->
+  <radialGradient id="pfw${s}" cx="50%" cy="50%" r="50%">
+    <stop offset="60%"  stop-color="rgba(0,0,0,0)"/>
+    <stop offset="100%" stop-color="rgba(0,0,0,.18)"/>
+  </radialGradient>
+</defs>
+<!-- drop shadow -->
+<ellipse cx="52" cy="92" rx="35" ry="7" fill="rgba(0,0,0,.18)"/>
+<!-- body — slightly oval like real passion fruit -->
+<ellipse cx="50" cy="52" rx="44" ry="41" fill="url(#pf${s})"/>
+<!-- subtle wrinkle lines to suggest textured skin -->
+<path d="M28,28 Q22,42 24,58" fill="none" stroke="rgba(0,0,0,.14)" stroke-width="2.5" stroke-linecap="round"/>
+<path d="M72,28 Q78,42 76,58" fill="none" stroke="rgba(0,0,0,.14)" stroke-width="2.5" stroke-linecap="round"/>
+<path d="M35,20 Q26,34 26,50" fill="none" stroke="rgba(0,0,0,.10)" stroke-width="1.8" stroke-linecap="round"/>
+<path d="M65,20 Q74,34 74,50" fill="none" stroke="rgba(0,0,0,.10)" stroke-width="1.8" stroke-linecap="round"/>
+<path d="M20,50 Q22,66 32,76" fill="none" stroke="rgba(0,0,0,.10)" stroke-width="1.8" stroke-linecap="round"/>
+<path d="M80,50 Q78,66 68,76" fill="none" stroke="rgba(0,0,0,.10)" stroke-width="1.8" stroke-linecap="round"/>
+<!-- bounce light -->
+<ellipse cx="50" cy="52" rx="44" ry="41" fill="url(#pfb${s})"/>
+<!-- rim vignette -->
+<ellipse cx="50" cy="52" rx="44" ry="41" fill="url(#pfw${s})"/>
+<!-- stem nub at top -->
+<ellipse cx="50" cy="12" rx="5" ry="3.5" fill="#1e0a08"/>
+<line x1="50" y1="12" x2="50" y2="8" stroke="#3a2008" stroke-width="3" stroke-linecap="round"/>
+<!-- small leaf pair at stem -->
+<path d="M50,10 Q42,4 38,6 Q43,11 50,10 Z" fill="#2e8808"/>
+<path d="M50,10 Q58,4 62,6 Q57,11 50,10 Z" fill="#2e8808"/>
+<!-- primary specular highlight -->
+<ellipse cx="30" cy="28" rx="14" ry="9" fill="rgba(255,255,255,.70)" transform="rotate(-25,30,28)"/>
+<!-- secondary smaller specular -->
+<ellipse cx="42" cy="22" rx="6"  ry="3.5" fill="rgba(255,255,255,.40)" transform="rotate(-20,42,22)"/>
+</svg>`; }
+
+function fruitSVG_pomegranate(s) { s=s||22; return `<svg viewBox="0 0 100 96" width="${s}" height="${s}" xmlns="http://www.w3.org/2000/svg">
+<defs><radialGradient id="pmb${s}" cx="34%" cy="28%" r="65%"><stop offset="0%" stop-color="#f5003e"/><stop offset="35%" stop-color="#cc0030"/><stop offset="70%" stop-color="#8e0020"/><stop offset="100%" stop-color="#48000e"/></radialGradient><radialGradient id="pmg${s}" cx="32%" cy="24%" r="40%"><stop offset="0%" stop-color="rgba(255,180,180,.55)"/><stop offset="100%" stop-color="rgba(255,100,100,0)"/></radialGradient></defs>
+<path d="M34,40 Q18,22 22,12 Q34,22 38,40 Z" fill="#562008"/>
+<path d="M63,40 Q82,22 78,12 Q66,22 64,40 Z" fill="#562008"/>
+<path d="M38,40 Q26,16 30,5  Q42,16 44,40 Z" fill="#6a2a0e"/>
+<path d="M56,40 Q74,16 70,5  Q58,16 62,40 Z" fill="#6a2a0e"/>
+<path d="M44,40 Q40,14 50,1  Q60,14 56,40 Z" fill="#7c381a"/>
+<circle cx="50" cy="62" r="36" fill="#360010"/>
+<circle cx="50" cy="62" r="34" fill="url(#pmb${s})"/>
+<ellipse cx="50" cy="84" rx="18" ry="6" fill="rgba(240,60,60,.18)"/>
+<ellipse cx="38" cy="49" rx="18" ry="11" fill="url(#pmg${s})" transform="rotate(-28,38,49)"/>
+<ellipse cx="50" cy="29" rx="13" ry="4" fill="#3e1406"/>
+<rect x="47" y="0" width="6" height="5" rx="2.5" fill="#245200"/>
+</svg>`; }
+
+// Each item: id (stored in JSON), label, and either emoji or svgFn
+const FRUIT_OPTIONS = [
+  // Citrus
+  {id:'lemon',       svgFn: fruitSVG_lemon,        label:'Lemon'},
+  {id:'lime',        svgFn: fruitSVG_lime,          label:'Lime'},
+  {id:'orange',      svgFn: fruitSVG_orange,        label:'Orange'},
+  {id:'grapefruit',  svgFn: fruitSVG_grapefruit,    label:'Grapefruit'},
+  // Berries
+  {id:'strawberry',  emoji:'🍓',                    label:'Strawberry'},
+  {id:'raspberry',   svgFn: fruitSVG_raspberry,     label:'Raspberry'},
+  {id:'cranberry',   svgFn: fruitSVG_cranberry,     label:'Cranberry'},
+  {id:'blueberry',   emoji:'🫐',                    label:'Blueberry'},
+  {id:'blackberry',  svgFn: fruitSVG_blackberry,    label:'Blackberry'},
+  {id:'cherry',      emoji:'🍒',                    label:'Cherry'},
+  // Tropical
+  {id:'pineapple',   emoji:'🍍',                    label:'Pineapple'},
+  {id:'mango',       emoji:'🥭',                    label:'Mango'},
+  {id:'coconut',     emoji:'🥥',                    label:'Coconut'},
+  {id:'passion',     svgFn: fruitSVG_passion,       label:'Passion'},
+  {id:'pomegranate', svgFn: fruitSVG_pomegranate,   label:'Pom.'},
+  // Stone & other
+  {id:'peach',       emoji:'🍑',                    label:'Peach'},
+  {id:'apple',       emoji:'🍎',                    label:'Apple'},
+  {id:'watermelon',  emoji:'🍉',                    label:'Watermelon'},
+  {id:'melon',       emoji:'🍈',                    label:'Melon'},
+  // Herbs
+  {id:'mint',        emoji:'🌿',                    label:'Mint'},
+  {id:'ginger',      emoji:'🫚',                    label:'Ginger'},
+];
+
+// Render a fruit icon by id — returns HTML string (emoji span or SVG)
+function renderFruitIcon(id, size) {
+  const opt = FRUIT_OPTIONS.find(f => f.id === id);
+  if (!opt) return `<span style="font-size:${size||18}px">${id}</span>`;
+  if (opt.svgFn) return opt.svgFn(size || 20);
+  return `<span style="font-size:${size||18}px;line-height:1">${opt.emoji}</span>`;
+}
+
+function hexToRgb(hex) {
+  const h = hex.replace('#','');
+  return [parseInt(h.slice(0,2),16), parseInt(h.slice(2,4),16), parseInt(h.slice(4,6),16)];
+}
+function rgbToHex([r,g,b]) {
+  return '#'+[r,g,b].map(v=>Math.min(255,Math.max(0,v)).toString(16).padStart(2,'0')).join('');
+}
+function getDrinkColor(menuIdx, drink) {
+  if (drink.Color) return hexToRgb(drink.Color);
+  return dominantColor(menuIdx, drink);
+}
+
+function glassSVG(type, rgb, size) {
+  const [r,g,b] = rgb || [160,175,210];
+  const sz = size || 72;
+  const fill   = `rgb(${r},${g},${b})`;
+  const fillD  = `rgb(${Math.round(r*.6)},${Math.round(g*.6)},${Math.round(b*.6)})`;
+  const glass  = 'rgba(200,220,240,0.35)';
+  const rim    = 'rgba(180,200,220,0.7)';
+  const shine  = 'rgba(255,255,255,0.55)';
+  const id     = `g${type}${r}${g}${b}${sz}`;
+
+  const shapes = {
+
+    martini: `
+      <defs>
+        <clipPath id="${id}"><polygon points="14,8 86,8 54,62 46,62"/></clipPath>
+        <linearGradient id="${id}lg" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="${fill}"/>
+          <stop offset="100%" stop-color="${fillD}"/>
+        </linearGradient>
+      </defs>
+      <polygon points="14,8 86,8 54,62 46,62" fill="${glass}" stroke="${rim}" stroke-width="2" stroke-linejoin="round"/>
+      <rect x="0" y="36" width="100" height="40" fill="url(#${id}lg)" clip-path="url(#${id})" opacity=".92"/>
+      <polygon points="14,8 86,8 54,62 46,62" fill="none" stroke="${rim}" stroke-width="2"/>
+      <line x1="50" y1="62" x2="50" y2="88" stroke="${rim}" stroke-width="3" stroke-linecap="round"/>
+      <line x1="32" y1="89" x2="68" y2="89" stroke="${rim}" stroke-width="3.5" stroke-linecap="round"/>
+      <line x1="23" y1="12" x2="34" y2="56" stroke="${shine}" stroke-width="2.5" stroke-linecap="round" clip-path="url(#${id})"/>`,
+
+    rocks: `
+      <defs>
+        <clipPath id="${id}"><path d="M22,18 L78,18 L74,82 L26,82 Z"/></clipPath>
+        <linearGradient id="${id}lg" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="${fill}"/>
+          <stop offset="100%" stop-color="${fillD}"/>
+        </linearGradient>
+      </defs>
+      <path d="M22,18 L78,18 L74,82 L26,82 Z" fill="${glass}" stroke="${rim}" stroke-width="2"/>
+      <rect x="0" y="45" width="100" height="60" fill="url(#${id}lg)" clip-path="url(#${id})" opacity=".92"/>
+      <path d="M22,18 L78,18 L74,82 L26,82 Z" fill="none" stroke="${rim}" stroke-width="2"/>
+      <line x1="24" y1="82" x2="76" y2="82" stroke="${rim}" stroke-width="3" stroke-linecap="round"/>
+      <line x1="26" y1="22" x2="30" y2="75" stroke="${shine}" stroke-width="2.5" stroke-linecap="round"/>`,
+
+    highball: `
+      <defs>
+        <clipPath id="${id}"><path d="M28,6 L72,6 L70,92 L30,92 Z"/></clipPath>
+        <linearGradient id="${id}lg" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="${fill}"/>
+          <stop offset="100%" stop-color="${fillD}"/>
+        </linearGradient>
+      </defs>
+      <path d="M28,6 L72,6 L70,92 L30,92 Z" fill="${glass}" stroke="${rim}" stroke-width="2"/>
+      <rect x="0" y="28" width="100" height="80" fill="url(#${id}lg)" clip-path="url(#${id})" opacity=".92"/>
+      <path d="M28,6 L72,6 L70,92 L30,92 Z" fill="none" stroke="${rim}" stroke-width="2"/>
+      <line x1="30" y1="92" x2="70" y2="92" stroke="${rim}" stroke-width="3" stroke-linecap="round"/>
+      <line x1="30" y1="10" x2="33" y2="85" stroke="${shine}" stroke-width="2.5" stroke-linecap="round"/>
+      <rect x="62" y="1" width="5" height="64" rx="2.5" fill="rgba(255,255,255,.4)"/>`,
+
+    flute: `
+      <defs>
+        <clipPath id="${id}"><path d="M38,4 Q34,6 32,20 Q30,54 36,92 L64,92 Q70,54 68,20 Q66,6 62,4 Z"/></clipPath>
+        <linearGradient id="${id}lg" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="${fill}"/>
+          <stop offset="100%" stop-color="${fillD}"/>
+        </linearGradient>
+      </defs>
+      <path d="M38,4 Q34,6 32,20 Q30,54 36,92 L64,92 Q70,54 68,20 Q66,6 62,4 Z" fill="${glass}" stroke="${rim}" stroke-width="2"/>
+      <rect x="0" y="30" width="100" height="80" fill="url(#${id}lg)" clip-path="url(#${id})" opacity=".92"/>
+      <path d="M38,4 Q34,6 32,20 Q30,54 36,92 L64,92 Q70,54 68,20 Q66,6 62,4 Z" fill="none" stroke="${rim}" stroke-width="2"/>
+      <line x1="36" y1="92" x2="64" y2="92" stroke="${rim}" stroke-width="3" stroke-linecap="round"/>
+      <line x1="35" y1="8" x2="38" y2="84" stroke="${shine}" stroke-width="2" stroke-linecap="round"/>`,
+
+    wine: `
+      <defs>
+        <clipPath id="${id}"><path d="M30,8 Q14,30 16,52 Q18,68 50,74 Q82,68 84,52 Q86,30 70,8 Z"/></clipPath>
+        <linearGradient id="${id}lg" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="${fill}"/>
+          <stop offset="100%" stop-color="${fillD}"/>
+        </linearGradient>
+      </defs>
+      <path d="M30,8 Q14,30 16,52 Q18,68 50,74 Q82,68 84,52 Q86,30 70,8 Z" fill="${glass}" stroke="${rim}" stroke-width="2"/>
+      <rect x="0" y="44" width="100" height="40" fill="url(#${id}lg)" clip-path="url(#${id})" opacity=".92"/>
+      <path d="M30,8 Q14,30 16,52 Q18,68 50,74 Q82,68 84,52 Q86,30 70,8 Z" fill="none" stroke="${rim}" stroke-width="2"/>
+      <line x1="50" y1="74" x2="50" y2="90" stroke="${rim}" stroke-width="3" stroke-linecap="round"/>
+      <line x1="34" y1="90" x2="66" y2="90" stroke="${rim}" stroke-width="3.5" stroke-linecap="round"/>
+      <line x1="22" y1="14" x2="26" y2="60" stroke="${shine}" stroke-width="2.5" stroke-linecap="round"/>`,
+
+    hurricane: `
+      <defs>
+        <clipPath id="${id}"><path d="M38,4 Q18,20 16,44 Q14,64 30,76 Q42,84 50,84 Q58,84 70,76 Q86,64 84,44 Q82,20 62,4 Z"/></clipPath>
+        <linearGradient id="${id}lg" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="${fill}"/>
+          <stop offset="100%" stop-color="${fillD}"/>
+        </linearGradient>
+      </defs>
+      <path d="M38,4 Q18,20 16,44 Q14,64 30,76 Q42,84 50,84 Q58,84 70,76 Q86,64 84,44 Q82,20 62,4 Z" fill="${glass}" stroke="${rim}" stroke-width="2"/>
+      <rect x="0" y="42" width="100" height="60" fill="url(#${id}lg)" clip-path="url(#${id})" opacity=".92"/>
+      <path d="M38,4 Q18,20 16,44 Q14,64 30,76 Q42,84 50,84 Q58,84 70,76 Q86,64 84,44 Q82,20 62,4 Z" fill="none" stroke="${rim}" stroke-width="2"/>
+      <line x1="50" y1="84" x2="50" y2="94" stroke="${rim}" stroke-width="3" stroke-linecap="round"/>
+      <line x1="36" y1="94" x2="64" y2="94" stroke="${rim}" stroke-width="3.5" stroke-linecap="round"/>
+      <line x1="22" y1="12" x2="26" y2="68" stroke="${shine}" stroke-width="2.5" stroke-linecap="round"/>`,
+
+    margarita: `
+      <defs>
+        <clipPath id="${id}"><path d="M6,22 L94,22 Q88,50 62,60 L55,64 L50,90 L45,64 L38,60 Q12,50 6,22 Z"/></clipPath>
+        <linearGradient id="${id}lg" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="${fill}"/>
+          <stop offset="100%" stop-color="${fillD}"/>
+        </linearGradient>
+      </defs>
+      <path d="M6,22 L94,22 Q88,50 62,60 L55,64 L50,90 L45,64 L38,60 Q12,50 6,22 Z" fill="${glass}" stroke="${rim}" stroke-width="2"/>
+      <rect x="0" y="22" width="100" height="30" fill="url(#${id}lg)" clip-path="url(#${id})" opacity=".92"/>
+      <path d="M6,22 L94,22 Q88,50 62,60 L55,64 L50,90 L45,64 L38,60 Q12,50 6,22 Z" fill="none" stroke="${rim}" stroke-width="2"/>
+      <line x1="34" y1="90" x2="66" y2="90" stroke="${rim}" stroke-width="3.5" stroke-linecap="round"/>
+      <line x1="12" y1="26" x2="30" y2="54" stroke="${shine}" stroke-width="2.5" stroke-linecap="round"/>`,
+
+    shot: `
+      <defs>
+        <clipPath id="${id}"><path d="M30,20 Q28,72 32,74 L68,74 Q72,72 70,20 Z"/></clipPath>
+        <linearGradient id="${id}lg" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="${fill}"/>
+          <stop offset="100%" stop-color="${fillD}"/>
+        </linearGradient>
+      </defs>
+      <path d="M30,20 Q28,72 32,74 L68,74 Q72,72 70,20 Z" fill="${glass}" stroke="${rim}" stroke-width="2"/>
+      <rect x="0" y="44" width="100" height="40" fill="url(#${id}lg)" clip-path="url(#${id})" opacity=".92"/>
+      <path d="M30,20 Q28,72 32,74 L68,74 Q72,72 70,20 Z" fill="none" stroke="${rim}" stroke-width="2"/>
+      <line x1="28" y1="76" x2="72" y2="76" stroke="${rim}" stroke-width="3" stroke-linecap="round"/>
+      <line x1="34" y1="24" x2="36" y2="68" stroke="${shine}" stroke-width="2" stroke-linecap="round"/>`,
+  };
+
+  const shape = shapes[type] || shapes.martini;
+  return `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" width="${sz}" height="${sz}">${shape}</svg>`;
+}
+
+// Mini SVG for glass picker (neutral gray, no color)
+function glassPickerSVG(type) {
+  return glassSVG(type, [140, 165, 195], 36);
+}
+
+// Fill zone top/bottom Y (in 100×100 viewBox) for each glass type
+const GLASS_FILL_ZONE = {
+  martini:   [8,  62],
+  rocks:     [18, 82],
+  highball:  [6,  92],
+  flute:     [4,  92],
+  wine:      [8,  74],
+  hurricane: [4,  84],
+  margarita: [22, 64],
+  shot:      [20, 74],
+};
+
+// Render a glass SVG for the pour overlay — liquid starts empty and rises
+// via updatePourGlass(pct). Liquid rect has id="pour-liquid".
+function pourGlassSVG(type, rgb, size) {
+  const [r,g,b] = rgb || [160,175,210];
+  const sz = size || 100;
+  const fill  = `rgb(${r},${g},${b})`;
+  const fillD = `rgb(${Math.round(r*.6)},${Math.round(g*.6)},${Math.round(b*.6)})`;
+  const glass = 'rgba(200,220,240,0.35)';
+  const rim   = 'rgba(180,200,220,0.7)';
+  const shine = 'rgba(255,255,255,0.55)';
+  const id    = `pg${type}`;
+
+  // Build the same shapes as glassSVG but with id="pour-liquid" on the fill rect
+  // and initial height=0 (empty). We also add a subtle wave line at the liquid surface.
+  const [topY, bottomY] = GLASS_FILL_ZONE[type] || GLASS_FILL_ZONE.martini;
+
+  const clipPaths = {
+    martini:   `<clipPath id="${id}cp"><polygon points="14,8 86,8 54,62 46,62"/></clipPath>`,
+    rocks:     `<clipPath id="${id}cp"><path d="M22,18 L78,18 L74,82 L26,82 Z"/></clipPath>`,
+    highball:  `<clipPath id="${id}cp"><path d="M28,6 L72,6 L70,92 L30,92 Z"/></clipPath>`,
+    flute:     `<clipPath id="${id}cp"><path d="M38,4 Q34,6 32,20 Q30,54 36,92 L64,92 Q70,54 68,20 Q66,6 62,4 Z"/></clipPath>`,
+    wine:      `<clipPath id="${id}cp"><path d="M30,8 Q14,30 16,52 Q18,68 50,74 Q82,68 84,52 Q86,30 70,8 Z"/></clipPath>`,
+    hurricane: `<clipPath id="${id}cp"><path d="M38,4 Q18,20 16,44 Q14,64 30,76 Q42,84 50,84 Q58,84 70,76 Q86,64 84,44 Q82,20 62,4 Z"/></clipPath>`,
+    margarita: `<clipPath id="${id}cp"><path d="M6,22 L94,22 Q88,50 62,60 L55,64 L50,90 L45,64 L38,60 Q12,50 6,22 Z"/></clipPath>`,
+    shot:      `<clipPath id="${id}cp"><path d="M30,20 Q28,72 32,74 L68,74 Q72,72 70,20 Z"/></clipPath>`,
+  };
+  const outlines = {
+    martini:   `<polygon points="14,8 86,8 54,62 46,62" fill="${glass}" stroke="${rim}" stroke-width="2" stroke-linejoin="round"/>
+                <line x1="50" y1="62" x2="50" y2="88" stroke="${rim}" stroke-width="3" stroke-linecap="round"/>
+                <line x1="32" y1="89" x2="68" y2="89" stroke="${rim}" stroke-width="3.5" stroke-linecap="round"/>`,
+    rocks:     `<path d="M22,18 L78,18 L74,82 L26,82 Z" fill="${glass}" stroke="${rim}" stroke-width="2"/>
+                <line x1="24" y1="82" x2="76" y2="82" stroke="${rim}" stroke-width="3" stroke-linecap="round"/>`,
+    highball:  `<path d="M28,6 L72,6 L70,92 L30,92 Z" fill="${glass}" stroke="${rim}" stroke-width="2"/>
+                <line x1="30" y1="92" x2="70" y2="92" stroke="${rim}" stroke-width="3" stroke-linecap="round"/>`,
+    flute:     `<path d="M38,4 Q34,6 32,20 Q30,54 36,92 L64,92 Q70,54 68,20 Q66,6 62,4 Z" fill="${glass}" stroke="${rim}" stroke-width="2"/>
+                <line x1="36" y1="92" x2="64" y2="92" stroke="${rim}" stroke-width="3" stroke-linecap="round"/>`,
+    wine:      `<path d="M30,8 Q14,30 16,52 Q18,68 50,74 Q82,68 84,52 Q86,30 70,8 Z" fill="${glass}" stroke="${rim}" stroke-width="2"/>
+                <line x1="50" y1="74" x2="50" y2="90" stroke="${rim}" stroke-width="3" stroke-linecap="round"/>
+                <line x1="34" y1="90" x2="66" y2="90" stroke="${rim}" stroke-width="3.5" stroke-linecap="round"/>`,
+    hurricane: `<path d="M38,4 Q18,20 16,44 Q14,64 30,76 Q42,84 50,84 Q58,84 70,76 Q86,64 84,44 Q82,20 62,4 Z" fill="${glass}" stroke="${rim}" stroke-width="2"/>
+                <line x1="50" y1="84" x2="50" y2="94" stroke="${rim}" stroke-width="3" stroke-linecap="round"/>
+                <line x1="36" y1="94" x2="64" y2="94" stroke="${rim}" stroke-width="3.5" stroke-linecap="round"/>`,
+    margarita: `<path d="M6,22 L94,22 Q88,50 62,60 L55,64 L50,90 L45,64 L38,60 Q12,50 6,22 Z" fill="${glass}" stroke="${rim}" stroke-width="2"/>
+                <line x1="34" y1="90" x2="66" y2="90" stroke="${rim}" stroke-width="3.5" stroke-linecap="round"/>`,
+    shot:      `<path d="M30,20 Q28,72 32,74 L68,74 Q72,72 70,20 Z" fill="${glass}" stroke="${rim}" stroke-width="2"/>
+                <line x1="28" y1="76" x2="72" y2="76" stroke="${rim}" stroke-width="3" stroke-linecap="round"/>`,
+  };
+  const shines = {
+    martini:   `<line x1="23" y1="12" x2="34" y2="56" stroke="${shine}" stroke-width="2.5" stroke-linecap="round" clip-path="url(#${id}cp)"/>`,
+    rocks:     `<line x1="26" y1="22" x2="30" y2="75" stroke="${shine}" stroke-width="2.5" stroke-linecap="round"/>`,
+    highball:  `<line x1="30" y1="10" x2="33" y2="85" stroke="${shine}" stroke-width="2.5" stroke-linecap="round"/>`,
+    flute:     `<line x1="35" y1="8" x2="38" y2="84" stroke="${shine}" stroke-width="2" stroke-linecap="round"/>`,
+    wine:      `<line x1="22" y1="14" x2="26" y2="60" stroke="${shine}" stroke-width="2.5" stroke-linecap="round"/>`,
+    hurricane: `<line x1="22" y1="12" x2="26" y2="68" stroke="${shine}" stroke-width="2.5" stroke-linecap="round"/>`,
+    margarita: `<line x1="12" y1="26" x2="30" y2="54" stroke="${shine}" stroke-width="2.5" stroke-linecap="round"/>`,
+    shot:      `<line x1="34" y1="24" x2="36" y2="68" stroke="${shine}" stroke-width="2" stroke-linecap="round"/>`,
+  };
+
+  // Stroke-only top layer (drawn over liquid so glass border is always crisp)
+  const outlineTop = {
+    martini:   `<polygon points="14,8 86,8 54,62 46,62" fill="none" stroke="${rim}" stroke-width="2" stroke-linejoin="round"/>
+                <line x1="50" y1="62" x2="50" y2="88" stroke="${rim}" stroke-width="3" stroke-linecap="round"/>
+                <line x1="32" y1="89" x2="68" y2="89" stroke="${rim}" stroke-width="3.5" stroke-linecap="round"/>`,
+    rocks:     `<path d="M22,18 L78,18 L74,82 L26,82 Z" fill="none" stroke="${rim}" stroke-width="2"/>
+                <line x1="24" y1="82" x2="76" y2="82" stroke="${rim}" stroke-width="3" stroke-linecap="round"/>`,
+    highball:  `<path d="M28,6 L72,6 L70,92 L30,92 Z" fill="none" stroke="${rim}" stroke-width="2"/>
+                <line x1="30" y1="92" x2="70" y2="92" stroke="${rim}" stroke-width="3" stroke-linecap="round"/>`,
+    flute:     `<path d="M38,4 Q34,6 32,20 Q30,54 36,92 L64,92 Q70,54 68,20 Q66,6 62,4 Z" fill="none" stroke="${rim}" stroke-width="2"/>
+                <line x1="36" y1="92" x2="64" y2="92" stroke="${rim}" stroke-width="3" stroke-linecap="round"/>`,
+    wine:      `<path d="M30,8 Q14,30 16,52 Q18,68 50,74 Q82,68 84,52 Q86,30 70,8 Z" fill="none" stroke="${rim}" stroke-width="2"/>
+                <line x1="50" y1="74" x2="50" y2="90" stroke="${rim}" stroke-width="3" stroke-linecap="round"/>
+                <line x1="34" y1="90" x2="66" y2="90" stroke="${rim}" stroke-width="3.5" stroke-linecap="round"/>`,
+    hurricane: `<path d="M38,4 Q18,20 16,44 Q14,64 30,76 Q42,84 50,84 Q58,84 70,76 Q86,64 84,44 Q82,20 62,4 Z" fill="none" stroke="${rim}" stroke-width="2"/>
+                <line x1="50" y1="84" x2="50" y2="94" stroke="${rim}" stroke-width="3" stroke-linecap="round"/>
+                <line x1="36" y1="94" x2="64" y2="94" stroke="${rim}" stroke-width="3.5" stroke-linecap="round"/>`,
+    margarita: `<path d="M6,22 L94,22 Q88,50 62,60 L55,64 L50,90 L45,64 L38,60 Q12,50 6,22 Z" fill="none" stroke="${rim}" stroke-width="2"/>
+                <line x1="34" y1="90" x2="66" y2="90" stroke="${rim}" stroke-width="3.5" stroke-linecap="round"/>`,
+    shot:      `<path d="M30,20 Q28,72 32,74 L68,74 Q72,72 70,20 Z" fill="none" stroke="${rim}" stroke-width="2"/>
+                <line x1="28" y1="76" x2="72" y2="76" stroke="${rim}" stroke-width="3" stroke-linecap="round"/>`,
+  };
+
+  const cp      = clipPaths[type]   || clipPaths.martini;
+  const outline = outlines[type]    || outlines.martini;
+  const otop    = outlineTop[type]  || outlineTop.martini;
+  const sh      = shines[type]      || shines.martini;
+
+  return `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" width="${sz}" height="${sz}">
+    <defs>
+      ${cp}
+      <linearGradient id="${id}lg" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="${fill}"/>
+        <stop offset="100%" stop-color="${fillD}"/>
+      </linearGradient>
+    </defs>
+    ${outline}
+    <rect id="pour-liquid" x="0" y="${bottomY}" width="100" height="0"
+      fill="url(#${id}lg)" clip-path="url(#${id}cp)" opacity=".92"
+      style="transition:y .4s ease,height .4s ease"/>
+    <line id="pour-surface" x1="0" y1="${bottomY}" x2="100" y2="${bottomY}"
+      stroke="rgba(255,255,255,0.4)" stroke-width="1.5"
+      clip-path="url(#${id}cp)"
+      style="transition:y1 .4s ease,y2 .4s ease;display:none"/>
+    ${otop}
+    ${sh}
+  </svg>`;
+}
+
+// Update the fill level of the pour overlay glass (pct 0–100)
+function updatePourGlass(pct, type) {
+  const [topY, bottomY] = GLASS_FILL_ZONE[type] || GLASS_FILL_ZONE.martini;
+  const zone   = bottomY - topY;
+  const filled = zone * (pct / 100);
+  const newY   = bottomY - filled;
+  const liq    = document.getElementById('pour-liquid');
+  const surf   = document.getElementById('pour-surface');
+  if (!liq) return;
+  liq.setAttribute('y', newY);
+  liq.setAttribute('height', filled + 2); // +2 to avoid hairline gap at bottom
+  if (surf) {
+    surf.setAttribute('y1', newY);
+    surf.setAttribute('y2', newY);
+    surf.style.display = pct > 2 ? '' : 'none';
+  }
+}
+
+/* ════════════════════════════════════════════════════════
+   INGREDIENT COLOR SYSTEM
+   — dominant non-spirit ingredient drives the color
+   — if pure spirit, use spirit's color
+════════════════════════════════════════════════════════ */
+const INGREDIENT_COLORS = {
+  // Spirits (used only for pure spirit drinks)
+  'vodka':       [190, 215, 255], 'tequila':     [218, 185, 75],
+  'rum':         [195, 118, 45],  'gin':         [155, 205, 155],
+  'whiskey':     [185, 95,  30],  'whisky':      [185, 95,  30],
+  'bourbon':     [178, 85,  22],  'scotch':      [172, 80,  20],
+  'brandy':      [168, 75,  18],  'cognac':      [162, 70,  16],
+  'champagne':   [232, 212, 115], 'prosecco':    [232, 212, 115],
+  'wine':        [145, 22,  58],  'beer':        [202, 145, 32],
+  // Juices & fruits (these drive the color for mixed drinks)
+  'orange':      [255, 128, 0],   'lime':        [108, 188, 32],
+  'lemon':       [248, 210, 25],  'grapefruit':  [246, 85,  85],
+  'pomegranate': [178, 6,   32],  'pineapple':   [230, 200, 18],
+  'strawberry':  [220, 28,  58],  'raspberry':   [190, 22,  88],
+  'blackberry':  [65,  10,  128], 'blueberry':   [20,  38,  168],
+  'mango':       [238, 118, 18],  'peach':       [230, 142, 95],
+  'cherry':      [168, 10,  28],  'cranberry':   [162, 4,   25],
+  'watermelon':  [210, 48,  68],  'melon':       [85,  190, 105],
+  'grape':       [88,  18,  138], 'apple':       [145, 198, 68],
+  'passion':     [230, 138, 18],  'coconut':     [232, 228, 215],
+  'cucumber':    [138, 198, 108], 'kiwi':        [108, 178, 48],
+  'soda':        [192, 218, 245], 'tonic':       [192, 218, 245],
+  'water':       [185, 210, 245], 'ginger':      [210, 162, 62],
+  'cola':        [50,  20,  6],   'coffee':      [60,  25,  6],
+  'espresso':    [45,  15,  4],   'cream':       [245, 235, 210],
+  'milk':        [242, 240, 232], 'honey':       [210, 152, 18],
+  'mint':        [65,  178, 88],  'grenadine':   [188, 4,   22],
+  'chocolate':   [70,  30,  10],  'matcha':      [88,  162, 68],
+  'tea':         [168, 118, 48],
+};
+
+const SPIRITS  = [
+  // Whiskey family
+  'whiskey','whisky','bourbon','scotch','rye','tennessee',
+  'irish whiskey','canadian whisky','single malt','blended malt',
+  'jack daniel','jameson','makers mark','johnnie walker',
+  // White spirits
+  'vodka','gin','tequila','mezcal','sotol','raicilla',
+  // Rum family
+  'rum','rhum','cachaça','cachaca','aguardiente','ron',
+  // Brandy family
+  'brandy','cognac','armagnac','calvados','pisco','grappa',
+  'marc','eau de vie','kirsch','slivovitz',
+  // Agave
+  'pulque','bacanora',
+  // Asian
+  'sake','soju','baijiu','shochu','arrack','arak','feni',
+  // Fermented / wine-based
+  'wine','champagne','prosecco','cava','beer','ale','lager',
+  'stout','porter','cider','mead',
+  // Liqueurs
+  'triple sec','cointreau','grand marnier','curacao','curaçao',
+  'amaretto','kahlua','baileys','frangelico','chambord',
+  'midori','chartreuse','campari','aperol','cynar',
+  'fernet','amaro','bitters','vermouth','sherry','port',
+  'madeira','marsala','lillet','dubonnet',
+  'sambuca','limoncello','schnapps','peach schnapps',
+  'drambuie','benedictine','st-germain','elderflower liqueur',
+  'absinthe','pernod','pastis','ouzo','anise',
+  // Catch-all
+  'spirit','alcohol','liqueur','liquor',
+];
+// These are color-neutral — excluded from driving the glass color
+const NEUTRALS = ['water','soda','tonic','club soda','lemonade',
+                  'sparkling','ice','simple syrup'];
+
+function ingredientColor(name) {
+  const l = (name || '').toLowerCase();
+  for (const [k, c] of Object.entries(INGREDIENT_COLORS))
+    if (l.includes(k)) return c;
+  return [155, 170, 200];
+}
+
+function isNeutral(label) {
+  return NEUTRALS.some(n => label.includes(n));
+}
+
+// Returns the [r,g,b] that drives this drink's glass color
+function dominantColor(menuIdx, drink) {
+  const bottles = menuData.Menu[menuIdx].Bottles;
+  const active  = drink.Recipe
+    .map((oz, i) => ({ oz, label: (bottles[i] || '').toLowerCase() }))
+    .filter(x => x.oz > 0)
+    .sort((a, b) => b.oz - a.oz);
+
+  // 1. Prefer highest-volume non-spirit, non-neutral ingredient
+  const flavorful = active.filter(x =>
+    !SPIRITS.some(s => x.label.includes(s)) && !isNeutral(x.label));
+  if (flavorful.length > 0) return ingredientColor(flavorful[0].label);
+
+  // 2. Fall back to dominant spirit (pure spirit drink / shot)
+  const spirit = active.find(x => SPIRITS.some(s => x.label.includes(s)));
+  if (spirit) return ingredientColor(spirit.label);
+
+  // 3. Last resort — use the neutral (water/soda only drink)
+  if (active.length > 0) return ingredientColor(active[0].label);
+
+  return [155, 170, 200];
+}
+
+// Default glass type based on recipe (used when drink has no Glass field)
+function autoGlassType(menuIdx, drink) {
+  const bottles = menuData.Menu[menuIdx].Bottles;
+  const active  = drink.Recipe
+    .map((oz, i) => ({ oz, label: (bottles[i]||'').toLowerCase() }))
+    .filter(x => x.oz > 0);
+  const total    = active.reduce((s, x) => s + x.oz, 0);
+  const isSpr    = x => SPIRITS.some(s => x.label.includes(s));
+  const spirits  = active.filter(isSpr);
+  const mixers   = active.filter(x => !isSpr(x));
+  const mixVol   = mixers.reduce((s, x) => s + x.oz, 0);
+  const hasChamp = active.some(x => x.label.includes('champagne') || x.label.includes('prosecco'));
+  const hasWine  = active.some(x => x.label.includes('wine'));
+  if (hasChamp || hasWine)              return 'flute';
+  if (spirits.length===1 && total<=15)  return 'shot';
+  if (mixVol / total > 0.55)            return 'highball';
+  return 'martini';
+}
+
+function getDrinkGlass(menuIdx, drink) {
+  return drink.Glass || autoGlassType(menuIdx, drink);
+}
+
+/* ════════════════════════════════════════════════════════
+   APP STATE
+════════════════════════════════════════════════════════ */
+let menuData      = null;
+let activeMenuIdx = 0;
+let adminMenuIdx  = 0;
+let adminDirty    = false;   // persists across panel rebuilds
+let pourGlassType = 'martini'; // current pour overlay glass type for fill animation
+let pollTimer        = null;
+let autoDismissTimer = null;
+const CIRC        = 2 * Math.PI * 80;
+
+/* ════════════════════════════════════════════════════════
+   TABS
+════════════════════════════════════════════════════════ */
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.view).classList.add('active');
+    if (btn.dataset.view === 'bar-view')     { updateNowServing(); renderDrinks(activeMenuIdx); }
+    if (btn.dataset.view === 'admin-view')   {
+      buildAdminSelect();
+      // Land on the active menu's page, but don't disrupt if already editing another
+      if (!adminDirty) {
+        adminMenuIdx = getActiveMenuIdx();
+        document.getElementById('admin-select').value = adminMenuIdx;
+      }
+      loadAdminMenu();
+    }
+    if (btn.dataset.view === 'control-view') { buildPumpGrid(); }
+  });
+});
+
+/* ════════════════════════════════════════════════════════
+   OPERATOR MODE — triple-tap logo to reveal Admin/Control
+════════════════════════════════════════════════════════ */
+let logoTapCount = 0, logoTapTimer = null;
+let operatorMode = false;
+let opIdleTimer  = null;
+const OP_IDLE_MS = 3 * 60 * 1000; // 3 minutes
+
+function updateDarkmodeBtn() {
+  const btn = document.getElementById('btn-darkmode');
+  if (!btn) return;
+  const dark = menuData?.DarkMode;
+  btn.title = dark ? 'Switch to light mode' : 'Switch to dark mode';
+  // Sun icon (light mode active) — tap to go dark
+  const sunSVG = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+      stroke="var(--sub)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="4"/>
+    <line x1="12" y1="2"  x2="12" y2="5"/>
+    <line x1="12" y1="19" x2="12" y2="22"/>
+    <line x1="2"  y1="12" x2="5"  y2="12"/>
+    <line x1="19" y1="12" x2="22" y2="12"/>
+    <line x1="4.22"  y1="4.22"  x2="6.34"  y2="6.34"/>
+    <line x1="17.66" y1="17.66" x2="19.78" y2="19.78"/>
+    <line x1="4.22"  y1="19.78" x2="6.34"  y2="17.66"/>
+    <line x1="17.66" y1="6.34"  x2="19.78" y2="4.22"/>
+  </svg>`;
+  // Crescent moon icon (dark mode active) — tap to go light
+  const moonSVG = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+      stroke="var(--sub)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+  </svg>`;
+  btn.innerHTML = dark ? sunSVG : moonSVG;
+}
+
+function setOperatorMode(on) {
+  operatorMode = on;
+  document.getElementById('tab-bar').style.display = on ? '' : 'none';
+  document.getElementById('btn-darkmode').style.display = on ? '' : 'none';
+  updateDarkmodeBtn();
+  if (!on) {
+    clearTimeout(opIdleTimer);
+    // Switch back to Bar if on a hidden tab
+    const active = document.querySelector('.tab-btn.active');
+    if (active && active.classList.contains('op-tab')) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+      document.querySelector('[data-view="bar-view"]').classList.add('active');
+      document.getElementById('bar-view').classList.add('active');
+    }
+  } else {
+    resetOpIdleTimer();
+  }
+  showToast(on ? 'Operator mode on' : 'Operator mode off');
+}
+
+function resetOpIdleTimer() {
+  clearTimeout(opIdleTimer);
+  if (operatorMode) {
+    opIdleTimer = setTimeout(async () => {
+      const btn = document.getElementById('btn-save');
+      if (btn && btn.classList.contains('dirty')) {
+        showToast('Auto-saving before timeout…');
+        await saveMenu();
+      }
+      setOperatorMode(false);
+    }, OP_IDLE_MS);
+  }
+}
+
+// Reset idle timer on any interaction while in operator mode
+['click','keydown','touchstart','mousemove'].forEach(evt =>
+  document.addEventListener(evt, () => { if (operatorMode) resetOpIdleTimer(); }, {passive:true})
+);
+
+document.getElementById('logo-tap').addEventListener('click', () => {
+  logoTapCount++;
+  clearTimeout(logoTapTimer);
+  logoTapTimer = setTimeout(() => { logoTapCount = 0; }, 600);
+  if (logoTapCount >= 3) {
+    logoTapCount = 0;
+    setOperatorMode(!operatorMode);
+  }
+});
+
+/* ════════════════════════════════════════════════════════
+   BOOT
+════════════════════════════════════════════════════════ */
+function applyTheme() {
+  if (!menuData) return;
+  document.documentElement.setAttribute('data-theme', menuData.DarkMode ? 'dark' : '');
+  updateDarkmodeBtn();
+}
+
+async function setDarkMode(on) {
+  menuData.DarkMode = on;
+  applyTheme();
+  updateDarkmodeBtn();
+  try {
+    await fetch('/api/settings', {
+      method: 'PUT',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({DarkMode: on})
+    });
+  } catch { showToast('Could not save setting'); }
+}
+
+async function init() {
+  await fetchMenus();
+  applyTheme();
+  buildPumpGrid();
+}
+
+async function fetchMenus() {
+  try {
+    const res = await fetch('/api/menus');
+    menuData = await res.json();
+    applyTheme();
+    updateNowServing(); // sets activeMenuIdx from menuData
+    renderDrinks(activeMenuIdx);
+    buildAdminSelect();
+  } catch { showToast('Cannot reach server'); }
+}
+
+/* ════════════════════════════════════════════════════════
+   BAR VIEW
+════════════════════════════════════════════════════════ */
+function getActiveMenuIdx() {
+  const idx = menuData.Menu.findIndex(m => m.Active);
+  return idx >= 0 ? idx : 0; // fallback to first menu
+}
+
+function updateNowServing() {
+  const idx  = getActiveMenuIdx();
+  const name = menuData.Menu[idx]?.MenuName || '—';
+  document.getElementById('header-menu-name').textContent = name;
+  activeMenuIdx = idx;
+}
+
+function renderDrinks(idx) {
+  const grid    = document.getElementById('drink-grid');
+  const menu    = menuData.Menu[idx];
+  const bottles = menu.Bottles;
+
+  if (!menu.Drink?.length) {
+    grid.innerHTML = `<div class="empty-state">
+      <div class="icon">🥃</div>
+      <p>No drinks in this menu yet.<br>Add some in the Admin tab.</p></div>`;
+    return;
+  }
+
+  grid.innerHTML = menu.Drink.filter(d => !d.Disabled).map(d => {
+    const chips    = d.Recipe.map((oz,i) => oz>0 && bottles[i]
+      ? `<span class="chip">${esc(bottles[i])}</span>`:'').join('');
+    const color    = getDrinkColor(idx, d);
+    const gtype    = getDrinkGlass(idx, d);
+    const glassSize = gtype === 'shot' ? 60 : 80;
+    const glassClass = gtype === 'shot' ? 'drink-card-glass glass-shot' : 'drink-card-glass';
+    const svg      = glassSVG(gtype, color, glassSize);
+    const fruits   = (d.Fruits||[]).slice(0,6);
+    const col1 = fruits.slice(0,3);
+    const col2 = fruits.slice(3,6);
+    const makeCol = (arr) => arr.length ? `<div class="drink-fruit-col">${arr.map(id=>renderFruitIcon(id,18)).join('')}</div>` : '';
+    const badgeHTML = col1.length
+      ? `<div class="drink-fruit-badges">${makeCol(col1)}${makeCol(col2)}</div>` : '';
+    const safeName = d.Name.replace(/\\/g,'\\\\').replace(/'/g,"\\'");
+    const safeMenu = menu.MenuName.replace(/\\/g,'\\\\').replace(/'/g,"\\'");
+    return `
+      <div class="drink-card" onclick="openStrengthPanel(${idx},'${safeName}','${safeMenu}')">
+        <div class="drink-icon-wrap${gtype==='shot'?' shot-wrap':''}">
+          <div class="${glassClass}">${svg}</div>
+          ${badgeHTML}
+        </div>
+        <div class="drink-card-name">${esc(d.Name)}</div>
+        <div class="drink-card-chips">${chips||'<span class="chip">No ingredients</span>'}</div>
+        <div class="drink-card-hint">Tap to pour →</div>
+      </div>`;
+  }).join('');
+}
+
+/* ════════════════════════════════════════════════════════
+   POUR
+════════════════════════════════════════════════════════ */
+async function startPour(menuIdx, drinkName, menuName, scaledRecipe) {
+  const drink = menuData.Menu[menuIdx].Drink.find(d => d.Name === drinkName);
+  const color = drink ? getDrinkColor(menuIdx, drink) : [155,170,200];
+  const gtype = drink ? getDrinkGlass(menuIdx, drink) : 'martini';
+
+  pourGlassType = gtype;
+  document.getElementById('pour-name').textContent  = drinkName;
+  document.getElementById('pour-sub').textContent   = menuName;
+  document.getElementById('pour-glass').innerHTML   = pourGlassSVG(gtype, color, 80);
+  document.getElementById('ring-fg').style.stroke   = `rgb(${color[0]},${color[1]},${color[2]})`;
+  document.getElementById('pour-label').textContent = 'Mixing your drink…';
+  document.getElementById('done-msg').classList.remove('show');
+  document.getElementById('btn-dismiss').classList.remove('show');
+  document.getElementById('btn-stop').style.display = 'block';
+  document.getElementById('pour-glass').classList.remove('done');
+  setRing(0);
+  document.getElementById('pour-overlay').classList.add('show');
+
+  const body = {menu_idx: menuIdx, drink_name: drinkName};
+  if (scaledRecipe) body.recipe_override = scaledRecipe;
+
+  try {
+    const res = await fetch('/api/pour', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify(body)
+    });
+    if (!res.ok) { const e=await res.json(); closePour(); showToast(e.error||'Could not pour'); return; }
+  } catch { closePour(); showToast('Server error'); return; }
+
+  clearInterval(pollTimer);
+  pollTimer = setInterval(async () => {
+    try {
+      const s = await (await fetch('/api/status')).json();
+      setRing(s.progress);
+      if (!s.active) {
+        clearInterval(pollTimer); setRing(100);
+        document.getElementById('pour-label').textContent = 'Done!';
+        document.getElementById('btn-stop').style.display = 'none';
+        setTimeout(() => {
+          document.getElementById('pour-glass').classList.add('done');
+          document.getElementById('done-msg').classList.add('show');
+          document.getElementById('btn-dismiss').classList.add('show');
+        }, 300);
+        // Auto-dismiss after 10 seconds
+        clearTimeout(autoDismissTimer);
+        autoDismissTimer = setTimeout(() => closePour(), 10000);
+      }
+    } catch {}
+  }, 200);
+}
+
+function setRing(pct) {
+  document.getElementById('ring-fg').style.strokeDashoffset = CIRC * (1 - pct/100);
+  updatePourGlass(pct, pourGlassType);
+}
+function closePour() {
+  clearInterval(pollTimer);
+  clearTimeout(autoDismissTimer);
+  document.getElementById('pour-overlay').classList.remove('show');
+}
+async function stopPour() {
+  clearInterval(pollTimer);
+  try {
+    await fetch('/api/stop', {method:'POST'});
+  } catch {}
+  document.getElementById('btn-stop').style.display = 'none';
+  document.getElementById('pour-label').textContent = 'Stopped.';
+  setTimeout(() => {
+    document.getElementById('pour-glass').classList.add('done');
+    document.getElementById('done-msg').classList.add('show');
+    document.getElementById('btn-dismiss').classList.add('show');
+  }, 200);
+}
+
+/* ════════════════════════════════════════════════════════
+   STRENGTH PANEL
+════════════════════════════════════════════════════════ */
+let spMenuIdx   = 0;
+let spDrinkName = '';
+let spMenuName  = '';
+let spStrength  = 1;   // 0=easy/half, 1=classic/regular, 2=strong/full
+let spDetailsOpen = false;
+
+const SP_SPIRIT_MULT   = [0.7, 1.0, 1.4];
+const SP_ALL_MULT      = [0.7, 1.0, 1.3];
+const SP_SPIRIT_LBLS   = ['Light', 'Classic', 'Strong'];
+const SP_ALL_LBLS      = ['Small', 'Regular', 'Large'];
+const SP_INTENSITY     = [0.32, 0.70, 1.0];  // colour wash for spirit drinks
+const SP_NS_SIZES      = [36, 50, 64];        // glass sizes for non-spirit
+const SP_SPIRIT_SIZE   = 54;                  // fixed glass size for spirit drinks
+
+// True if any active ingredient is a spirit
+function drinkHasSpirits(menuIdx, drink) {
+  const bottles = menuData.Menu[menuIdx].Bottles;
+  return drink.Recipe.some((oz, i) =>
+    oz > 0 && SPIRITS.some(s => (bottles[i]||'').toLowerCase().includes(s)));
+}
+
+function spTintedRgb(rgb, intensity) {
+  return rgb.map(c => Math.round(c + (255 - c) * (1 - intensity)));
+}
+
+function openStrengthPanel(menuIdx, drinkName, menuName) {
+  const menu = menuData.Menu[menuIdx];
+  if (menu.StrengthEnabled === false) {
+    startPour(menuIdx, drinkName, menuName, null);
+    return;
+  }
+  spMenuIdx    = menuIdx;
+  spDrinkName  = drinkName;
+  spMenuName   = menuName;
+  spStrength   = 1;
+  spDetailsOpen = false;
+  document.getElementById('sp-vol-grid').classList.remove('open');
+  renderStrengthPanel();
+  document.getElementById('strength-panel').classList.add('show');
+}
+
+function closeStrengthPanel() {
+  document.getElementById('strength-panel').classList.remove('show');
+}
+
+function spBackdropClick(e) {
+  if (e.target === document.getElementById('strength-panel')) closeStrengthPanel();
+}
+
+function onStrengthSelect(val) {
+  spStrength = val;
+  renderStrengthPanel();
+}
+
+function spToggleDetails() {
+  spDetailsOpen = !spDetailsOpen;
+  document.getElementById('sp-vol-grid').classList.toggle('open', spDetailsOpen);
+}
+
+function renderStrengthPanel() {
+  const drink     = menuData.Menu[spMenuIdx].Drink.find(d => d.Name === spDrinkName);
+  const bottles   = menuData.Menu[spMenuIdx].Bottles;
+  const hasSpirit = drinkHasSpirits(spMenuIdx, drink);
+  const labels    = hasSpirit ? SP_SPIRIT_LBLS : SP_ALL_LBLS;
+  const rgb       = getDrinkColor(spMenuIdx, drink);
+  const gtype     = getDrinkGlass(spMenuIdx, drink);
+
+  document.getElementById('sp-drink-name').textContent = spDrinkName;
+  document.getElementById('sp-pour-btn').textContent   = 'Pour';
+  // Update hint glass icon to match the drink's glass type and color
+  const hintGlass = document.getElementById('sp-hint-glass');
+  if (hintGlass) hintGlass.innerHTML = glassSVG(gtype, rgb, 18);
+
+  // Render the three glass buttons
+  [0, 1, 2].forEach(i => {
+    const btnRgb  = hasSpirit ? spTintedRgb(rgb, SP_INTENSITY[i]) : rgb;
+    const btnSize = hasSpirit ? SP_SPIRIT_SIZE : SP_NS_SIZES[i];
+    document.getElementById(`sp-glass-${i}`).innerHTML = glassSVG(gtype, btnRgb, btnSize);
+    document.getElementById(`sp-lbl-${i}`).textContent = labels[i];
+    document.getElementById('sp-size-btns').children[i]
+      .classList.toggle('active', i === spStrength);
+  });
+
+  // Build volume detail rows
+  const mult   = hasSpirit ? SP_SPIRIT_MULT[spStrength] : SP_ALL_MULT[spStrength];
+  const active = drink.Recipe
+    .map((oz, i) => ({ oz, label: bottles[i] || `Pump ${i+1}` }))
+    .filter(x => x.oz > 0);
+
+  const rows = active.map(x => {
+    const isSpirit = SPIRITS.some(s => x.label.toLowerCase().includes(s));
+    const scaled   = hasSpirit
+      ? (isSpirit ? x.oz * mult : x.oz)
+      : x.oz * mult;
+    const barClass = hasSpirit ? (isSpirit ? 'spirit' : 'mixer') : 'all';
+    const maxVol   = hasSpirit
+      ? (isSpirit ? x.oz * 1.4 : x.oz)
+      : x.oz * 1.3;
+    const pct = Math.round((scaled / maxVol) * 100);
+    const oz  = scaled.toFixed(1);
+    return `<div class="vol-row">
+      <div class="vol-row-label">${esc(x.label)}</div>
+      <div class="vol-bar-track">
+        <div class="vol-bar-fill ${barClass}" style="width:${pct}%"></div>
+      </div>
+      <div class="vol-row-oz">${oz} oz</div>
+    </div>`;
+  });
+
+  document.getElementById('sp-vol-grid').innerHTML = rows.join('');
+}
+
+function buildScaledRecipe() {
+  const drink     = menuData.Menu[spMenuIdx].Drink.find(d => d.Name === spDrinkName);
+  const bottles   = menuData.Menu[spMenuIdx].Bottles;
+  const hasSpirit = drinkHasSpirits(spMenuIdx, drink);
+  const mult      = hasSpirit ? SP_SPIRIT_MULT[spStrength] : SP_ALL_MULT[spStrength];
+
+  return drink.Recipe.map((oz, i) => {
+    if (oz === 0) return 0;
+    const isSpirit = SPIRITS.some(s => (bottles[i]||'').toLowerCase().includes(s));
+    const scale    = hasSpirit ? (isSpirit ? mult : 1) : mult;
+    return Math.round(oz * scale);
+  });
+}
+
+function confirmPour() {
+  const scaledRecipe = buildScaledRecipe();
+  closeStrengthPanel();
+  startPour(spMenuIdx, spDrinkName, spMenuName, scaledRecipe);
+}
+
+/* ════════════════════════════════════════════════════════
+   ADMIN
+════════════════════════════════════════════════════════ */
+async function switchAdminMenu() {
+  const idx = parseInt(document.getElementById('admin-select').value);
+  try {
+    const res = await fetch('/api/menus');
+    menuData = await res.json();
+    updateNowServing();
+  } catch { showToast('Could not reload menus'); }
+  adminMenuIdx = idx;
+  document.getElementById('admin-select').value = idx;
+  loadAdminMenu();
+}
+
+function buildAdminSelect() {
+  if (!menuData) return;
+  const sel = document.getElementById('admin-select');
+  const cur = sel.value;
+  sel.innerHTML = menuData.Menu.map((m,i) =>
+    `<option value="${i}"${i==cur?' selected':''}>${m.Active?'● ':''}${esc(m.MenuName)}</option>`).join('');
+  adminMenuIdx = parseInt(sel.value) || 0;
+}
+
+function markDirty() {
+  adminDirty = true;
+  const btn    = document.getElementById('btn-save');
+  const status = document.getElementById('save-status');
+  if (!btn) return;
+  btn.classList.add('dirty');
+  btn.textContent = 'Save';
+  if (status) status.textContent = 'Unsaved changes';
+}
+
+function markClean() {
+  adminDirty = false;
+  const btn    = document.getElementById('btn-save');
+  const status = document.getElementById('save-status');
+  if (!btn) return;
+  btn.classList.remove('dirty');
+  btn.textContent = 'Save';
+  if (status) status.textContent = 'No unsaved changes';
+}
+
+function loadAdminMenu() {
+  if (!menuData) return;
+  adminMenuIdx = parseInt(document.getElementById('admin-select').value);
+  const menu = menuData.Menu[adminMenuIdx];
+
+  const strengthEnabled = menu.StrengthEnabled !== false; // default true
+  document.getElementById('admin-panel').innerHTML = `
+    <div class="admin-save-bar">
+      <span style="font-size:12px;font-weight:600;color:var(--sub)" id="save-status">No unsaved changes</span>
+      <div style="display:flex;gap:8px;align-items:center">
+        <button class="btn btn-ghost btn-xs" onclick="if(confirm('Discard all unsaved changes?')){const _dm=menuData?.DarkMode;fetchMenus().then(()=>{if(_dm!==undefined)menuData.DarkMode=_dm;applyTheme();adminDirty=false;loadAdminMenu()})}">Discard</button>
+        <button class="btn-save" id="btn-save" onclick="saveMenu()">Save</button>
+      </div>
+    </div>
+    <div class="section-card">
+      <div class="section-label">Menu details</div>
+      <div class="field"><label>Menu Name</label>
+        <input id="ed-name" type="text" value="${esc(menu.MenuName)}"
+          oninput="menuData.Menu[adminMenuIdx].MenuName=this.value;buildAdminSelect();document.getElementById('admin-select').value=adminMenuIdx;markDirty()"></div>
+      <div class="field"><label>Description</label>
+        <input id="ed-desc" type="text" value="${esc(menu.MenuDescription||'')}"
+          oninput="menuData.Menu[adminMenuIdx].MenuDescription=this.value;markDirty()"></div>
+      <div style="display:flex;align-items:center;gap:12px;margin-top:4px;padding-bottom:4px">
+        <div style="flex:1">
+          <div style="font-size:12px;font-weight:600;color:var(--text)">Strength / pour-size selector</div>
+          <div style="font-size:11px;font-weight:400;color:var(--sub);margin-top:2px;line-height:1.4">
+            Show a strength slider before pouring. Disable for kids' menus or tap-to-pour simplicity.
+          </div>
+        </div>
+        <label class="toggle-switch">
+          <input type="checkbox" id="ed-strength" ${strengthEnabled?'checked':''}
+            onchange="menuData.Menu[adminMenuIdx].StrengthEnabled=this.checked;markDirty()">
+          <span class="toggle-track"><span class="toggle-thumb"></span></span>
+        </label>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;margin-top:10px;padding:12px 0 4px;border-top:1px solid var(--border)">
+        <div style="flex:1">
+          <div style="font-size:12px;font-weight:600;color:var(--text)">Active menu</div>
+          <div style="font-size:11px;font-weight:400;color:var(--sub);margin-top:2px;line-height:1.4">
+            The active menu is shown on the Bar screen. Only one menu can be active at a time.
+          </div>
+        </div>
+        <label class="toggle-switch">
+          <input type="checkbox" id="ed-active" ${menu.Active?'checked':''}
+            onchange="setActiveMenu(${adminMenuIdx}, this.checked)">
+          <span class="toggle-track"><span class="toggle-thumb"></span></span>
+        </label>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <div class="section-label">Bottle Assignments (8 pumps)</div>
+      <div class="bottles-grid">
+        ${menu.Bottles.map((b,i)=>`
+          <div class="bottle-cell">
+            <span class="bottle-num">${i+1}</span>
+            <input id="b-${i}" type="text" value="${esc(b)}" placeholder="Pump ${i+1}"
+              oninput="menuData.Menu[adminMenuIdx].Bottles[${i}]=this.value;markDirty()">
+          </div>`).join('')}
+      </div>
+    </div>
+
+    <div class="section-card">
+      <div class="section-label">Drinks</div>
+      <div class="drink-accordion" id="acc">
+        ${menu.Drink.map((d,di)=>drinkAccItem(d, di, menu.Bottles)).join('')}
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-ghost" onclick="addDrink()">+ Add drink</button>
+      </div>
+    </div>
+
+    <div class="section-card" id="history-card">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+        <div class="section-label" style="margin-bottom:0">Pour History</div>
+        <div style="display:flex;gap:6px">
+          <button class="btn btn-ghost btn-xs" onclick="openStats()">📊 Stats</button>
+          <button class="btn btn-red btn-xs" onclick="clearHistory()">Clear</button>
+        </div>
+      </div>
+      <div id="history-list"><div style="font-size:13px;color:var(--sub);padding:8px 0">Loading…</div></div>
+    </div>
+
+    <div style="height:32px"></div>`;
+
+  // Load history async after panel is built
+  loadHistory();
+
+  // Wire up dirty detection on all inputs in the panel
+  document.getElementById('admin-panel')
+    .querySelectorAll('input, select, textarea')
+    .forEach(el => el.addEventListener('input', markDirty));
+
+  // Bind touch+mouse drag handles
+  accBindHandles();
+
+  // Restore dirty state if it was set before the panel was rebuilt
+  if (adminDirty) markDirty();
+}
+
+function drinkAccItem(d, di, bottles) {
+  // Glass: highlight auto-detected type if no override set
+  const currentGlass = d.Glass || autoGlassType(adminMenuIdx, d);
+  const glassPicker  = GLASS_TYPES.map(g => `
+    <div class="glass-opt${currentGlass===g.id?' selected':''}"
+         id="gopt-${di}-${g.id}" onclick="selectGlass(${di},'${g.id}')">
+      ${glassPickerSVG(g.id)}
+      <span class="glass-opt-label">${g.label}</span>
+    </div>`).join('');
+
+  // Color: show current effective color in picker
+  const autoRgb    = dominantColor(adminMenuIdx, d);
+  const autoHex    = rgbToHex(autoRgb);
+  const colorHex   = d.Color || autoHex;
+  const hasOverride= !!d.Color;
+
+  // Fruit picker
+  const currentFruits = d.Fruits || [];
+  const noneSelected  = currentFruits.length === 0;
+  const fruitPicker   = `
+    <div class="fruit-opt fruit-none-opt${noneSelected?' selected':''}"
+         id="fnone-${di}" onclick="clearFruits(${di})">
+      <span style="font-size:14px;font-weight:700;color:var(--sub)">∅</span>
+      <span class="fruit-opt-label">None</span>
+    </div>
+    ${FRUIT_OPTIONS.map(f => `
+      <div class="fruit-opt${currentFruits.includes(f.id)?' selected':''}"
+           id="fopt-${di}-${f.id}" onclick="toggleFruit(${di},'${f.id}')">
+        ${f.svgFn ? f.svgFn(22) : `<span style="font-size:20px;line-height:1">${f.emoji}</span>`}
+        <span class="fruit-opt-label">${f.label}</span>
+      </div>`).join('')}`;
+
+  const isDisabled = !!d.Disabled;
+  return `
+    <div class="acc-item${isDisabled?' disabled':''}" id="acc-${di}" data-di="${di}">
+      <div class="acc-header" onclick="toggleAcc(${di})">
+        <div style="display:flex;align-items:center;gap:6px;min-width:0">
+          <span class="drag-handle" id="handle-${di}" onclick="event.stopPropagation()">⠿</span>
+          <span class="acc-title" id="acc-title-${di}">${esc(d.Name)}</span>
+          ${isDisabled?'<span class="acc-title-disabled">hidden</span>':''}
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;flex-shrink:0">
+          <div class="toggle-switch" onclick="event.stopPropagation();toggleDrinkDisabled(${di})"
+               title="${isDisabled?'Enable drink':'Disable drink'}">
+            <div class="toggle-track${isDisabled?'':' on'}" id="toggle-track-${di}">
+              <div class="toggle-thumb"></div>
+            </div>
+          </div>
+          <div class="copy-to-wrap" onclick="event.stopPropagation()">
+            <button class="btn btn-ghost btn-xs" onclick="openCopyToMenu(${di},this)">Copy to…</button>
+            <div class="copy-to-menu" id="copy-to-${di}"></div>
+          </div>
+          <button class="btn btn-ghost btn-xs"
+            onclick="event.stopPropagation();duplicateDrink(${di})">Duplicate</button>
+          <button class="btn btn-red btn-xs"
+            onclick="event.stopPropagation();deleteDrink(${di})">Remove</button>
+          <span class="acc-chevron">›</span>
+        </div>
+      </div>
+      <div class="acc-body">
+        <div class="field" style="margin-top:12px">
+          <label>Drink Name</label>
+          <input id="dn-${di}" type="text" value="${esc(d.Name)}"
+            oninput="menuData.Menu[adminMenuIdx].Drink[${di}].Name=this.value;document.getElementById('acc-title-${di}').textContent=this.value;markDirty()">
+        </div>
+
+        <div class="recipe-grid" style="margin-top:4px">
+          ${d.Recipe.map((oz,pi)=>`
+            <div class="recipe-cell">
+              <label>${pi+1}. ${esc(bottles[pi]||'—')}</label>
+              <input id="r-${di}-${pi}" type="number" value="${oz}" min="0" step="1"
+                oninput="menuData.Menu[adminMenuIdx].Drink[${di}].Recipe[${pi}]=parseInt(this.value)||0;markDirty()">
+            </div>`).join('')}
+        </div>
+        <div class="recipe-hint">Units are 1/10 oz — e.g. 20 = 2.0 oz, 0 = unused</div>
+
+        <div class="glass-picker-label" style="margin-top:16px">Glass Shape</div>
+        <div class="glass-picker" id="gpicker-${di}">${glassPicker}</div>
+        <input type="hidden" id="dglass-${di}" value="${esc(d.Glass||'')}">
+
+        <div class="glass-picker-label" style="margin-top:14px">Icon Color
+          <span style="font-size:11px;font-weight:400;color:var(--sub);margin-left:6px">
+            ${hasOverride?'(custom)':'(auto from ingredients)'}
+          </span>
+        </div>
+        <div class="color-row">
+          <label>Color</label>
+          <input class="color-swatch" type="color" id="dcolor-vis-${di}"
+            value="${colorHex}" oninput="setColorOverride(${di},this.value)">
+          <button class="color-reset" id="color-reset-${di}"
+            onclick="resetColor(${di})"
+            style="display:${hasOverride?'inline':'none'}">↺ Reset to auto</button>
+        </div>
+        <input type="hidden" id="dcolor-${di}" value="${esc(d.Color||'')}">
+
+        <div class="glass-picker-label" style="margin-top:14px">Fruit Decorations</div>
+        <div class="fruit-picker" id="fpicker-${di}">${fruitPicker}</div>
+        <input type="hidden" id="dfruits-${di}" value="${esc(JSON.stringify(currentFruits))}">
+      </div>
+    </div>`;
+}
+
+function selectGlass(di, glassId) {
+  menuData.Menu[adminMenuIdx].Drink[di].Glass = glassId;
+  document.getElementById(`dglass-${di}`).value = glassId;
+  document.querySelectorAll(`#gpicker-${di} .glass-opt`)
+    .forEach(el => el.classList.remove('selected'));
+  document.getElementById(`gopt-${di}-${glassId}`).classList.add('selected');
+  markDirty();
+}
+
+function setColorOverride(di, hex) {
+  menuData.Menu[adminMenuIdx].Drink[di].Color = hex;
+  document.getElementById(`dcolor-${di}`).value = hex;
+  document.getElementById(`color-reset-${di}`).style.display = 'inline';
+  markDirty();
+}
+
+function resetColor(di) {
+  menuData.Menu[adminMenuIdx].Drink[di].Color = '';
+  document.getElementById(`dcolor-${di}`).value = '';
+  document.getElementById(`color-reset-${di}`).style.display = 'none';
+  const d       = menuData.Menu[adminMenuIdx].Drink[di];
+  const autoHex = rgbToHex(dominantColor(adminMenuIdx, d));
+  document.getElementById(`dcolor-vis-${di}`).value = autoHex;
+  markDirty();
+}
+
+function toggleAcc(di) {
+  document.getElementById(`acc-${di}`).classList.toggle('open');
+}
+
+let dragSrcIdx    = null;
+let dropTargetIdx = null;
+let dropPosition  = null;
+let dragGhost     = null;
+
+function accBindHandles() {
+  menuData.Menu[adminMenuIdx].Drink.forEach((_, di) => {
+    const handle = document.getElementById(`handle-${di}`);
+    if (!handle) return;
+    handle.addEventListener('mousedown',  e => accDragBegin(e, di, false), {passive:false});
+    handle.addEventListener('touchstart', e => accDragBegin(e, di, true),  {passive:false});
+  });
+}
+
+function accDragBegin(e, di, isTouch) {
+  e.preventDefault();
+  e.stopPropagation();
+  dragSrcIdx = di;
+
+  const item = document.getElementById(`acc-${di}`);
+  item.classList.add('dragging');
+
+  // Create a ghost clone that follows the finger/cursor
+  dragGhost = item.cloneNode(true);
+  dragGhost.style.cssText = `position:fixed;left:0;top:0;width:${item.offsetWidth}px;
+    opacity:.85;pointer-events:none;z-index:500;border-radius:10px;
+    box-shadow:0 8px 24px rgba(0,0,0,.18);transform:scale(1.02)`;
+  document.body.appendChild(dragGhost);
+
+  const clientY = isTouch ? e.touches[0].clientY : e.clientY;
+  const clientX = isTouch ? e.touches[0].clientX : e.clientX;
+  const rect = item.getBoundingClientRect();
+  const offX = clientX - rect.left;
+  const offY = clientY - rect.top;
+
+  function onMove(ev) {
+    const cy = ev.touches ? ev.touches[0].clientY : ev.clientY;
+    const cx = ev.touches ? ev.touches[0].clientX : ev.clientX;
+    dragGhost.style.transform = `translate(${cx - offX}px, ${cy - offY}px) scale(1.02)`;
+
+    // Find which acc-item we're hovering over
+    dragGhost.style.display = 'none';
+    const target = document.elementFromPoint(cx, cy)?.closest('.acc-item');
+    dragGhost.style.display = '';
+
+    document.querySelectorAll('.acc-item').forEach(el => el.classList.remove('drop-above','drop-below'));
+    if (target && target.id !== `acc-${di}`) {
+      const tRect = target.getBoundingClientRect();
+      const pos   = cy < tRect.top + tRect.height / 2 ? 'above' : 'below';
+      target.classList.add(pos === 'above' ? 'drop-above' : 'drop-below');
+      dropTargetIdx = parseInt(target.dataset.di);
+      dropPosition  = pos;
+    } else {
+      dropTargetIdx = null; dropPosition = null;
+    }
+    ev.preventDefault();
+  }
+
+  function onEnd() {
+    document.removeEventListener('mousemove', onMove);
+    document.removeEventListener('mouseup',   onEnd);
+    document.removeEventListener('touchmove', onMove);
+    document.removeEventListener('touchend',  onEnd);
+
+    dragGhost?.remove(); dragGhost = null;
+    item.classList.remove('dragging');
+    document.querySelectorAll('.acc-item').forEach(el =>
+      el.classList.remove('drop-above','drop-below'));
+
+    if (dragSrcIdx !== null && dropTargetIdx !== null && dropTargetIdx !== dragSrcIdx) {
+      const drinks = menuData.Menu[adminMenuIdx].Drink;
+      const [moved] = drinks.splice(dragSrcIdx, 1);
+      let targetIdx = dropTargetIdx;
+      if (dragSrcIdx < targetIdx) targetIdx--;
+      const insertAt = dropPosition === 'above' ? targetIdx : targetIdx + 1;
+      drinks.splice(insertAt, 0, moved);
+      loadAdminMenu();
+      markDirty();
+    }
+    dragSrcIdx = null; dropTargetIdx = null; dropPosition = null;
+  }
+
+  document.addEventListener('mousemove', onMove, {passive:false});
+  document.addEventListener('mouseup',   onEnd);
+  document.addEventListener('touchmove', onMove, {passive:false});
+  document.addEventListener('touchend',  onEnd);
+}
+
+function addDrink() {
+  menuData.Menu[adminMenuIdx].Drink.push({
+    Name:'New Drink', Glass:'', Color:'', Fruits:[], Recipe:[0,0,0,0,0,0,0,0]
+  });
+  loadAdminMenu();
+  markDirty();
+  toggleAcc(menuData.Menu[adminMenuIdx].Drink.length - 1);
+}
+
+function deleteDrink(di) {
+  const name = menuData.Menu[adminMenuIdx].Drink[di].Name;
+  if (!confirm(`Remove "${name}"?`)) return;
+  menuData.Menu[adminMenuIdx].Drink.splice(di, 1);
+  loadAdminMenu();
+  markDirty();
+}
+
+function duplicateDrink(di) {
+  const menu = menuData.Menu[adminMenuIdx];
+  const copy = JSON.parse(JSON.stringify(menu.Drink[di]));
+  copy.Name = 'Copy of ' + menu.Drink[di].Name;
+  menu.Drink.splice(di + 1, 0, copy);
+  loadAdminMenu();
+  markDirty();
+}
+
+function openCopyToMenu(di, btn) {
+  // Close any other open dropdowns first
+  document.querySelectorAll('.copy-to-menu.open').forEach(el => el.classList.remove('open'));
+  const dropdown = document.getElementById(`copy-to-${di}`);
+  const otherMenus = menuData.Menu
+    .map((m, i) => ({name: m.MenuName, i}))
+    .filter(m => m.i !== adminMenuIdx);
+  if (!otherMenus.length) {
+    showToast('No other menus to copy to');
+    return;
+  }
+  dropdown.innerHTML = otherMenus.map(m =>
+    `<div class="copy-to-item" onclick="copyDrinkToMenu(${di},${m.i})">${esc(m.name)}</div>`
+  ).join('');
+  dropdown.classList.add('open');
+  // Close when clicking elsewhere
+  setTimeout(() => {
+    document.addEventListener('click', function handler() {
+      dropdown.classList.remove('open');
+      document.removeEventListener('click', handler);
+    });
+  }, 0);
+}
+
+async function copyDrinkToMenu(di, targetMenuIdx) {
+  document.querySelectorAll('.copy-to-menu.open').forEach(el => el.classList.remove('open'));
+  collectForm();
+  const drink      = menuData.Menu[adminMenuIdx].Drink[di];
+  const drinkName  = drink.Name;
+  const srcBottles = menuData.Menu[adminMenuIdx].Bottles;
+  const dstBottles = menuData.Menu[targetMenuIdx].Bottles;
+
+  // Remap recipe by ingredient name (case-insensitive)
+  const remappedRecipe = Array(8).fill(0);
+  const missing = [];
+  drink.Recipe.forEach((oz, i) => {
+    if (!oz) return;
+    const ingredient = (srcBottles[i] || '').trim().toLowerCase();
+    if (!ingredient) return;
+    const dstIdx = dstBottles.findIndex(b => b.trim().toLowerCase() === ingredient);
+    if (dstIdx >= 0) {
+      remappedRecipe[dstIdx] = oz;
+    } else {
+      missing.push(srcBottles[i]);
+    }
+  });
+
+  const copiedDrink = JSON.parse(JSON.stringify(drink));
+  copiedDrink.Recipe = remappedRecipe;
+
+  const targetName = menuData.Menu[targetMenuIdx].MenuName;
+  try {
+    const getRes = await fetch('/api/menus');
+    if (getRes.ok) {
+      const fresh = await getRes.json();
+      const freshTarget = fresh.Menu[targetMenuIdx];
+      freshTarget.Drink.push(copiedDrink);
+      const putRes = await fetch(`/api/menu/${targetMenuIdx}`, {
+        method:'PUT', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify(freshTarget)
+      });
+      if (putRes.ok) {
+        menuData.Menu[targetMenuIdx] = freshTarget;
+        if (missing.length) {
+          showToast(`Copied — not found in destination: ${missing.join(', ')}`);
+        } else {
+          showToast(`"${drinkName}" copied to ${targetName}`);
+        }
+      } else {
+        showToast('Copy failed — could not save target menu');
+      }
+    }
+  } catch(e) {
+    showToast('Server error');
+  }
+}
+
+function toggleDrinkDisabled(di) {
+  markDirty();
+  const drink = menuData.Menu[adminMenuIdx].Drink[di];
+  drink.Disabled = !drink.Disabled;
+  // Update UI without full reload for snappiness
+  const item  = document.getElementById(`acc-${di}`);
+  const track = document.getElementById(`toggle-track-${di}`);
+  const badge = item.querySelector('.acc-title-disabled');
+  if (drink.Disabled) {
+    item.classList.add('disabled');
+    track.classList.remove('on');
+    if (!badge) {
+      const title = document.getElementById(`acc-title-${di}`);
+      const span  = document.createElement('span');
+      span.className = 'acc-title-disabled';
+      span.textContent = 'hidden';
+      title.after(span);
+    }
+  } else {
+    item.classList.remove('disabled');
+    track.classList.add('on');
+    if (badge) badge.remove();
+  }
+}
+
+function toggleFruit(di, fruitId) {
+  const d      = menuData.Menu[adminMenuIdx].Drink[di];
+  if (!d.Fruits) d.Fruits = [];
+  let fruits   = d.Fruits.slice();
+  const idx    = fruits.indexOf(fruitId);
+  if (idx >= 0) {
+    fruits.splice(idx, 1);
+  } else {
+    if (fruits.length >= 6) { showToast('Max 6 fruits per drink'); return; }
+    fruits.push(fruitId);
+  }
+  d.Fruits = fruits;
+  document.getElementById(`dfruits-${di}`).value = JSON.stringify(fruits);
+  document.getElementById(`fopt-${di}-${fruitId}`)?.classList.toggle('selected', idx < 0);
+  document.getElementById(`fnone-${di}`)?.classList.toggle('selected', fruits.length === 0);
+  markDirty();
+}
+
+function clearFruits(di) {
+  menuData.Menu[adminMenuIdx].Drink[di].Fruits = [];
+  document.getElementById(`dfruits-${di}`).value = '[]';
+  document.querySelectorAll(`#fpicker-${di} .fruit-opt`).forEach(el => el.classList.remove('selected'));
+  document.getElementById(`fnone-${di}`).classList.add('selected');
+  markDirty();
+}
+
+async function setActiveMenu(idx, isActive) {
+  // Update in-memory state
+  menuData.Menu.forEach((m, i) => m.Active = isActive ? (i === idx) : false);
+  try {
+    // Single atomic endpoint — no race condition
+    const res = await fetch('/api/active-menu', {
+      method:'PUT', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({idx, active: isActive})
+    });
+    if (!res.ok) throw new Error();
+    await fetchMenus();
+    document.getElementById('admin-select').value = idx;
+    loadAdminMenu();
+    showToast(isActive ? 'Menu activated ✓' : 'Menu deactivated');
+  } catch {
+    showToast('Could not save active state');
+  }
+}
+
+// Safety-net sweep: all fields now write to menuData on change, so this
+// function is no longer the primary source of truth — it just catches any
+// edge case where a DOM value diverged from menuData before save.
+function collectForm() {
+  const m = menuData.Menu[adminMenuIdx];
+  const nameEl = document.getElementById('ed-name');
+  if (nameEl) m.MenuName = nameEl.value;
+  const descEl = document.getElementById('ed-desc');
+  if (descEl) m.MenuDescription = descEl.value;
+  const strengthEl = document.getElementById('ed-strength');
+  if (strengthEl) m.StrengthEnabled = strengthEl.checked;
+  // Active is intentionally NOT collected here — it is set and saved
+  // immediately via setActiveMenu() to avoid the two-source-of-truth bug
+  for (let i=0; i<8; i++) {
+    const bEl = document.getElementById(`b-${i}`);
+    if (bEl) m.Bottles[i] = bEl.value;
+  }
+  m.Drink.forEach((d, di) => {
+    const nameEl2 = document.getElementById(`dn-${di}`);
+    if (nameEl2) d.Name = nameEl2.value;
+    const glassEl = document.getElementById(`dglass-${di}`);
+    if (glassEl) d.Glass = glassEl.value || '';
+    const colorEl = document.getElementById(`dcolor-${di}`);
+    if (colorEl) d.Color = colorEl.value || '';
+    const fruitsEl = document.getElementById(`dfruits-${di}`);
+    if (fruitsEl) d.Fruits = JSON.parse(fruitsEl.value || '[]');
+    // Disabled is toggled live on menuData directly — just preserve it
+    for (let pi=0; pi<8; pi++) {
+      const rEl = document.getElementById(`r-${di}-${pi}`);
+      if (rEl) d.Recipe[pi] = parseInt(rEl.value) || 0;
+    }
+  });
+}
+
+async function saveMenu() {
+  collectForm();
+  try {
+    const res = await fetch(`/api/menu/${adminMenuIdx}`, {
+      method:'PUT', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify(menuData.Menu[adminMenuIdx])
+    });
+    if (res.ok) {
+      showToast('Saved ✓');
+      markClean();
+      const darkBefore = menuData.DarkMode; // preserve across fetchMenus
+      await fetchMenus();
+      if (darkBefore !== undefined) menuData.DarkMode = darkBefore;
+      applyTheme();
+    }
+    else showToast('Save failed');
+  } catch { showToast('Server error'); }
+}
+
+async function addNewMenu() {
+  const name = prompt('Menu name:'); if (!name) return;
+  try {
+    const res = await fetch('/api/menu', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({MenuName:name, MenuDescription:'',
+        Bottles:Array(8).fill(''), Drink:[]})
+    });
+    if (res.ok) {
+      const {idx} = await res.json();
+      await fetchMenus();
+      document.getElementById('admin-select').value = idx;
+      loadAdminMenu(); showToast(`"${name}" created`);
+    }
+  } catch { showToast('Server error'); }
+}
+
+async function duplicateCurrentMenu() {
+  const src  = menuData.Menu[adminMenuIdx];
+  const copy = JSON.parse(JSON.stringify(src));
+  copy.MenuName = 'Copy of ' + src.MenuName;
+  copy.Active   = false;
+  try {
+    const res = await fetch('/api/menu', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify(copy)
+    });
+    if (res.ok) {
+      const {idx} = await res.json();
+      await fetchMenus();
+      document.getElementById('admin-select').value = idx;
+      loadAdminMenu();
+      showToast(`"${copy.MenuName}" created`);
+    }
+  } catch { showToast('Server error'); }
+}
+
+async function deleteCurrentMenu() {
+  const name = menuData.Menu[adminMenuIdx].MenuName;
+  if (!confirm(`Delete "${name}"?`)) return;
+  try {
+    const res = await fetch(`/api/menu/${adminMenuIdx}`, {method:'DELETE'});
+    if (res.ok) {
+      showToast(`"${name}" deleted`);
+      adminMenuIdx = 0;
+      await fetchMenus(); buildAdminSelect(); loadAdminMenu();
+    }
+  } catch { showToast('Server error'); }
+}
+
+/* ════════════════════════════════════════════════════════
+   CONTROL
+════════════════════════════════════════════════════════ */
+function buildPumpGrid() {
+  const bottles = menuData?.Menu[activeMenuIdx]?.Bottles || [];
+  document.getElementById('pump-grid').innerHTML =
+    Array.from({length:8}, (_,i) => `
+      <div class="pump-card">
+        <div class="pump-num">${i+1}</div>
+        <div class="pump-bottle">${esc(bottles[i]||'—')}</div>
+        <div class="pump-btn-col">
+          <button class="p-btn fwd" onclick="pumpCmd(${i+1},'FORWARD')">▶ Fwd</button>
+          <button class="p-btn rev" onclick="pumpCmd(${i+1},'REVERSE')">◀ Rev</button>
+          <button class="p-btn off" onclick="pumpCmd(${i+1},'OFF')">■ Off</button>
+        </div>
+      </div>`).join('');
+}
+
+async function pumpCmd(n, action) {
+  try {
+    await fetch('/api/pump', {method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({pump_num:n, action})});
+  } catch { showToast('Server error'); }
+}
+
+async function allPumps(action) {
+  try {
+    await fetch('/api/pump/all', {method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({action})});
+  } catch { showToast('Server error'); }
+}
+
+/* ════════════════════════════════════════════════════════
+   UTILITIES
+════════════════════════════════════════════════════════ */
+const esc = s => String(s??'')
+  .replace(/&/g,'&amp;').replace(/"/g,'&quot;')
+  .replace(/</g,'&lt;').replace(/>/g,'&gt;');
+
+let toastT;
+function showToast(msg) {
+  const el = document.getElementById('toast');
+  el.textContent = msg; el.classList.add('show');
+  clearTimeout(toastT);
+  toastT = setTimeout(() => el.classList.remove('show'), 2600);
+}
+
+init();
+
+/* ════════════════════════════════════════════════════════
+   SETUP WIZARD
+════════════════════════════════════════════════════════ */
+let wizStep = 0;
+const WIZ_STEPS = 4; // 0=welcome, 1=bottles, 2=drink, 3=done
+
+function wizStart() {
+  wizStep = 0;
+  wizRender();
+  document.getElementById('wizard-overlay').classList.add('show');
+}
+
+function wizClose() {
+  document.getElementById('wizard-overlay').classList.remove('show');
+}
+
+function wizSkip() {
+  if (wizStep === 3) { wizClose(); return; }
+  if (!confirm('Skip setup? You can run it again from the Control tab.')) return;
+  wizClose();
+}
+
+function wizNext() {
+  if (wizStep === 1) wizSaveBottles();
+  if (wizStep === 2) { if (!wizSaveDrink()) return; }
+  if (wizStep === 3) { wizClose(); return; }
+  wizStep++;
+  wizRender();
+}
+
+function wizRender() {
+  // Update step dots
+  for (let i = 0; i < 3; i++) {
+    const dot = document.getElementById(`wdot-${i}`);
+    dot.classList.toggle('active', i === wizStep - 1 || (wizStep === 0 && i === 0));
+    dot.classList.toggle('done',   i < wizStep - 1);
+  }
+  // Show correct screen
+  document.querySelectorAll('.wiz-screen').forEach((s, i) =>
+    s.classList.toggle('active', i === wizStep));
+
+  // Update footer buttons
+  const skip = document.getElementById('wiz-btn-skip');
+  const next = document.getElementById('wiz-btn-next');
+  if (wizStep === 0) { skip.textContent = 'Skip setup'; next.textContent = 'Get started →'; }
+  if (wizStep === 1) { skip.textContent = 'Skip'; next.textContent = 'Next: add a drink →'; }
+  if (wizStep === 2) { skip.textContent = 'Skip'; next.textContent = 'Finish →'; }
+  if (wizStep === 3) { skip.style.display = 'none'; next.textContent = 'Done'; }
+
+  // Build dynamic grids on first render of each step
+  if (wizStep === 1) wizBuildBottleGrid();
+  if (wizStep === 2) wizBuildRecipeGrid();
+
+  // Update dots for active step indicator
+  document.getElementById('wdot-0').classList.toggle('active', wizStep === 1);
+  document.getElementById('wdot-1').classList.toggle('active', wizStep === 2);
+  document.getElementById('wdot-2').classList.toggle('active', wizStep === 3);
+  document.getElementById('wdot-0').classList.toggle('done', wizStep > 1);
+  document.getElementById('wdot-1').classList.toggle('done', wizStep > 2);
+}
+
+/* ════════════════════════════════════════════════════════
+   POUR HISTORY
+════════════════════════════════════════════════════════ */
+function timeAgo(isoStr) {
+  const diff = Math.floor((Date.now() - new Date(isoStr).getTime()) / 1000);
+  if (diff < 60)       return 'just now';
+  if (diff < 3600)     return `${Math.floor(diff/60)}m ago`;
+  if (diff < 86400)    return `${Math.floor(diff/3600)}h ago`;
+  if (diff < 604800)   return `${Math.floor(diff/86400)}d ago`;
+  // Beyond a week: show date
+  return new Date(isoStr).toLocaleDateString(undefined, {month:'short', day:'numeric'});
+}
+
+async function loadHistory() {
+  const el = document.getElementById('history-list');
+  if (!el) return;
+  try {
+    const res  = await fetch('/api/history');
+    const data = await res.json();
+    if (!data.length) {
+      el.innerHTML = '<div class="history-empty">No pours recorded yet.</div>';
+      return;
+    }
+    el.innerHTML = `<div class="history-list">${data.map(e => `
+      <div class="history-row">
+        <div>
+          <div class="history-drink">${esc(e.drink)}</div>
+          <div class="history-menu">${esc(e.menu)}</div>
+        </div>
+        <div class="history-time">${timeAgo(e.timestamp)}</div>
+      </div>`).join('')}</div>`;
+  } catch {
+    if (el) el.innerHTML = '<div class="history-empty">Could not load history.</div>';
+  }
+}
+
+async function clearHistory() {
+  if (!confirm('Clear all pour history?')) return;
+  try {
+    await fetch('/api/history', {method:'DELETE'});
+    const el = document.getElementById('history-list');
+    if (el) el.innerHTML = '<div class="history-empty">No pours recorded yet.</div>';
+    showToast('History cleared');
+  } catch { showToast('Could not clear history'); }
+}
+
+/* ════════════════════════════════════════════════════════
+   STATS
+════════════════════════════════════════════════════════ */
+let statsHistory  = [];   // cached full history
+let statsPeriodSec = 3600; // current period in seconds (0 = all time)
+
+async function openStats() {
+  document.getElementById('stats-overlay').classList.add('show');
+  // Reset to first pill
+  document.querySelectorAll('.stats-pill').forEach((p,i) => p.classList.toggle('active', i===0));
+  statsPeriodSec = 3600;
+  try {
+    const res   = await fetch('/api/history');
+    statsHistory = await res.json();
+  } catch { statsHistory = []; }
+  renderStats();
+}
+
+function closeStats() {
+  document.getElementById('stats-overlay').classList.remove('show');
+}
+
+function setStatsPeriod(btn) {
+  document.querySelectorAll('.stats-pill').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  statsPeriodSec = parseInt(btn.dataset.period);
+  renderStats();
+}
+
+function renderStats() {
+  const body = document.getElementById('stats-body');
+  if (!statsHistory.length) {
+    body.innerHTML = '<div class="stats-empty">No pours recorded yet.</div>';
+    return;
+  }
+
+  // Filter by period
+  const now     = Date.now();
+  const cutoff  = statsPeriodSec === 0 ? 0 : now - statsPeriodSec * 1000;
+  const entries = statsHistory.filter(e => new Date(e.timestamp).getTime() >= cutoff);
+
+  if (!entries.length) {
+    body.innerHTML = '<div class="stats-empty">No pours in this time period.</div>';
+    return;
+  }
+
+  // Count per drink
+  const counts = {};
+  entries.forEach(e => { counts[e.drink] = (counts[e.drink] || 0) + 1; });
+  const sorted = Object.entries(counts).sort((a,b) => b[1]-a[1]);
+  const max    = sorted[0][1];
+  const total  = entries.length;
+
+  // Get accent color from CSS variable for bar fill
+  const accentRgb = getComputedStyle(document.documentElement)
+    .getPropertyValue('--accent').trim() || '#e05c2a';
+
+  const bars = sorted.map(([name, count]) => {
+    const pct = Math.round((count / max) * 100);
+    return `<div class="stats-bar-row">
+      <div class="stats-bar-label" title="${esc(name)}">${esc(name)}</div>
+      <div class="stats-bar-track">
+        <div class="stats-bar-fill" style="width:${pct}%;background:${accentRgb}"></div>
+      </div>
+      <div class="stats-bar-count">${count}</div>
+    </div>`;
+  }).join('');
+
+  body.innerHTML = `
+    <div class="stats-total">${total} pour${total===1?'':'s'} in this period</div>
+    <div class="stats-bar-list">${bars}</div>`;
+
+  // Animate bars in
+  requestAnimationFrame(() => {
+    document.querySelectorAll('.stats-bar-fill').forEach(el => {
+      const w = el.style.width;
+      el.style.width = '0%';
+      requestAnimationFrame(() => { el.style.width = w; });
+    });
+  });
+}
+
+function wizBuildBottleGrid() {
+  const bottles = menuData.Menu[adminMenuIdx]?.Bottles || Array(8).fill('');
+  document.getElementById('wiz-bottles-grid').innerHTML = bottles.map((b, i) => `
+    <div class="wiz-bottle">
+      <div class="wiz-bottle-num">PUMP ${i + 1}</div>
+      <input id="wiz-b-${i}" type="text" value="${esc(b)}" placeholder="e.g. Vodka">
+    </div>`).join('');
+}
+
+function wizSaveBottles() {
+  const m = menuData.Menu[adminMenuIdx];
+  for (let i = 0; i < 8; i++) {
+    const el = document.getElementById(`wiz-b-${i}`);
+    if (el) m.Bottles[i] = el.value.trim();
+  }
+}
+
+function wizBuildRecipeGrid() {
+  const bottles = menuData.Menu[adminMenuIdx]?.Bottles || Array(8).fill('');
+  document.getElementById('wiz-recipe-grid').innerHTML = bottles.map((b, i) => `
+    <div class="wiz-recipe-cell">
+      <label>${esc(b) || `Pump ${i+1}`}</label>
+      <input id="wiz-r-${i}" type="number" min="0" max="99" value="0" placeholder="0">
+    </div>`).join('');
+}
+
+function wizSaveDrink() {
+  const name = document.getElementById('wiz-drink-name').value.trim();
+  if (!name) { showToast('Please enter a drink name'); return false; }
+  const recipe = Array.from({length: 8}, (_, i) =>
+    parseInt(document.getElementById(`wiz-r-${i}`)?.value) || 0);
+  if (recipe.every(v => v === 0)) { showToast('Add at least one ingredient'); return false; }
+  const m = menuData.Menu[adminMenuIdx];
+  m.Drink.push({ Name: name, Glass: '', Color: '', Fruits: [], Recipe: recipe });
+  // Save bottles + drink to server
+  fetch(`/api/menu/${adminMenuIdx}`, {
+    method: 'PUT', headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(m)
+  }).then(r => r.ok ? fetchMenus() : Promise.reject())
+    .then(() => { renderDrinks(activeMenuIdx); })
+    .catch(() => showToast('Could not save'));
+  return true;
+}
+</script>
+</body>
+</html>
