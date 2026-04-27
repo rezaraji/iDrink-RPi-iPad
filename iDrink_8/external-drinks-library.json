@@ -1,0 +1,6000 @@
+{
+  "drinks": [
+    {
+      "name": "Screwdriver",
+      "category": "Vodka",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "Orange Juice",
+          "tenths": 30
+        }
+      ]
+    },
+    {
+      "name": "Greyhound",
+      "category": "Vodka",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "Grapefruit Juice",
+          "tenths": 30
+        }
+      ]
+    },
+    {
+      "name": "Cape Codder",
+      "category": "Vodka",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "Cranberry Juice",
+          "tenths": 30
+        }
+      ]
+    },
+    {
+      "name": "Vodka Tonic",
+      "category": "Vodka",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "Tonic Water",
+          "tenths": 30
+        }
+      ]
+    },
+    {
+      "name": "Vodka Soda",
+      "category": "Vodka",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "Club Soda",
+          "tenths": 30
+        }
+      ]
+    },
+    {
+      "name": "Vodka Cranberry",
+      "category": "Vodka",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "Cranberry Juice",
+          "tenths": 30
+        }
+      ]
+    },
+    {
+      "name": "Sea Breeze",
+      "category": "Vodka",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "Cranberry Juice",
+          "tenths": 20
+        },
+        {
+          "name": "Grapefruit Juice",
+          "tenths": 10
+        }
+      ]
+    },
+    {
+      "name": "Bay Breeze",
+      "category": "Vodka",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "Cranberry Juice",
+          "tenths": 20
+        },
+        {
+          "name": "Pineapple Juice",
+          "tenths": 10
+        }
+      ]
+    },
+    {
+      "name": "Madras",
+      "category": "Vodka",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "Cranberry Juice",
+          "tenths": 20
+        },
+        {
+          "name": "Orange Juice",
+          "tenths": 10
+        }
+      ]
+    },
+    {
+      "name": "Harvey Wallbanger",
+      "category": "Vodka",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "Orange Juice",
+          "tenths": 30
+        },
+        {
+          "name": "Galliano",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Woo Woo",
+      "category": "Vodka",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "Peach Schnapps",
+          "tenths": 5
+        },
+        {
+          "name": "Cranberry Juice",
+          "tenths": 20
+        }
+      ]
+    },
+    {
+      "name": "Sex on the Beach",
+      "category": "Vodka",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "Peach Schnapps",
+          "tenths": 5
+        },
+        {
+          "name": "Orange Juice",
+          "tenths": 15
+        },
+        {
+          "name": "Cranberry Juice",
+          "tenths": 15
+        }
+      ]
+    },
+    {
+      "name": "Fuzzy Navel",
+      "category": "Vodka",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 10
+        },
+        {
+          "name": "Peach Schnapps",
+          "tenths": 10
+        },
+        {
+          "name": "Orange Juice",
+          "tenths": 30
+        }
+      ]
+    },
+    {
+      "name": "Blue Lagoon",
+      "category": "Vodka",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "Blue Curacao",
+          "tenths": 10
+        },
+        {
+          "name": "Lemonade",
+          "tenths": 20
+        }
+      ]
+    },
+    {
+      "name": "Cosmopolitan",
+      "category": "Vodka",
+      "glass": "martini",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "Triple Sec",
+          "tenths": 5
+        },
+        {
+          "name": "Cranberry Juice",
+          "tenths": 5
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Vodka Martini",
+      "category": "Vodka",
+      "glass": "martini",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 25
+        },
+        {
+          "name": "Dry Vermouth",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Lemon Drop",
+      "category": "Vodka",
+      "glass": "martini",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "Triple Sec",
+          "tenths": 5
+        },
+        {
+          "name": "Lemon Juice",
+          "tenths": 10
+        }
+      ]
+    },
+    {
+      "name": "Appletini",
+      "category": "Vodka",
+      "glass": "martini",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "Apple Schnapps",
+          "tenths": 10
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Espresso Martini",
+      "category": "Vodka",
+      "glass": "martini",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "Coffee Liqueur",
+          "tenths": 10
+        },
+        {
+          "name": "Espresso",
+          "tenths": 10
+        }
+      ]
+    },
+    {
+      "name": "Pornstar Martini",
+      "category": "Vodka",
+      "glass": "martini",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "Passion Fruit Liqueur",
+          "tenths": 10
+        },
+        {
+          "name": "Passion Fruit Juice",
+          "tenths": 10
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Moscow Mule",
+      "category": "Vodka",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "Ginger Beer",
+          "tenths": 30
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Bloody Mary",
+      "category": "Vodka",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "Tomato Juice",
+          "tenths": 30
+        },
+        {
+          "name": "Lemon Juice",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "White Russian",
+      "category": "Vodka",
+      "glass": "rocks",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 20
+        },
+        {
+          "name": "Coffee Liqueur",
+          "tenths": 10
+        },
+        {
+          "name": "Heavy Cream",
+          "tenths": 10
+        }
+      ]
+    },
+    {
+      "name": "Black Russian",
+      "category": "Vodka",
+      "glass": "rocks",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 20
+        },
+        {
+          "name": "Coffee Liqueur",
+          "tenths": 10
+        }
+      ]
+    },
+    {
+      "name": "Vodka Collins",
+      "category": "Vodka",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "Lemon Juice",
+          "tenths": 10
+        },
+        {
+          "name": "Simple Syrup",
+          "tenths": 5
+        },
+        {
+          "name": "Club Soda",
+          "tenths": 20
+        }
+      ]
+    },
+    {
+      "name": "Kamikaze",
+      "category": "Vodka",
+      "glass": "shot",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 10
+        },
+        {
+          "name": "Triple Sec",
+          "tenths": 5
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Mudslide",
+      "category": "Vodka",
+      "glass": "rocks",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 10
+        },
+        {
+          "name": "Coffee Liqueur",
+          "tenths": 10
+        },
+        {
+          "name": "Irish Cream",
+          "tenths": 10
+        },
+        {
+          "name": "Heavy Cream",
+          "tenths": 10
+        }
+      ]
+    },
+    {
+      "name": "Vodka Gimlet",
+      "category": "Vodka",
+      "glass": "martini",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 20
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 10
+        },
+        {
+          "name": "Simple Syrup",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Vodka Sunrise",
+      "category": "Vodka",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "Orange Juice",
+          "tenths": 30
+        },
+        {
+          "name": "Grenadine",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Watermelon Vodka",
+      "category": "Vodka",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "Watermelon Juice",
+          "tenths": 30
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Vodka Lemonade",
+      "category": "Vodka",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "Lemonade",
+          "tenths": 35
+        }
+      ]
+    },
+    {
+      "name": "Vodka Ginger",
+      "category": "Vodka",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "Ginger Ale",
+          "tenths": 30
+        }
+      ]
+    },
+    {
+      "name": "Vodka Peach Tea",
+      "category": "Vodka",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "Peach Schnapps",
+          "tenths": 5
+        },
+        {
+          "name": "Iced Tea",
+          "tenths": 30
+        }
+      ]
+    },
+    {
+      "name": "Cherry Vodka Soda",
+      "category": "Vodka",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "Cherry Juice",
+          "tenths": 10
+        },
+        {
+          "name": "Club Soda",
+          "tenths": 25
+        }
+      ]
+    },
+    {
+      "name": "Vodka Pineapple",
+      "category": "Vodka",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "Pineapple Juice",
+          "tenths": 30
+        }
+      ]
+    },
+    {
+      "name": "Blue Cosmo",
+      "category": "Vodka",
+      "glass": "martini",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "Blue Curacao",
+          "tenths": 5
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        },
+        {
+          "name": "White Cranberry Juice",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Melon Ball",
+      "category": "Vodka",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 10
+        },
+        {
+          "name": "Midori",
+          "tenths": 10
+        },
+        {
+          "name": "Pineapple Juice",
+          "tenths": 20
+        }
+      ]
+    },
+    {
+      "name": "Vodka Mango",
+      "category": "Vodka",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "Mango Juice",
+          "tenths": 30
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Vodka Passion Fruit",
+      "category": "Vodka",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "Passion Fruit Juice",
+          "tenths": 20
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        },
+        {
+          "name": "Club Soda",
+          "tenths": 10
+        }
+      ]
+    },
+    {
+      "name": "Electric Lemonade",
+      "category": "Vodka",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "Blue Curacao",
+          "tenths": 5
+        },
+        {
+          "name": "Lemonade",
+          "tenths": 30
+        }
+      ]
+    },
+    {
+      "name": "Vodka Raspberry",
+      "category": "Vodka",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "Raspberry Juice",
+          "tenths": 15
+        },
+        {
+          "name": "Club Soda",
+          "tenths": 20
+        }
+      ]
+    },
+    {
+      "name": "Salty Dog",
+      "category": "Vodka",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "Grapefruit Juice",
+          "tenths": 30
+        }
+      ]
+    },
+    {
+      "name": "Vodka Stinger",
+      "category": "Vodka",
+      "glass": "rocks",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 20
+        },
+        {
+          "name": "Peppermint Schnapps",
+          "tenths": 10
+        }
+      ]
+    },
+    {
+      "name": "Vodka Spritz",
+      "category": "Vodka",
+      "glass": "wine",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "Club Soda",
+          "tenths": 20
+        },
+        {
+          "name": "Lemon Juice",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Pink Lemonade Vodka",
+      "category": "Vodka",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "Cranberry Juice",
+          "tenths": 10
+        },
+        {
+          "name": "Lemonade",
+          "tenths": 25
+        }
+      ]
+    },
+    {
+      "name": "Vodka Iced Tea",
+      "category": "Vodka",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "Iced Tea",
+          "tenths": 35
+        }
+      ]
+    },
+    {
+      "name": "Russian Spring Punch",
+      "category": "Vodka",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "Lemon Juice",
+          "tenths": 10
+        },
+        {
+          "name": "Raspberry Juice",
+          "tenths": 10
+        },
+        {
+          "name": "Club Soda",
+          "tenths": 15
+        }
+      ]
+    },
+    {
+      "name": "Vodka Cucumber",
+      "category": "Vodka",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "Cucumber Juice",
+          "tenths": 20
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        },
+        {
+          "name": "Club Soda",
+          "tenths": 15
+        }
+      ]
+    },
+    {
+      "name": "Vodka Coconut",
+      "category": "Vodka",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "Coconut Water",
+          "tenths": 30
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Vanilla Vodka Cream",
+      "category": "Vodka",
+      "glass": "rocks",
+      "ingredients": [
+        {
+          "name": "Vanilla Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "Heavy Cream",
+          "tenths": 15
+        },
+        {
+          "name": "Simple Syrup",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Gin & Tonic",
+      "category": "Gin",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Gin",
+          "tenths": 15
+        },
+        {
+          "name": "Tonic Water",
+          "tenths": 30
+        }
+      ]
+    },
+    {
+      "name": "Tom Collins",
+      "category": "Gin",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Gin",
+          "tenths": 15
+        },
+        {
+          "name": "Lemon Juice",
+          "tenths": 10
+        },
+        {
+          "name": "Simple Syrup",
+          "tenths": 5
+        },
+        {
+          "name": "Club Soda",
+          "tenths": 20
+        }
+      ]
+    },
+    {
+      "name": "Gin Martini",
+      "category": "Gin",
+      "glass": "martini",
+      "ingredients": [
+        {
+          "name": "Gin",
+          "tenths": 25
+        },
+        {
+          "name": "Dry Vermouth",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Negroni",
+      "category": "Gin",
+      "glass": "rocks",
+      "ingredients": [
+        {
+          "name": "Gin",
+          "tenths": 10
+        },
+        {
+          "name": "Campari",
+          "tenths": 10
+        },
+        {
+          "name": "Sweet Vermouth",
+          "tenths": 10
+        }
+      ]
+    },
+    {
+      "name": "Gimlet",
+      "category": "Gin",
+      "glass": "martini",
+      "ingredients": [
+        {
+          "name": "Gin",
+          "tenths": 20
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 10
+        },
+        {
+          "name": "Simple Syrup",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Singapore Sling",
+      "category": "Gin",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Gin",
+          "tenths": 15
+        },
+        {
+          "name": "Cherry Liqueur",
+          "tenths": 5
+        },
+        {
+          "name": "Pineapple Juice",
+          "tenths": 20
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Bee's Knees",
+      "category": "Gin",
+      "glass": "martini",
+      "ingredients": [
+        {
+          "name": "Gin",
+          "tenths": 20
+        },
+        {
+          "name": "Lemon Juice",
+          "tenths": 8
+        },
+        {
+          "name": "Honey Syrup",
+          "tenths": 8
+        }
+      ]
+    },
+    {
+      "name": "Gin Fizz",
+      "category": "Gin",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Gin",
+          "tenths": 15
+        },
+        {
+          "name": "Lemon Juice",
+          "tenths": 10
+        },
+        {
+          "name": "Simple Syrup",
+          "tenths": 5
+        },
+        {
+          "name": "Club Soda",
+          "tenths": 20
+        }
+      ]
+    },
+    {
+      "name": "French 75",
+      "category": "Gin",
+      "glass": "flute",
+      "ingredients": [
+        {
+          "name": "Gin",
+          "tenths": 10
+        },
+        {
+          "name": "Lemon Juice",
+          "tenths": 5
+        },
+        {
+          "name": "Simple Syrup",
+          "tenths": 5
+        },
+        {
+          "name": "Champagne",
+          "tenths": 20
+        }
+      ]
+    },
+    {
+      "name": "Aviation",
+      "category": "Gin",
+      "glass": "martini",
+      "ingredients": [
+        {
+          "name": "Gin",
+          "tenths": 15
+        },
+        {
+          "name": "Maraschino Liqueur",
+          "tenths": 5
+        },
+        {
+          "name": "Lemon Juice",
+          "tenths": 8
+        }
+      ]
+    },
+    {
+      "name": "Last Word",
+      "category": "Gin",
+      "glass": "martini",
+      "ingredients": [
+        {
+          "name": "Gin",
+          "tenths": 8
+        },
+        {
+          "name": "Green Chartreuse",
+          "tenths": 8
+        },
+        {
+          "name": "Maraschino Liqueur",
+          "tenths": 8
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 8
+        }
+      ]
+    },
+    {
+      "name": "Clover Club",
+      "category": "Gin",
+      "glass": "martini",
+      "ingredients": [
+        {
+          "name": "Gin",
+          "tenths": 15
+        },
+        {
+          "name": "Lemon Juice",
+          "tenths": 8
+        },
+        {
+          "name": "Raspberry Syrup",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Southside",
+      "category": "Gin",
+      "glass": "martini",
+      "ingredients": [
+        {
+          "name": "Gin",
+          "tenths": 20
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 8
+        },
+        {
+          "name": "Simple Syrup",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Bramble",
+      "category": "Gin",
+      "glass": "rocks",
+      "ingredients": [
+        {
+          "name": "Gin",
+          "tenths": 20
+        },
+        {
+          "name": "Lemon Juice",
+          "tenths": 10
+        },
+        {
+          "name": "Simple Syrup",
+          "tenths": 5
+        },
+        {
+          "name": "Blackberry Liqueur",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Gin Soda",
+      "category": "Gin",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Gin",
+          "tenths": 15
+        },
+        {
+          "name": "Club Soda",
+          "tenths": 30
+        }
+      ]
+    },
+    {
+      "name": "Gin Buck",
+      "category": "Gin",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Gin",
+          "tenths": 15
+        },
+        {
+          "name": "Ginger Ale",
+          "tenths": 30
+        },
+        {
+          "name": "Lemon Juice",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Gin Mule",
+      "category": "Gin",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Gin",
+          "tenths": 15
+        },
+        {
+          "name": "Ginger Beer",
+          "tenths": 30
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Gin Daisy",
+      "category": "Gin",
+      "glass": "rocks",
+      "ingredients": [
+        {
+          "name": "Gin",
+          "tenths": 15
+        },
+        {
+          "name": "Lemon Juice",
+          "tenths": 10
+        },
+        {
+          "name": "Grenadine",
+          "tenths": 5
+        },
+        {
+          "name": "Club Soda",
+          "tenths": 10
+        }
+      ]
+    },
+    {
+      "name": "Gin Lemonade",
+      "category": "Gin",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Gin",
+          "tenths": 15
+        },
+        {
+          "name": "Lemonade",
+          "tenths": 35
+        }
+      ]
+    },
+    {
+      "name": "Gin Rickey",
+      "category": "Gin",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Gin",
+          "tenths": 15
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 10
+        },
+        {
+          "name": "Club Soda",
+          "tenths": 30
+        }
+      ]
+    },
+    {
+      "name": "Gin Cooler",
+      "category": "Gin",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Gin",
+          "tenths": 15
+        },
+        {
+          "name": "Ginger Ale",
+          "tenths": 20
+        },
+        {
+          "name": "Orange Juice",
+          "tenths": 15
+        }
+      ]
+    },
+    {
+      "name": "Gin Cucumber",
+      "category": "Gin",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Gin",
+          "tenths": 15
+        },
+        {
+          "name": "Cucumber Juice",
+          "tenths": 20
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        },
+        {
+          "name": "Club Soda",
+          "tenths": 15
+        }
+      ]
+    },
+    {
+      "name": "Gin Basil Smash",
+      "category": "Gin",
+      "glass": "rocks",
+      "ingredients": [
+        {
+          "name": "Gin",
+          "tenths": 20
+        },
+        {
+          "name": "Lemon Juice",
+          "tenths": 10
+        },
+        {
+          "name": "Simple Syrup",
+          "tenths": 8
+        }
+      ]
+    },
+    {
+      "name": "Gin Pink",
+      "category": "Gin",
+      "glass": "martini",
+      "ingredients": [
+        {
+          "name": "Gin",
+          "tenths": 20
+        },
+        {
+          "name": "Cranberry Juice",
+          "tenths": 5
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Gin Elderflower",
+      "category": "Gin",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Gin",
+          "tenths": 15
+        },
+        {
+          "name": "Elderflower Cordial",
+          "tenths": 8
+        },
+        {
+          "name": "Club Soda",
+          "tenths": 30
+        }
+      ]
+    },
+    {
+      "name": "White Lady",
+      "category": "Gin",
+      "glass": "martini",
+      "ingredients": [
+        {
+          "name": "Gin",
+          "tenths": 15
+        },
+        {
+          "name": "Triple Sec",
+          "tenths": 8
+        },
+        {
+          "name": "Lemon Juice",
+          "tenths": 8
+        }
+      ]
+    },
+    {
+      "name": "Bijou",
+      "category": "Gin",
+      "glass": "martini",
+      "ingredients": [
+        {
+          "name": "Gin",
+          "tenths": 10
+        },
+        {
+          "name": "Sweet Vermouth",
+          "tenths": 10
+        },
+        {
+          "name": "Green Chartreuse",
+          "tenths": 10
+        }
+      ]
+    },
+    {
+      "name": "Hanky Panky",
+      "category": "Gin",
+      "glass": "martini",
+      "ingredients": [
+        {
+          "name": "Gin",
+          "tenths": 15
+        },
+        {
+          "name": "Sweet Vermouth",
+          "tenths": 15
+        },
+        {
+          "name": "Fernet Branca",
+          "tenths": 2
+        }
+      ]
+    },
+    {
+      "name": "Gin Passion",
+      "category": "Gin",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Gin",
+          "tenths": 15
+        },
+        {
+          "name": "Passion Fruit Juice",
+          "tenths": 20
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        },
+        {
+          "name": "Club Soda",
+          "tenths": 10
+        }
+      ]
+    },
+    {
+      "name": "Gin Grapefruit",
+      "category": "Gin",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Gin",
+          "tenths": 15
+        },
+        {
+          "name": "Grapefruit Juice",
+          "tenths": 30
+        }
+      ]
+    },
+    {
+      "name": "Corpse Reviver #2",
+      "category": "Gin",
+      "glass": "martini",
+      "ingredients": [
+        {
+          "name": "Gin",
+          "tenths": 8
+        },
+        {
+          "name": "Triple Sec",
+          "tenths": 8
+        },
+        {
+          "name": "Lillet Blanc",
+          "tenths": 8
+        },
+        {
+          "name": "Lemon Juice",
+          "tenths": 8
+        }
+      ]
+    },
+    {
+      "name": "Gin Spritz",
+      "category": "Gin",
+      "glass": "wine",
+      "ingredients": [
+        {
+          "name": "Gin",
+          "tenths": 15
+        },
+        {
+          "name": "Elderflower Cordial",
+          "tenths": 5
+        },
+        {
+          "name": "Club Soda",
+          "tenths": 25
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Margarita",
+      "category": "Tequila",
+      "glass": "margarita",
+      "ingredients": [
+        {
+          "name": "Tequila",
+          "tenths": 15
+        },
+        {
+          "name": "Triple Sec",
+          "tenths": 5
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 10
+        }
+      ]
+    },
+    {
+      "name": "Paloma",
+      "category": "Tequila",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Tequila",
+          "tenths": 15
+        },
+        {
+          "name": "Grapefruit Juice",
+          "tenths": 20
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        },
+        {
+          "name": "Club Soda",
+          "tenths": 10
+        }
+      ]
+    },
+    {
+      "name": "Tequila Sunrise",
+      "category": "Tequila",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Tequila",
+          "tenths": 15
+        },
+        {
+          "name": "Orange Juice",
+          "tenths": 30
+        },
+        {
+          "name": "Grenadine",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Tequila Sour",
+      "category": "Tequila",
+      "glass": "rocks",
+      "ingredients": [
+        {
+          "name": "Tequila",
+          "tenths": 20
+        },
+        {
+          "name": "Lemon Juice",
+          "tenths": 10
+        },
+        {
+          "name": "Simple Syrup",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "El Diablo",
+      "category": "Tequila",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Tequila",
+          "tenths": 15
+        },
+        {
+          "name": "Ginger Beer",
+          "tenths": 20
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        },
+        {
+          "name": "Cassis",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Tequila Mule",
+      "category": "Tequila",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Tequila",
+          "tenths": 15
+        },
+        {
+          "name": "Ginger Beer",
+          "tenths": 30
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Tequila Collins",
+      "category": "Tequila",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Tequila",
+          "tenths": 15
+        },
+        {
+          "name": "Lemon Juice",
+          "tenths": 10
+        },
+        {
+          "name": "Simple Syrup",
+          "tenths": 5
+        },
+        {
+          "name": "Club Soda",
+          "tenths": 20
+        }
+      ]
+    },
+    {
+      "name": "Tequila Shot",
+      "category": "Tequila",
+      "glass": "shot",
+      "ingredients": [
+        {
+          "name": "Tequila",
+          "tenths": 15
+        }
+      ]
+    },
+    {
+      "name": "Ranch Water",
+      "category": "Tequila",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Tequila",
+          "tenths": 15
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        },
+        {
+          "name": "Club Soda",
+          "tenths": 30
+        }
+      ]
+    },
+    {
+      "name": "Tommy's Margarita",
+      "category": "Tequila",
+      "glass": "margarita",
+      "ingredients": [
+        {
+          "name": "Tequila",
+          "tenths": 20
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 10
+        },
+        {
+          "name": "Agave Syrup",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Batanga",
+      "category": "Tequila",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Tequila",
+          "tenths": 15
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        },
+        {
+          "name": "Cola",
+          "tenths": 30
+        }
+      ]
+    },
+    {
+      "name": "Tequila Lemonade",
+      "category": "Tequila",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Tequila",
+          "tenths": 15
+        },
+        {
+          "name": "Lemonade",
+          "tenths": 35
+        }
+      ]
+    },
+    {
+      "name": "Tequila Grapefruit",
+      "category": "Tequila",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Tequila",
+          "tenths": 15
+        },
+        {
+          "name": "Grapefruit Juice",
+          "tenths": 30
+        }
+      ]
+    },
+    {
+      "name": "Tequila Cranberry",
+      "category": "Tequila",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Tequila",
+          "tenths": 15
+        },
+        {
+          "name": "Cranberry Juice",
+          "tenths": 30
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Tequila Pineapple",
+      "category": "Tequila",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Tequila",
+          "tenths": 15
+        },
+        {
+          "name": "Pineapple Juice",
+          "tenths": 30
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Mexican Firing Squad",
+      "category": "Tequila",
+      "glass": "rocks",
+      "ingredients": [
+        {
+          "name": "Tequila",
+          "tenths": 20
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 10
+        },
+        {
+          "name": "Grenadine",
+          "tenths": 5
+        },
+        {
+          "name": "Angostura Bitters",
+          "tenths": 1
+        }
+      ]
+    },
+    {
+      "name": "Tequila Sunset",
+      "category": "Tequila",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Tequila",
+          "tenths": 15
+        },
+        {
+          "name": "Orange Juice",
+          "tenths": 20
+        },
+        {
+          "name": "Grenadine",
+          "tenths": 5
+        },
+        {
+          "name": "Blackberry Juice",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Tequila Soda",
+      "category": "Tequila",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Tequila",
+          "tenths": 15
+        },
+        {
+          "name": "Club Soda",
+          "tenths": 30
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "La Paloma",
+      "category": "Tequila",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Tequila",
+          "tenths": 15
+        },
+        {
+          "name": "Grapefruit Soda",
+          "tenths": 30
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Tequila Negroni",
+      "category": "Tequila",
+      "glass": "rocks",
+      "ingredients": [
+        {
+          "name": "Tequila",
+          "tenths": 10
+        },
+        {
+          "name": "Campari",
+          "tenths": 10
+        },
+        {
+          "name": "Sweet Vermouth",
+          "tenths": 10
+        }
+      ]
+    },
+    {
+      "name": "Mexican Mule",
+      "category": "Tequila",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Tequila",
+          "tenths": 15
+        },
+        {
+          "name": "Ginger Beer",
+          "tenths": 30
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Tequila Spritz",
+      "category": "Tequila",
+      "glass": "wine",
+      "ingredients": [
+        {
+          "name": "Tequila",
+          "tenths": 15
+        },
+        {
+          "name": "Club Soda",
+          "tenths": 20
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Tequila Watermelon",
+      "category": "Tequila",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Tequila",
+          "tenths": 15
+        },
+        {
+          "name": "Watermelon Juice",
+          "tenths": 30
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Oaxacan Old Fashioned",
+      "category": "Tequila",
+      "glass": "rocks",
+      "ingredients": [
+        {
+          "name": "Tequila",
+          "tenths": 15
+        },
+        {
+          "name": "Mezcal",
+          "tenths": 5
+        },
+        {
+          "name": "Agave Syrup",
+          "tenths": 2
+        },
+        {
+          "name": "Mole Bitters",
+          "tenths": 1
+        }
+      ]
+    },
+    {
+      "name": "Tequila Mango",
+      "category": "Tequila",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Tequila",
+          "tenths": 15
+        },
+        {
+          "name": "Mango Juice",
+          "tenths": 30
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Mojito",
+      "category": "Rum",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "White Rum",
+          "tenths": 15
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 10
+        },
+        {
+          "name": "Simple Syrup",
+          "tenths": 5
+        },
+        {
+          "name": "Club Soda",
+          "tenths": 20
+        }
+      ]
+    },
+    {
+      "name": "Daiquiri",
+      "category": "Rum",
+      "glass": "martini",
+      "ingredients": [
+        {
+          "name": "White Rum",
+          "tenths": 20
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 10
+        },
+        {
+          "name": "Simple Syrup",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Pina Colada",
+      "category": "Rum",
+      "glass": "hurricane",
+      "ingredients": [
+        {
+          "name": "White Rum",
+          "tenths": 15
+        },
+        {
+          "name": "Coconut Cream",
+          "tenths": 10
+        },
+        {
+          "name": "Pineapple Juice",
+          "tenths": 20
+        }
+      ]
+    },
+    {
+      "name": "Cuba Libre",
+      "category": "Rum",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "White Rum",
+          "tenths": 15
+        },
+        {
+          "name": "Cola",
+          "tenths": 30
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Dark & Stormy",
+      "category": "Rum",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Dark Rum",
+          "tenths": 15
+        },
+        {
+          "name": "Ginger Beer",
+          "tenths": 30
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Rum & Coke",
+      "category": "Rum",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Rum",
+          "tenths": 15
+        },
+        {
+          "name": "Cola",
+          "tenths": 30
+        }
+      ]
+    },
+    {
+      "name": "Rum Sour",
+      "category": "Rum",
+      "glass": "rocks",
+      "ingredients": [
+        {
+          "name": "Rum",
+          "tenths": 20
+        },
+        {
+          "name": "Lemon Juice",
+          "tenths": 10
+        },
+        {
+          "name": "Simple Syrup",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Rum Collins",
+      "category": "Rum",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Rum",
+          "tenths": 15
+        },
+        {
+          "name": "Lemon Juice",
+          "tenths": 10
+        },
+        {
+          "name": "Simple Syrup",
+          "tenths": 5
+        },
+        {
+          "name": "Club Soda",
+          "tenths": 20
+        }
+      ]
+    },
+    {
+      "name": "Mai Tai",
+      "category": "Rum",
+      "glass": "hurricane",
+      "ingredients": [
+        {
+          "name": "White Rum",
+          "tenths": 10
+        },
+        {
+          "name": "Dark Rum",
+          "tenths": 10
+        },
+        {
+          "name": "Orange Curacao",
+          "tenths": 5
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 8
+        },
+        {
+          "name": "Orgeat",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Hurricane",
+      "category": "Rum",
+      "glass": "hurricane",
+      "ingredients": [
+        {
+          "name": "White Rum",
+          "tenths": 10
+        },
+        {
+          "name": "Dark Rum",
+          "tenths": 10
+        },
+        {
+          "name": "Passion Fruit Juice",
+          "tenths": 20
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        },
+        {
+          "name": "Grenadine",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Jungle Bird",
+      "category": "Rum",
+      "glass": "rocks",
+      "ingredients": [
+        {
+          "name": "Dark Rum",
+          "tenths": 15
+        },
+        {
+          "name": "Campari",
+          "tenths": 8
+        },
+        {
+          "name": "Pineapple Juice",
+          "tenths": 15
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Rum Punch",
+      "category": "Rum",
+      "glass": "hurricane",
+      "ingredients": [
+        {
+          "name": "Rum",
+          "tenths": 15
+        },
+        {
+          "name": "Orange Juice",
+          "tenths": 15
+        },
+        {
+          "name": "Pineapple Juice",
+          "tenths": 15
+        },
+        {
+          "name": "Grenadine",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Planter's Punch",
+      "category": "Rum",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Dark Rum",
+          "tenths": 20
+        },
+        {
+          "name": "Orange Juice",
+          "tenths": 10
+        },
+        {
+          "name": "Pineapple Juice",
+          "tenths": 10
+        },
+        {
+          "name": "Grenadine",
+          "tenths": 5
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Bahama Mama",
+      "category": "Rum",
+      "glass": "hurricane",
+      "ingredients": [
+        {
+          "name": "White Rum",
+          "tenths": 10
+        },
+        {
+          "name": "Dark Rum",
+          "tenths": 5
+        },
+        {
+          "name": "Coffee Liqueur",
+          "tenths": 5
+        },
+        {
+          "name": "Pineapple Juice",
+          "tenths": 20
+        },
+        {
+          "name": "Orange Juice",
+          "tenths": 10
+        }
+      ]
+    },
+    {
+      "name": "Painkiller",
+      "category": "Rum",
+      "glass": "hurricane",
+      "ingredients": [
+        {
+          "name": "Dark Rum",
+          "tenths": 20
+        },
+        {
+          "name": "Pineapple Juice",
+          "tenths": 40
+        },
+        {
+          "name": "Orange Juice",
+          "tenths": 10
+        },
+        {
+          "name": "Coconut Cream",
+          "tenths": 10
+        }
+      ]
+    },
+    {
+      "name": "Rum Mule",
+      "category": "Rum",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Rum",
+          "tenths": 15
+        },
+        {
+          "name": "Ginger Beer",
+          "tenths": 30
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Strawberry Daiquiri",
+      "category": "Rum",
+      "glass": "martini",
+      "ingredients": [
+        {
+          "name": "White Rum",
+          "tenths": 15
+        },
+        {
+          "name": "Strawberry Puree",
+          "tenths": 15
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 8
+        },
+        {
+          "name": "Simple Syrup",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Mango Daiquiri",
+      "category": "Rum",
+      "glass": "martini",
+      "ingredients": [
+        {
+          "name": "White Rum",
+          "tenths": 15
+        },
+        {
+          "name": "Mango Puree",
+          "tenths": 15
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 8
+        }
+      ]
+    },
+    {
+      "name": "Raspberry Mojito",
+      "category": "Rum",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "White Rum",
+          "tenths": 15
+        },
+        {
+          "name": "Raspberry Puree",
+          "tenths": 10
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 8
+        },
+        {
+          "name": "Simple Syrup",
+          "tenths": 5
+        },
+        {
+          "name": "Club Soda",
+          "tenths": 20
+        }
+      ]
+    },
+    {
+      "name": "Passion Fruit Mojito",
+      "category": "Rum",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "White Rum",
+          "tenths": 15
+        },
+        {
+          "name": "Passion Fruit Juice",
+          "tenths": 15
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        },
+        {
+          "name": "Simple Syrup",
+          "tenths": 5
+        },
+        {
+          "name": "Club Soda",
+          "tenths": 15
+        }
+      ]
+    },
+    {
+      "name": "Blue Hawaiian",
+      "category": "Rum",
+      "glass": "hurricane",
+      "ingredients": [
+        {
+          "name": "White Rum",
+          "tenths": 10
+        },
+        {
+          "name": "Blue Curacao",
+          "tenths": 10
+        },
+        {
+          "name": "Pineapple Juice",
+          "tenths": 20
+        },
+        {
+          "name": "Coconut Cream",
+          "tenths": 10
+        }
+      ]
+    },
+    {
+      "name": "Lava Flow",
+      "category": "Rum",
+      "glass": "hurricane",
+      "ingredients": [
+        {
+          "name": "White Rum",
+          "tenths": 10
+        },
+        {
+          "name": "Coconut Rum",
+          "tenths": 5
+        },
+        {
+          "name": "Pineapple Juice",
+          "tenths": 20
+        },
+        {
+          "name": "Coconut Cream",
+          "tenths": 10
+        },
+        {
+          "name": "Strawberry Puree",
+          "tenths": 10
+        }
+      ]
+    },
+    {
+      "name": "Rum Sunrise",
+      "category": "Rum",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Rum",
+          "tenths": 15
+        },
+        {
+          "name": "Orange Juice",
+          "tenths": 30
+        },
+        {
+          "name": "Grenadine",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Coconut Mojito",
+      "category": "Rum",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Coconut Rum",
+          "tenths": 15
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 10
+        },
+        {
+          "name": "Simple Syrup",
+          "tenths": 5
+        },
+        {
+          "name": "Club Soda",
+          "tenths": 20
+        }
+      ]
+    },
+    {
+      "name": "Rum Lemonade",
+      "category": "Rum",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Rum",
+          "tenths": 15
+        },
+        {
+          "name": "Lemonade",
+          "tenths": 35
+        }
+      ]
+    },
+    {
+      "name": "Rum Ginger",
+      "category": "Rum",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Rum",
+          "tenths": 15
+        },
+        {
+          "name": "Ginger Ale",
+          "tenths": 30
+        }
+      ]
+    },
+    {
+      "name": "Rum Pineapple",
+      "category": "Rum",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Rum",
+          "tenths": 15
+        },
+        {
+          "name": "Pineapple Juice",
+          "tenths": 30
+        }
+      ]
+    },
+    {
+      "name": "Rum Cranberry",
+      "category": "Rum",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Rum",
+          "tenths": 15
+        },
+        {
+          "name": "Cranberry Juice",
+          "tenths": 30
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Rum Orange",
+      "category": "Rum",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Rum",
+          "tenths": 15
+        },
+        {
+          "name": "Orange Juice",
+          "tenths": 30
+        }
+      ]
+    },
+    {
+      "name": "Zombie",
+      "category": "Rum",
+      "glass": "hurricane",
+      "ingredients": [
+        {
+          "name": "White Rum",
+          "tenths": 10
+        },
+        {
+          "name": "Dark Rum",
+          "tenths": 10
+        },
+        {
+          "name": "Apricot Brandy",
+          "tenths": 5
+        },
+        {
+          "name": "Pineapple Juice",
+          "tenths": 15
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Rum Watermelon",
+      "category": "Rum",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Rum",
+          "tenths": 15
+        },
+        {
+          "name": "Watermelon Juice",
+          "tenths": 30
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Rum Coconut Pineapple",
+      "category": "Rum",
+      "glass": "hurricane",
+      "ingredients": [
+        {
+          "name": "Coconut Rum",
+          "tenths": 15
+        },
+        {
+          "name": "Pineapple Juice",
+          "tenths": 30
+        },
+        {
+          "name": "Coconut Cream",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Rum Mango",
+      "category": "Rum",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Rum",
+          "tenths": 15
+        },
+        {
+          "name": "Mango Juice",
+          "tenths": 30
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "El Floridita",
+      "category": "Rum",
+      "glass": "martini",
+      "ingredients": [
+        {
+          "name": "White Rum",
+          "tenths": 15
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 8
+        },
+        {
+          "name": "Maraschino Liqueur",
+          "tenths": 2
+        },
+        {
+          "name": "Grenadine",
+          "tenths": 1
+        }
+      ]
+    },
+    {
+      "name": "Vodka Shot",
+      "category": "Shots",
+      "glass": "shot",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        }
+      ]
+    },
+    {
+      "name": "Lemon Drop Shot",
+      "category": "Shots",
+      "glass": "shot",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 10
+        },
+        {
+          "name": "Triple Sec",
+          "tenths": 5
+        },
+        {
+          "name": "Lemon Juice",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Kamikaze Shot",
+      "category": "Shots",
+      "glass": "shot",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 10
+        },
+        {
+          "name": "Triple Sec",
+          "tenths": 5
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Jager Bomb",
+      "category": "Shots",
+      "glass": "shot",
+      "ingredients": [
+        {
+          "name": "Jagermeister",
+          "tenths": 15
+        },
+        {
+          "name": "Energy Drink",
+          "tenths": 40
+        }
+      ]
+    },
+    {
+      "name": "Fireball Shot",
+      "category": "Shots",
+      "glass": "shot",
+      "ingredients": [
+        {
+          "name": "Fireball",
+          "tenths": 15
+        }
+      ]
+    },
+    {
+      "name": "Buttery Nipple",
+      "category": "Shots",
+      "glass": "shot",
+      "ingredients": [
+        {
+          "name": "Butterscotch Schnapps",
+          "tenths": 10
+        },
+        {
+          "name": "Irish Cream",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Slippery Nipple",
+      "category": "Shots",
+      "glass": "shot",
+      "ingredients": [
+        {
+          "name": "Sambuca",
+          "tenths": 10
+        },
+        {
+          "name": "Irish Cream",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Green Tea Shot",
+      "category": "Shots",
+      "glass": "shot",
+      "ingredients": [
+        {
+          "name": "Jameson",
+          "tenths": 5
+        },
+        {
+          "name": "Peach Schnapps",
+          "tenths": 5
+        },
+        {
+          "name": "Sour Mix",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Washington Apple",
+      "category": "Shots",
+      "glass": "shot",
+      "ingredients": [
+        {
+          "name": "Whiskey",
+          "tenths": 5
+        },
+        {
+          "name": "Apple Schnapps",
+          "tenths": 5
+        },
+        {
+          "name": "Cranberry Juice",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Red Headed Slut",
+      "category": "Shots",
+      "glass": "shot",
+      "ingredients": [
+        {
+          "name": "Jagermeister",
+          "tenths": 10
+        },
+        {
+          "name": "Peach Schnapps",
+          "tenths": 5
+        },
+        {
+          "name": "Cranberry Juice",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Mind Eraser",
+      "category": "Shots",
+      "glass": "shot",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 10
+        },
+        {
+          "name": "Coffee Liqueur",
+          "tenths": 10
+        },
+        {
+          "name": "Club Soda",
+          "tenths": 10
+        }
+      ]
+    },
+    {
+      "name": "Cement Mixer",
+      "category": "Shots",
+      "glass": "shot",
+      "ingredients": [
+        {
+          "name": "Irish Cream",
+          "tenths": 10
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "B-52",
+      "category": "Shots",
+      "glass": "shot",
+      "ingredients": [
+        {
+          "name": "Coffee Liqueur",
+          "tenths": 5
+        },
+        {
+          "name": "Irish Cream",
+          "tenths": 5
+        },
+        {
+          "name": "Grand Marnier",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Blow Job",
+      "category": "Shots",
+      "glass": "shot",
+      "ingredients": [
+        {
+          "name": "Butterscotch Schnapps",
+          "tenths": 8
+        },
+        {
+          "name": "Irish Cream",
+          "tenths": 8
+        }
+      ]
+    },
+    {
+      "name": "Rum Shot",
+      "category": "Shots",
+      "glass": "shot",
+      "ingredients": [
+        {
+          "name": "Rum",
+          "tenths": 15
+        }
+      ]
+    },
+    {
+      "name": "Gin Shot",
+      "category": "Shots",
+      "glass": "shot",
+      "ingredients": [
+        {
+          "name": "Gin",
+          "tenths": 15
+        }
+      ]
+    },
+    {
+      "name": "Peach Shot",
+      "category": "Shots",
+      "glass": "shot",
+      "ingredients": [
+        {
+          "name": "Peach Schnapps",
+          "tenths": 15
+        }
+      ]
+    },
+    {
+      "name": "Peppermint Shot",
+      "category": "Shots",
+      "glass": "shot",
+      "ingredients": [
+        {
+          "name": "Peppermint Schnapps",
+          "tenths": 15
+        }
+      ]
+    },
+    {
+      "name": "Apple Bomb",
+      "category": "Shots",
+      "glass": "shot",
+      "ingredients": [
+        {
+          "name": "Apple Schnapps",
+          "tenths": 10
+        },
+        {
+          "name": "Energy Drink",
+          "tenths": 30
+        }
+      ]
+    },
+    {
+      "name": "Cinnamon Toast Crunch",
+      "category": "Shots",
+      "glass": "shot",
+      "ingredients": [
+        {
+          "name": "Fireball",
+          "tenths": 8
+        },
+        {
+          "name": "Irish Cream",
+          "tenths": 8
+        }
+      ]
+    },
+    {
+      "name": "Dirty Bastard",
+      "category": "Shots",
+      "glass": "shot",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 8
+        },
+        {
+          "name": "Peach Schnapps",
+          "tenths": 8
+        }
+      ]
+    },
+    {
+      "name": "Melon Ball Shot",
+      "category": "Shots",
+      "glass": "shot",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 5
+        },
+        {
+          "name": "Midori",
+          "tenths": 5
+        },
+        {
+          "name": "Pineapple Juice",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Fuzzy Navel Shot",
+      "category": "Shots",
+      "glass": "shot",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 8
+        },
+        {
+          "name": "Peach Schnapps",
+          "tenths": 8
+        }
+      ]
+    },
+    {
+      "name": "Woo Woo Shot",
+      "category": "Shots",
+      "glass": "shot",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 8
+        },
+        {
+          "name": "Peach Schnapps",
+          "tenths": 5
+        },
+        {
+          "name": "Cranberry Juice",
+          "tenths": 2
+        }
+      ]
+    },
+    {
+      "name": "Lemon Lime Shot",
+      "category": "Shots",
+      "glass": "shot",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 8
+        },
+        {
+          "name": "Lemon Juice",
+          "tenths": 5
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 2
+        }
+      ]
+    },
+    {
+      "name": "Tropical Storm",
+      "category": "Tropical",
+      "glass": "hurricane",
+      "ingredients": [
+        {
+          "name": "Rum",
+          "tenths": 15
+        },
+        {
+          "name": "Pineapple Juice",
+          "tenths": 20
+        },
+        {
+          "name": "Orange Juice",
+          "tenths": 10
+        },
+        {
+          "name": "Grenadine",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Shark Bite",
+      "category": "Tropical",
+      "glass": "hurricane",
+      "ingredients": [
+        {
+          "name": "Dark Rum",
+          "tenths": 20
+        },
+        {
+          "name": "Orange Juice",
+          "tenths": 20
+        },
+        {
+          "name": "Grenadine",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Jungle Juice",
+      "category": "Tropical",
+      "glass": "hurricane",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "Rum",
+          "tenths": 5
+        },
+        {
+          "name": "Pineapple Juice",
+          "tenths": 15
+        },
+        {
+          "name": "Orange Juice",
+          "tenths": 15
+        }
+      ]
+    },
+    {
+      "name": "Tropical Punch",
+      "category": "Tropical",
+      "glass": "hurricane",
+      "ingredients": [
+        {
+          "name": "Rum",
+          "tenths": 15
+        },
+        {
+          "name": "Pineapple Juice",
+          "tenths": 20
+        },
+        {
+          "name": "Orange Juice",
+          "tenths": 10
+        },
+        {
+          "name": "Grenadine",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Mango Tango",
+      "category": "Tropical",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "Mango Juice",
+          "tenths": 30
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Coconut Breeze",
+      "category": "Tropical",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Coconut Rum",
+          "tenths": 15
+        },
+        {
+          "name": "Pineapple Juice",
+          "tenths": 20
+        },
+        {
+          "name": "Cranberry Juice",
+          "tenths": 10
+        }
+      ]
+    },
+    {
+      "name": "Island Iced Tea",
+      "category": "Tropical",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 5
+        },
+        {
+          "name": "Rum",
+          "tenths": 5
+        },
+        {
+          "name": "Tequila",
+          "tenths": 5
+        },
+        {
+          "name": "Blue Curacao",
+          "tenths": 5
+        },
+        {
+          "name": "Pineapple Juice",
+          "tenths": 20
+        }
+      ]
+    },
+    {
+      "name": "Sunset Punch",
+      "category": "Tropical",
+      "glass": "hurricane",
+      "ingredients": [
+        {
+          "name": "Rum",
+          "tenths": 15
+        },
+        {
+          "name": "Orange Juice",
+          "tenths": 20
+        },
+        {
+          "name": "Pineapple Juice",
+          "tenths": 10
+        },
+        {
+          "name": "Grenadine",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Mango Mojito",
+      "category": "Tropical",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "White Rum",
+          "tenths": 15
+        },
+        {
+          "name": "Mango Juice",
+          "tenths": 15
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 8
+        },
+        {
+          "name": "Simple Syrup",
+          "tenths": 5
+        },
+        {
+          "name": "Club Soda",
+          "tenths": 15
+        }
+      ]
+    },
+    {
+      "name": "Watermelon Punch",
+      "category": "Tropical",
+      "glass": "hurricane",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "Watermelon Juice",
+          "tenths": 30
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        },
+        {
+          "name": "Club Soda",
+          "tenths": 10
+        }
+      ]
+    },
+    {
+      "name": "Paradise",
+      "category": "Tropical",
+      "glass": "hurricane",
+      "ingredients": [
+        {
+          "name": "Rum",
+          "tenths": 15
+        },
+        {
+          "name": "Mango Juice",
+          "tenths": 20
+        },
+        {
+          "name": "Pineapple Juice",
+          "tenths": 10
+        },
+        {
+          "name": "Grenadine",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Tropical Breeze",
+      "category": "Tropical",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "Pineapple Juice",
+          "tenths": 20
+        },
+        {
+          "name": "Cranberry Juice",
+          "tenths": 10
+        },
+        {
+          "name": "Club Soda",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Beach Bum",
+      "category": "Tropical",
+      "glass": "hurricane",
+      "ingredients": [
+        {
+          "name": "White Rum",
+          "tenths": 15
+        },
+        {
+          "name": "Coconut Rum",
+          "tenths": 5
+        },
+        {
+          "name": "Pineapple Juice",
+          "tenths": 20
+        },
+        {
+          "name": "Orange Juice",
+          "tenths": 10
+        }
+      ]
+    },
+    {
+      "name": "Tropical Cosmo",
+      "category": "Tropical",
+      "glass": "martini",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "Triple Sec",
+          "tenths": 5
+        },
+        {
+          "name": "Mango Juice",
+          "tenths": 5
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Pineapple Paloma",
+      "category": "Tropical",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Tequila",
+          "tenths": 15
+        },
+        {
+          "name": "Pineapple Juice",
+          "tenths": 20
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        },
+        {
+          "name": "Club Soda",
+          "tenths": 10
+        }
+      ]
+    },
+    {
+      "name": "Coconut Daiquiri",
+      "category": "Tropical",
+      "glass": "martini",
+      "ingredients": [
+        {
+          "name": "White Rum",
+          "tenths": 15
+        },
+        {
+          "name": "Coconut Cream",
+          "tenths": 10
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 10
+        }
+      ]
+    },
+    {
+      "name": "Mango Margarita",
+      "category": "Tropical",
+      "glass": "margarita",
+      "ingredients": [
+        {
+          "name": "Tequila",
+          "tenths": 15
+        },
+        {
+          "name": "Triple Sec",
+          "tenths": 5
+        },
+        {
+          "name": "Mango Juice",
+          "tenths": 15
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Strawberry Margarita",
+      "category": "Tropical",
+      "glass": "margarita",
+      "ingredients": [
+        {
+          "name": "Tequila",
+          "tenths": 15
+        },
+        {
+          "name": "Triple Sec",
+          "tenths": 5
+        },
+        {
+          "name": "Strawberry Puree",
+          "tenths": 10
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 8
+        }
+      ]
+    },
+    {
+      "name": "Watermelon Margarita",
+      "category": "Tropical",
+      "glass": "margarita",
+      "ingredients": [
+        {
+          "name": "Tequila",
+          "tenths": 15
+        },
+        {
+          "name": "Triple Sec",
+          "tenths": 5
+        },
+        {
+          "name": "Watermelon Juice",
+          "tenths": 15
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Pineapple Margarita",
+      "category": "Tropical",
+      "glass": "margarita",
+      "ingredients": [
+        {
+          "name": "Tequila",
+          "tenths": 15
+        },
+        {
+          "name": "Triple Sec",
+          "tenths": 5
+        },
+        {
+          "name": "Pineapple Juice",
+          "tenths": 15
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Passion Fruit Margarita",
+      "category": "Tropical",
+      "glass": "margarita",
+      "ingredients": [
+        {
+          "name": "Tequila",
+          "tenths": 15
+        },
+        {
+          "name": "Triple Sec",
+          "tenths": 5
+        },
+        {
+          "name": "Passion Fruit Juice",
+          "tenths": 15
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Tropical Gin Fizz",
+      "category": "Tropical",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Gin",
+          "tenths": 15
+        },
+        {
+          "name": "Pineapple Juice",
+          "tenths": 20
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        },
+        {
+          "name": "Club Soda",
+          "tenths": 15
+        }
+      ]
+    },
+    {
+      "name": "Scorpion Bowl",
+      "category": "Tropical",
+      "glass": "hurricane",
+      "ingredients": [
+        {
+          "name": "White Rum",
+          "tenths": 10
+        },
+        {
+          "name": "Gin",
+          "tenths": 5
+        },
+        {
+          "name": "Vodka",
+          "tenths": 5
+        },
+        {
+          "name": "Orange Juice",
+          "tenths": 20
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 10
+        },
+        {
+          "name": "Orgeat",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Shirley Temple",
+      "category": "Non-Alc",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Ginger Ale",
+          "tenths": 40
+        },
+        {
+          "name": "Grenadine",
+          "tenths": 5
+        },
+        {
+          "name": "Orange Juice",
+          "tenths": 10
+        }
+      ]
+    },
+    {
+      "name": "Arnold Palmer",
+      "category": "Non-Alc",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Iced Tea",
+          "tenths": 30
+        },
+        {
+          "name": "Lemonade",
+          "tenths": 30
+        }
+      ]
+    },
+    {
+      "name": "Virgin Mary",
+      "category": "Non-Alc",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Tomato Juice",
+          "tenths": 40
+        },
+        {
+          "name": "Lemon Juice",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Virgin Mojito",
+      "category": "Non-Alc",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Lime Juice",
+          "tenths": 10
+        },
+        {
+          "name": "Simple Syrup",
+          "tenths": 5
+        },
+        {
+          "name": "Club Soda",
+          "tenths": 40
+        }
+      ]
+    },
+    {
+      "name": "Roy Rogers",
+      "category": "Non-Alc",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Cola",
+          "tenths": 50
+        },
+        {
+          "name": "Grenadine",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Sunrise Mocktail",
+      "category": "Non-Alc",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Orange Juice",
+          "tenths": 30
+        },
+        {
+          "name": "Grenadine",
+          "tenths": 5
+        },
+        {
+          "name": "Club Soda",
+          "tenths": 15
+        }
+      ]
+    },
+    {
+      "name": "Virgin Pina Colada",
+      "category": "Non-Alc",
+      "glass": "hurricane",
+      "ingredients": [
+        {
+          "name": "Pineapple Juice",
+          "tenths": 30
+        },
+        {
+          "name": "Coconut Cream",
+          "tenths": 15
+        }
+      ]
+    },
+    {
+      "name": "Virgin Margarita",
+      "category": "Non-Alc",
+      "glass": "margarita",
+      "ingredients": [
+        {
+          "name": "Lime Juice",
+          "tenths": 15
+        },
+        {
+          "name": "Orange Juice",
+          "tenths": 10
+        },
+        {
+          "name": "Simple Syrup",
+          "tenths": 5
+        },
+        {
+          "name": "Club Soda",
+          "tenths": 20
+        }
+      ]
+    },
+    {
+      "name": "Mango Mocktail",
+      "category": "Non-Alc",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Mango Juice",
+          "tenths": 30
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        },
+        {
+          "name": "Club Soda",
+          "tenths": 20
+        }
+      ]
+    },
+    {
+      "name": "Watermelon Cooler",
+      "category": "Non-Alc",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Watermelon Juice",
+          "tenths": 40
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        },
+        {
+          "name": "Club Soda",
+          "tenths": 15
+        }
+      ]
+    },
+    {
+      "name": "Strawberry Lemonade",
+      "category": "Non-Alc",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Strawberry Puree",
+          "tenths": 15
+        },
+        {
+          "name": "Lemonade",
+          "tenths": 40
+        }
+      ]
+    },
+    {
+      "name": "Tropical Punch Mocktail",
+      "category": "Non-Alc",
+      "glass": "hurricane",
+      "ingredients": [
+        {
+          "name": "Pineapple Juice",
+          "tenths": 20
+        },
+        {
+          "name": "Orange Juice",
+          "tenths": 20
+        },
+        {
+          "name": "Grenadine",
+          "tenths": 5
+        },
+        {
+          "name": "Club Soda",
+          "tenths": 10
+        }
+      ]
+    },
+    {
+      "name": "Passion Fruit Cooler",
+      "category": "Non-Alc",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Passion Fruit Juice",
+          "tenths": 30
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        },
+        {
+          "name": "Club Soda",
+          "tenths": 20
+        }
+      ]
+    },
+    {
+      "name": "Ginger Lemonade",
+      "category": "Non-Alc",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Lemonade",
+          "tenths": 40
+        },
+        {
+          "name": "Ginger Ale",
+          "tenths": 20
+        }
+      ]
+    },
+    {
+      "name": "Cucumber Cooler",
+      "category": "Non-Alc",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Cucumber Juice",
+          "tenths": 30
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        },
+        {
+          "name": "Simple Syrup",
+          "tenths": 5
+        },
+        {
+          "name": "Club Soda",
+          "tenths": 20
+        }
+      ]
+    },
+    {
+      "name": "Cranberry Spritzer",
+      "category": "Non-Alc",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Cranberry Juice",
+          "tenths": 30
+        },
+        {
+          "name": "Club Soda",
+          "tenths": 30
+        }
+      ]
+    },
+    {
+      "name": "Virgin Cosmopolitan",
+      "category": "Non-Alc",
+      "glass": "martini",
+      "ingredients": [
+        {
+          "name": "Cranberry Juice",
+          "tenths": 15
+        },
+        {
+          "name": "Orange Juice",
+          "tenths": 10
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Pineapple Ginger",
+      "category": "Non-Alc",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Pineapple Juice",
+          "tenths": 30
+        },
+        {
+          "name": "Ginger Beer",
+          "tenths": 20
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Berry Lemonade",
+      "category": "Non-Alc",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Raspberry Juice",
+          "tenths": 15
+        },
+        {
+          "name": "Lemonade",
+          "tenths": 40
+        }
+      ]
+    },
+    {
+      "name": "Peach Iced Tea",
+      "category": "Non-Alc",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Iced Tea",
+          "tenths": 40
+        },
+        {
+          "name": "Peach Juice",
+          "tenths": 15
+        }
+      ]
+    },
+    {
+      "name": "Citrus Spritz",
+      "category": "Non-Alc",
+      "glass": "wine",
+      "ingredients": [
+        {
+          "name": "Orange Juice",
+          "tenths": 20
+        },
+        {
+          "name": "Grapefruit Juice",
+          "tenths": 15
+        },
+        {
+          "name": "Club Soda",
+          "tenths": 20
+        }
+      ]
+    },
+    {
+      "name": "Coconut Lemonade",
+      "category": "Non-Alc",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Coconut Water",
+          "tenths": 30
+        },
+        {
+          "name": "Lemonade",
+          "tenths": 30
+        }
+      ]
+    },
+    {
+      "name": "Mango Lemonade",
+      "category": "Non-Alc",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Mango Juice",
+          "tenths": 20
+        },
+        {
+          "name": "Lemonade",
+          "tenths": 35
+        }
+      ]
+    },
+    {
+      "name": "Virgin Paloma",
+      "category": "Non-Alc",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Grapefruit Juice",
+          "tenths": 30
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        },
+        {
+          "name": "Club Soda",
+          "tenths": 20
+        }
+      ]
+    },
+    {
+      "name": "Orange Creamsicle",
+      "category": "Non-Alc",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Orange Juice",
+          "tenths": 30
+        },
+        {
+          "name": "Heavy Cream",
+          "tenths": 10
+        },
+        {
+          "name": "Simple Syrup",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Vodka Sling",
+      "category": "Vodka",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "Cherry Syrup",
+          "tenths": 5
+        },
+        {
+          "name": "Lemon Juice",
+          "tenths": 5
+        },
+        {
+          "name": "Soda Water",
+          "tenths": 15
+        }
+      ]
+    },
+    {
+      "name": "White Spider",
+      "category": "Vodka",
+      "glass": "rocks",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "White Cr\u00e8me de Menthe",
+          "tenths": 15
+        }
+      ]
+    },
+    {
+      "name": "Vodka Rickey",
+      "category": "Vodka",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 8
+        },
+        {
+          "name": "Soda Water",
+          "tenths": 20
+        }
+      ]
+    },
+    {
+      "name": "Vodka Limeade",
+      "category": "Vodka",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 10
+        },
+        {
+          "name": "Simple Syrup",
+          "tenths": 5
+        },
+        {
+          "name": "Soda Water",
+          "tenths": 15
+        }
+      ]
+    },
+    {
+      "name": "Dirty Vodka Martini",
+      "category": "Vodka",
+      "glass": "martini",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 20
+        },
+        {
+          "name": "Dry Vermouth",
+          "tenths": 3
+        },
+        {
+          "name": "Olive Brine",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Vodka Negroni",
+      "category": "Vodka",
+      "glass": "rocks",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 10
+        },
+        {
+          "name": "Campari",
+          "tenths": 10
+        },
+        {
+          "name": "Sweet Vermouth",
+          "tenths": 10
+        }
+      ]
+    },
+    {
+      "name": "Vodka Punch",
+      "category": "Vodka",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "Pineapple Juice",
+          "tenths": 15
+        },
+        {
+          "name": "Orange Juice",
+          "tenths": 10
+        },
+        {
+          "name": "Grenadine",
+          "tenths": 3
+        }
+      ]
+    },
+    {
+      "name": "Vodka Watermelon Cooler",
+      "category": "Vodka",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "Watermelon Juice",
+          "tenths": 20
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        },
+        {
+          "name": "Mint Syrup",
+          "tenths": 3
+        }
+      ]
+    },
+    {
+      "name": "Espresso Tonic",
+      "category": "Vodka",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 10
+        },
+        {
+          "name": "Espresso",
+          "tenths": 10
+        },
+        {
+          "name": "Tonic Water",
+          "tenths": 15
+        }
+      ]
+    },
+    {
+      "name": "Gin Fizz Royale",
+      "category": "Gin",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Gin",
+          "tenths": 15
+        },
+        {
+          "name": "Lemon Juice",
+          "tenths": 8
+        },
+        {
+          "name": "Simple Syrup",
+          "tenths": 5
+        },
+        {
+          "name": "Champagne",
+          "tenths": 10
+        }
+      ]
+    },
+    {
+      "name": "Pink Gin",
+      "category": "Gin",
+      "glass": "rocks",
+      "ingredients": [
+        {
+          "name": "Gin",
+          "tenths": 20
+        },
+        {
+          "name": "Angostura Bitters",
+          "tenths": 3
+        }
+      ]
+    },
+    {
+      "name": "Gin Sangaree",
+      "category": "Gin",
+      "glass": "wine",
+      "ingredients": [
+        {
+          "name": "Gin",
+          "tenths": 15
+        },
+        {
+          "name": "Port",
+          "tenths": 5
+        },
+        {
+          "name": "Simple Syrup",
+          "tenths": 3
+        },
+        {
+          "name": "Nutmeg",
+          "tenths": 1
+        }
+      ]
+    },
+    {
+      "name": "Gin Sour",
+      "category": "Gin",
+      "glass": "martini",
+      "ingredients": [
+        {
+          "name": "Gin",
+          "tenths": 15
+        },
+        {
+          "name": "Lemon Juice",
+          "tenths": 10
+        },
+        {
+          "name": "Simple Syrup",
+          "tenths": 8
+        },
+        {
+          "name": "Egg White",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Rum Sling",
+      "category": "Rum",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Rum",
+          "tenths": 15
+        },
+        {
+          "name": "Lemon Juice",
+          "tenths": 8
+        },
+        {
+          "name": "Cherry Syrup",
+          "tenths": 5
+        },
+        {
+          "name": "Soda Water",
+          "tenths": 15
+        }
+      ]
+    },
+    {
+      "name": "Rum Alexander",
+      "category": "Rum",
+      "glass": "martini",
+      "ingredients": [
+        {
+          "name": "Rum",
+          "tenths": 15
+        },
+        {
+          "name": "Dark Cr\u00e8me de Cacao",
+          "tenths": 8
+        },
+        {
+          "name": "Cream",
+          "tenths": 8
+        }
+      ]
+    },
+    {
+      "name": "Rum Gimlet",
+      "category": "Rum",
+      "glass": "martini",
+      "ingredients": [
+        {
+          "name": "White Rum",
+          "tenths": 15
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 8
+        },
+        {
+          "name": "Simple Syrup",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Rum Rickey",
+      "category": "Rum",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Rum",
+          "tenths": 15
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 8
+        },
+        {
+          "name": "Soda Water",
+          "tenths": 20
+        }
+      ]
+    },
+    {
+      "name": "Rum Old Fashioned",
+      "category": "Rum",
+      "glass": "rocks",
+      "ingredients": [
+        {
+          "name": "Dark Rum",
+          "tenths": 20
+        },
+        {
+          "name": "Simple Syrup",
+          "tenths": 5
+        },
+        {
+          "name": "Angostura Bitters",
+          "tenths": 2
+        }
+      ]
+    },
+    {
+      "name": "Rum Cooler",
+      "category": "Rum",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Rum",
+          "tenths": 15
+        },
+        {
+          "name": "Pineapple Juice",
+          "tenths": 15
+        },
+        {
+          "name": "Coconut Cream",
+          "tenths": 5
+        },
+        {
+          "name": "Soda Water",
+          "tenths": 10
+        }
+      ]
+    },
+    {
+      "name": "Dark & Stormy Sour",
+      "category": "Rum",
+      "glass": "rocks",
+      "ingredients": [
+        {
+          "name": "Dark Rum",
+          "tenths": 15
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 10
+        },
+        {
+          "name": "Simple Syrup",
+          "tenths": 5
+        },
+        {
+          "name": "Ginger Beer",
+          "tenths": 10
+        }
+      ]
+    },
+    {
+      "name": "Rum Negroni",
+      "category": "Rum",
+      "glass": "rocks",
+      "ingredients": [
+        {
+          "name": "Rum",
+          "tenths": 10
+        },
+        {
+          "name": "Campari",
+          "tenths": 10
+        },
+        {
+          "name": "Sweet Vermouth",
+          "tenths": 10
+        }
+      ]
+    },
+    {
+      "name": "Rum Bramble",
+      "category": "Rum",
+      "glass": "rocks",
+      "ingredients": [
+        {
+          "name": "White Rum",
+          "tenths": 15
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 8
+        },
+        {
+          "name": "Simple Syrup",
+          "tenths": 5
+        },
+        {
+          "name": "Blackberry Liqueur",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Tequila Sunrise Twist",
+      "category": "Tequila",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Tequila",
+          "tenths": 15
+        },
+        {
+          "name": "Orange Juice",
+          "tenths": 20
+        },
+        {
+          "name": "Blue Cura\u00e7ao",
+          "tenths": 3
+        },
+        {
+          "name": "Grenadine",
+          "tenths": 3
+        }
+      ]
+    },
+    {
+      "name": "Tequila Gimlet",
+      "category": "Tequila",
+      "glass": "martini",
+      "ingredients": [
+        {
+          "name": "Tequila",
+          "tenths": 15
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 8
+        },
+        {
+          "name": "Simple Syrup",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Tequila Fizz",
+      "category": "Tequila",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Tequila",
+          "tenths": 15
+        },
+        {
+          "name": "Lemon Juice",
+          "tenths": 8
+        },
+        {
+          "name": "Simple Syrup",
+          "tenths": 5
+        },
+        {
+          "name": "Soda Water",
+          "tenths": 20
+        }
+      ]
+    },
+    {
+      "name": "Tequila Sling",
+      "category": "Tequila",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Tequila",
+          "tenths": 15
+        },
+        {
+          "name": "Lemon Juice",
+          "tenths": 8
+        },
+        {
+          "name": "Cherry Syrup",
+          "tenths": 5
+        },
+        {
+          "name": "Soda Water",
+          "tenths": 15
+        }
+      ]
+    },
+    {
+      "name": "Tequila Buck",
+      "category": "Tequila",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Tequila",
+          "tenths": 15
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 8
+        },
+        {
+          "name": "Ginger Beer",
+          "tenths": 20
+        }
+      ]
+    },
+    {
+      "name": "Frozen Strawberry Margarita",
+      "category": "Tequila",
+      "glass": "margarita",
+      "ingredients": [
+        {
+          "name": "Tequila",
+          "tenths": 15
+        },
+        {
+          "name": "Triple Sec",
+          "tenths": 8
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 8
+        },
+        {
+          "name": "Strawberry Syrup",
+          "tenths": 10
+        }
+      ]
+    },
+    {
+      "name": "Tequila Daisy",
+      "category": "Tequila",
+      "glass": "martini",
+      "ingredients": [
+        {
+          "name": "Tequila",
+          "tenths": 15
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 8
+        },
+        {
+          "name": "Triple Sec",
+          "tenths": 5
+        },
+        {
+          "name": "Grenadine",
+          "tenths": 3
+        }
+      ]
+    },
+    {
+      "name": "Mezcal Sour",
+      "category": "Tequila",
+      "glass": "martini",
+      "ingredients": [
+        {
+          "name": "Mezcal",
+          "tenths": 15
+        },
+        {
+          "name": "Lemon Juice",
+          "tenths": 10
+        },
+        {
+          "name": "Simple Syrup",
+          "tenths": 8
+        },
+        {
+          "name": "Egg White",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Tepache Cocktail",
+      "category": "Tequila",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Tequila",
+          "tenths": 15
+        },
+        {
+          "name": "Tepache",
+          "tenths": 15
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        },
+        {
+          "name": "Soda Water",
+          "tenths": 10
+        }
+      ]
+    },
+    {
+      "name": "Afterburner",
+      "category": "Shots",
+      "glass": "shot",
+      "ingredients": [
+        {
+          "name": "Peppermint Schnapps",
+          "tenths": 10
+        },
+        {
+          "name": "Kahl\u00faa",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Alien Urine Sample",
+      "category": "Shots",
+      "glass": "shot",
+      "ingredients": [
+        {
+          "name": "Midori",
+          "tenths": 8
+        },
+        {
+          "name": "Peach Schnapps",
+          "tenths": 5
+        },
+        {
+          "name": "Coconut Rum",
+          "tenths": 5
+        },
+        {
+          "name": "Pineapple Juice",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Red Snapper",
+      "category": "Shots",
+      "glass": "shot",
+      "ingredients": [
+        {
+          "name": "Amaretto",
+          "tenths": 8
+        },
+        {
+          "name": "Triple Sec",
+          "tenths": 5
+        },
+        {
+          "name": "Cranberry Juice",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Nuclear Bomb",
+      "category": "Shots",
+      "glass": "shot",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 5
+        },
+        {
+          "name": "Rum",
+          "tenths": 5
+        },
+        {
+          "name": "Tequila",
+          "tenths": 5
+        },
+        {
+          "name": "Gin",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Sour Apple Pucker Shot",
+      "category": "Shots",
+      "glass": "shot",
+      "ingredients": [
+        {
+          "name": "Apple Schnapps",
+          "tenths": 10
+        },
+        {
+          "name": "Vodka",
+          "tenths": 5
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 3
+        }
+      ]
+    },
+    {
+      "name": "Purple Haze Shot",
+      "category": "Shots",
+      "glass": "shot",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 8
+        },
+        {
+          "name": "Raspberry Schnapps",
+          "tenths": 8
+        },
+        {
+          "name": "Grenadine",
+          "tenths": 3
+        }
+      ]
+    },
+    {
+      "name": "Tequila Rose Shot",
+      "category": "Shots",
+      "glass": "shot",
+      "ingredients": [
+        {
+          "name": "Tequila",
+          "tenths": 10
+        },
+        {
+          "name": "Strawberry Liqueur",
+          "tenths": 8
+        }
+      ]
+    },
+    {
+      "name": "Golden Ticket",
+      "category": "Shots",
+      "glass": "shot",
+      "ingredients": [
+        {
+          "name": "Vanilla Vodka",
+          "tenths": 10
+        },
+        {
+          "name": "Butterscotch Schnapps",
+          "tenths": 8
+        }
+      ]
+    },
+    {
+      "name": "Pearl Harbor",
+      "category": "Shots",
+      "glass": "shot",
+      "ingredients": [
+        {
+          "name": "Midori",
+          "tenths": 8
+        },
+        {
+          "name": "Vodka",
+          "tenths": 8
+        },
+        {
+          "name": "Pineapple Juice",
+          "tenths": 8
+        }
+      ]
+    },
+    {
+      "name": "Red Death Shot",
+      "category": "Shots",
+      "glass": "shot",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 5
+        },
+        {
+          "name": "Amaretto",
+          "tenths": 5
+        },
+        {
+          "name": "Triple Sec",
+          "tenths": 5
+        },
+        {
+          "name": "Grenadine",
+          "tenths": 3
+        },
+        {
+          "name": "Orange Juice",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Tropical Rum Punch",
+      "category": "Tropical",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Rum",
+          "tenths": 15
+        },
+        {
+          "name": "Passion Fruit Juice",
+          "tenths": 15
+        },
+        {
+          "name": "Orange Juice",
+          "tenths": 10
+        },
+        {
+          "name": "Grenadine",
+          "tenths": 3
+        }
+      ]
+    },
+    {
+      "name": "Coconut Sunrise",
+      "category": "Tropical",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Coconut Rum",
+          "tenths": 15
+        },
+        {
+          "name": "Orange Juice",
+          "tenths": 20
+        },
+        {
+          "name": "Grenadine",
+          "tenths": 3
+        }
+      ]
+    },
+    {
+      "name": "Guava Cooler",
+      "category": "Tropical",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "Guava Juice",
+          "tenths": 20
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        },
+        {
+          "name": "Soda Water",
+          "tenths": 10
+        }
+      ]
+    },
+    {
+      "name": "Island Breeze",
+      "category": "Tropical",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Rum",
+          "tenths": 15
+        },
+        {
+          "name": "Pineapple Juice",
+          "tenths": 15
+        },
+        {
+          "name": "Cranberry Juice",
+          "tenths": 10
+        },
+        {
+          "name": "Coconut Cream",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Passion Fruit Daiquiri",
+      "category": "Tropical",
+      "glass": "martini",
+      "ingredients": [
+        {
+          "name": "Rum",
+          "tenths": 15
+        },
+        {
+          "name": "Passion Fruit Puree",
+          "tenths": 15
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 8
+        },
+        {
+          "name": "Simple Syrup",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Paradise Found",
+      "category": "Tropical",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Coconut Rum",
+          "tenths": 15
+        },
+        {
+          "name": "Peach Schnapps",
+          "tenths": 8
+        },
+        {
+          "name": "Pineapple Juice",
+          "tenths": 15
+        },
+        {
+          "name": "Orange Juice",
+          "tenths": 10
+        }
+      ]
+    },
+    {
+      "name": "Papaya Fizz",
+      "category": "Tropical",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "Papaya Juice",
+          "tenths": 20
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        },
+        {
+          "name": "Soda Water",
+          "tenths": 10
+        }
+      ]
+    },
+    {
+      "name": "Pineapple Upside Down",
+      "category": "Tropical",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "Pineapple Juice",
+          "tenths": 20
+        },
+        {
+          "name": "Grenadine",
+          "tenths": 5
+        },
+        {
+          "name": "Cream",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Tropicana Twist",
+      "category": "Tropical",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Rum",
+          "tenths": 15
+        },
+        {
+          "name": "Orange Juice",
+          "tenths": 10
+        },
+        {
+          "name": "Pineapple Juice",
+          "tenths": 10
+        },
+        {
+          "name": "Coconut Water",
+          "tenths": 10
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Mint Lemonade",
+      "category": "Non-Alc",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Lemon Juice",
+          "tenths": 15
+        },
+        {
+          "name": "Simple Syrup",
+          "tenths": 10
+        },
+        {
+          "name": "Mint Syrup",
+          "tenths": 5
+        },
+        {
+          "name": "Soda Water",
+          "tenths": 20
+        }
+      ]
+    },
+    {
+      "name": "Raspberry Fizz",
+      "category": "Non-Alc",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Raspberry Syrup",
+          "tenths": 15
+        },
+        {
+          "name": "Lemon Juice",
+          "tenths": 8
+        },
+        {
+          "name": "Soda Water",
+          "tenths": 25
+        }
+      ]
+    },
+    {
+      "name": "Virgin Tropical Punch",
+      "category": "Non-Alc",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Pineapple Juice",
+          "tenths": 15
+        },
+        {
+          "name": "Orange Juice",
+          "tenths": 15
+        },
+        {
+          "name": "Passion Fruit Juice",
+          "tenths": 10
+        },
+        {
+          "name": "Grenadine",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Coconut Lime Fizz",
+      "category": "Non-Alc",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Coconut Water",
+          "tenths": 15
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 10
+        },
+        {
+          "name": "Simple Syrup",
+          "tenths": 5
+        },
+        {
+          "name": "Soda Water",
+          "tenths": 15
+        }
+      ]
+    },
+    {
+      "name": "Cranberry Limeade",
+      "category": "Non-Alc",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Cranberry Juice",
+          "tenths": 20
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 10
+        },
+        {
+          "name": "Simple Syrup",
+          "tenths": 5
+        },
+        {
+          "name": "Soda Water",
+          "tenths": 15
+        }
+      ]
+    },
+    {
+      "name": "Mango Lassi Mocktail",
+      "category": "Non-Alc",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Mango Juice",
+          "tenths": 20
+        },
+        {
+          "name": "Yogurt",
+          "tenths": 10
+        },
+        {
+          "name": "Honey Syrup",
+          "tenths": 5
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 3
+        }
+      ]
+    },
+    {
+      "name": "Strawberry Basil Lemonade",
+      "category": "Non-Alc",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Strawberry Syrup",
+          "tenths": 15
+        },
+        {
+          "name": "Basil Syrup",
+          "tenths": 5
+        },
+        {
+          "name": "Lemon Juice",
+          "tenths": 10
+        },
+        {
+          "name": "Soda Water",
+          "tenths": 20
+        }
+      ]
+    },
+    {
+      "name": "Ginger Peach Fizz",
+      "category": "Non-Alc",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Peach Juice",
+          "tenths": 15
+        },
+        {
+          "name": "Ginger Syrup",
+          "tenths": 8
+        },
+        {
+          "name": "Lemon Juice",
+          "tenths": 5
+        },
+        {
+          "name": "Soda Water",
+          "tenths": 20
+        }
+      ]
+    },
+    {
+      "name": "Vodka Tonic Twist",
+      "category": "Vodka",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "Elderflower Syrup",
+          "tenths": 5
+        },
+        {
+          "name": "Tonic Water",
+          "tenths": 20
+        }
+      ]
+    },
+    {
+      "name": "Strawberry Vodka Lemonade",
+      "category": "Vodka",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "Strawberry Syrup",
+          "tenths": 10
+        },
+        {
+          "name": "Lemon Juice",
+          "tenths": 10
+        },
+        {
+          "name": "Soda Water",
+          "tenths": 15
+        }
+      ]
+    },
+    {
+      "name": "Raspberry Kamikaze",
+      "category": "Vodka",
+      "glass": "shot",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 10
+        },
+        {
+          "name": "Triple Sec",
+          "tenths": 5
+        },
+        {
+          "name": "Raspberry Liqueur",
+          "tenths": 5
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Cucumber Vodka Fizz",
+      "category": "Vodka",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "Cucumber Syrup",
+          "tenths": 8
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        },
+        {
+          "name": "Soda Water",
+          "tenths": 20
+        }
+      ]
+    },
+    {
+      "name": "Pomegranate Martini",
+      "category": "Vodka",
+      "glass": "martini",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "Pomegranate Juice",
+          "tenths": 15
+        },
+        {
+          "name": "Triple Sec",
+          "tenths": 5
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Gin Lemon Fizz",
+      "category": "Gin",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Gin",
+          "tenths": 15
+        },
+        {
+          "name": "Lemon Juice",
+          "tenths": 10
+        },
+        {
+          "name": "Simple Syrup",
+          "tenths": 5
+        },
+        {
+          "name": "Soda Water",
+          "tenths": 20
+        }
+      ]
+    },
+    {
+      "name": "Elderflower Collins",
+      "category": "Gin",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Gin",
+          "tenths": 15
+        },
+        {
+          "name": "Elderflower Liqueur",
+          "tenths": 10
+        },
+        {
+          "name": "Lemon Juice",
+          "tenths": 8
+        },
+        {
+          "name": "Soda Water",
+          "tenths": 20
+        }
+      ]
+    },
+    {
+      "name": "Violet Fizz",
+      "category": "Gin",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Gin",
+          "tenths": 15
+        },
+        {
+          "name": "Cr\u00e8me de Violette",
+          "tenths": 8
+        },
+        {
+          "name": "Lemon Juice",
+          "tenths": 8
+        },
+        {
+          "name": "Simple Syrup",
+          "tenths": 5
+        },
+        {
+          "name": "Soda Water",
+          "tenths": 15
+        }
+      ]
+    },
+    {
+      "name": "Gin Punch",
+      "category": "Gin",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Gin",
+          "tenths": 15
+        },
+        {
+          "name": "Lemon Juice",
+          "tenths": 10
+        },
+        {
+          "name": "Simple Syrup",
+          "tenths": 8
+        },
+        {
+          "name": "Orange Juice",
+          "tenths": 10
+        },
+        {
+          "name": "Soda Water",
+          "tenths": 10
+        }
+      ]
+    },
+    {
+      "name": "Cucumber Mint Gin",
+      "category": "Gin",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Gin",
+          "tenths": 15
+        },
+        {
+          "name": "Cucumber Syrup",
+          "tenths": 8
+        },
+        {
+          "name": "Mint Syrup",
+          "tenths": 5
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        },
+        {
+          "name": "Soda Water",
+          "tenths": 15
+        }
+      ]
+    },
+    {
+      "name": "Rum Shrub",
+      "category": "Rum",
+      "glass": "rocks",
+      "ingredients": [
+        {
+          "name": "Rum",
+          "tenths": 15
+        },
+        {
+          "name": "Apple Cider Vinegar Shrub",
+          "tenths": 8
+        },
+        {
+          "name": "Simple Syrup",
+          "tenths": 5
+        },
+        {
+          "name": "Soda Water",
+          "tenths": 10
+        }
+      ]
+    },
+    {
+      "name": "Coconut Rum Sour",
+      "category": "Rum",
+      "glass": "martini",
+      "ingredients": [
+        {
+          "name": "Coconut Rum",
+          "tenths": 15
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 10
+        },
+        {
+          "name": "Simple Syrup",
+          "tenths": 8
+        },
+        {
+          "name": "Egg White",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Rum Rose",
+      "category": "Rum",
+      "glass": "martini",
+      "ingredients": [
+        {
+          "name": "Rum",
+          "tenths": 15
+        },
+        {
+          "name": "Grenadine",
+          "tenths": 8
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 8
+        },
+        {
+          "name": "Simple Syrup",
+          "tenths": 3
+        }
+      ]
+    },
+    {
+      "name": "Caribbean Stinger",
+      "category": "Rum",
+      "glass": "rocks",
+      "ingredients": [
+        {
+          "name": "Dark Rum",
+          "tenths": 15
+        },
+        {
+          "name": "White Cr\u00e8me de Menthe",
+          "tenths": 10
+        }
+      ]
+    },
+    {
+      "name": "Cantarito",
+      "category": "Tequila",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Tequila",
+          "tenths": 15
+        },
+        {
+          "name": "Orange Juice",
+          "tenths": 10
+        },
+        {
+          "name": "Grapefruit Juice",
+          "tenths": 10
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 5
+        },
+        {
+          "name": "Soda Water",
+          "tenths": 10
+        }
+      ]
+    },
+    {
+      "name": "Tequila Cucumber Smash",
+      "category": "Tequila",
+      "glass": "rocks",
+      "ingredients": [
+        {
+          "name": "Tequila",
+          "tenths": 15
+        },
+        {
+          "name": "Cucumber Syrup",
+          "tenths": 8
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 8
+        },
+        {
+          "name": "Agave Syrup",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Brain Hemorrhage",
+      "category": "Shots",
+      "glass": "shot",
+      "ingredients": [
+        {
+          "name": "Peach Schnapps",
+          "tenths": 10
+        },
+        {
+          "name": "Irish Cream",
+          "tenths": 5
+        },
+        {
+          "name": "Grenadine",
+          "tenths": 2
+        }
+      ]
+    },
+    {
+      "name": "J\u00e4ger Bomb Shot",
+      "category": "Shots",
+      "glass": "shot",
+      "ingredients": [
+        {
+          "name": "J\u00e4germeister",
+          "tenths": 10
+        },
+        {
+          "name": "Energy Drink",
+          "tenths": 10
+        }
+      ]
+    },
+    {
+      "name": "Golden Shot",
+      "category": "Shots",
+      "glass": "shot",
+      "ingredients": [
+        {
+          "name": "Tequila",
+          "tenths": 8
+        },
+        {
+          "name": "Midori",
+          "tenths": 5
+        },
+        {
+          "name": "Pineapple Juice",
+          "tenths": 5
+        }
+      ]
+    },
+    {
+      "name": "Electric Slide Shot",
+      "category": "Shots",
+      "glass": "shot",
+      "ingredients": [
+        {
+          "name": "Blue Cura\u00e7ao",
+          "tenths": 8
+        },
+        {
+          "name": "Vodka",
+          "tenths": 5
+        },
+        {
+          "name": "Lemon Juice",
+          "tenths": 3
+        }
+      ]
+    },
+    {
+      "name": "Tahitian Sunrise",
+      "category": "Tropical",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Rum",
+          "tenths": 15
+        },
+        {
+          "name": "Mango Juice",
+          "tenths": 15
+        },
+        {
+          "name": "Orange Juice",
+          "tenths": 10
+        },
+        {
+          "name": "Grenadine",
+          "tenths": 3
+        }
+      ]
+    },
+    {
+      "name": "Kiwi Cooler",
+      "category": "Tropical",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Vodka",
+          "tenths": 15
+        },
+        {
+          "name": "Kiwi Syrup",
+          "tenths": 10
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 8
+        },
+        {
+          "name": "Soda Water",
+          "tenths": 15
+        }
+      ]
+    },
+    {
+      "name": "Coconut Pineapple Punch",
+      "category": "Tropical",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Coconut Rum",
+          "tenths": 15
+        },
+        {
+          "name": "Pineapple Juice",
+          "tenths": 20
+        },
+        {
+          "name": "Orange Juice",
+          "tenths": 10
+        },
+        {
+          "name": "Grenadine",
+          "tenths": 3
+        }
+      ]
+    },
+    {
+      "name": "Blueberry Lavender Lemonade",
+      "category": "Non-Alc",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Blueberry Syrup",
+          "tenths": 10
+        },
+        {
+          "name": "Lavender Syrup",
+          "tenths": 5
+        },
+        {
+          "name": "Lemon Juice",
+          "tenths": 10
+        },
+        {
+          "name": "Soda Water",
+          "tenths": 20
+        }
+      ]
+    },
+    {
+      "name": "Tropical Sunrise Mocktail",
+      "category": "Non-Alc",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Orange Juice",
+          "tenths": 15
+        },
+        {
+          "name": "Mango Juice",
+          "tenths": 15
+        },
+        {
+          "name": "Grenadine",
+          "tenths": 5
+        },
+        {
+          "name": "Soda Water",
+          "tenths": 10
+        }
+      ]
+    },
+    {
+      "name": "Apple Ginger Fizz",
+      "category": "Non-Alc",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Apple Juice",
+          "tenths": 20
+        },
+        {
+          "name": "Ginger Syrup",
+          "tenths": 8
+        },
+        {
+          "name": "Lemon Juice",
+          "tenths": 5
+        },
+        {
+          "name": "Soda Water",
+          "tenths": 15
+        }
+      ]
+    },
+    {
+      "name": "Honeydew Fizz",
+      "category": "Non-Alc",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Honeydew Juice",
+          "tenths": 20
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 8
+        },
+        {
+          "name": "Honey Syrup",
+          "tenths": 5
+        },
+        {
+          "name": "Soda Water",
+          "tenths": 15
+        }
+      ]
+    },
+    {
+      "name": "Cherry Limeade",
+      "category": "Non-Alc",
+      "glass": "highball",
+      "ingredients": [
+        {
+          "name": "Cherry Syrup",
+          "tenths": 15
+        },
+        {
+          "name": "Lime Juice",
+          "tenths": 10
+        },
+        {
+          "name": "Simple Syrup",
+          "tenths": 5
+        },
+        {
+          "name": "Soda Water",
+          "tenths": 20
+        }
+      ]
+    }
+  ]
+}
