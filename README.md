@@ -6,6 +6,7 @@ Ability to tweak drink strength and size
 Ability to pick drink optios (glass type, fruits) that show up on the drink card
 Admin option is accessed through 3 taps on the logo
 Pour stats feature (kept in a seperate histry json file)
+New DARK mode
 
 
 Run the setup.sh after loading a new RPi disk image
