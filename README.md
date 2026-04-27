@@ -8,7 +8,7 @@ Major new changes:
 - Pour stats feature (kept in a seperate histry json file)
 - New DARK mode
 - Drink sugegstion engine with built in library of drink. Suggest based on the ingredient/bottle list available)
--F ull backup and restor capability (with a PC browser) for the menus and pour history
+- Full backup and restor capability (with a PC browser) for the menus and pour history
 
 Notes:
 - Run the setup.sh after loading a new RPi disk image
