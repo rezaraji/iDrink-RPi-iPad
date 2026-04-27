@@ -24,7 +24,7 @@
             "pomegranate"
           ],
           "Glass": "martini",
-          "Name": "TEQUILA POMEGRANATE",
+          "Name": "Tequila Pomegranate",
           "Recipe": [
             0,
             15,
@@ -44,7 +44,7 @@
             "pomegranate"
           ],
           "Glass": "martini",
-          "Name": "VODKA POMEGRANATE",
+          "Name": "Vodka Pomegranate",
           "Recipe": [
             15,
             0,
@@ -60,7 +60,7 @@
           "Color": "#cbf0ff",
           "Fruits": [],
           "Glass": "",
-          "Name": "VODKA SHOT",
+          "Name": "Vodka Shot",
           "Recipe": [
             15,
             0,
@@ -77,7 +77,7 @@
           "Disabled": false,
           "Fruits": [],
           "Glass": "shot",
-          "Name": "TEQUILA SHOT",
+          "Name": "Tequila Shot",
           "Recipe": [
             0,
             15,
@@ -96,7 +96,7 @@
             "grapefruit"
           ],
           "Glass": "rocks",
-          "Name": "TEQUILA GRAPEFRUIT",
+          "Name": "Tequila Grapefruit",
           "Recipe": [
             0,
             15,
@@ -552,47 +552,5 @@
       "StrengthEnabled": true
     }
   ],
-  "DarkMode": false,
-  "PourHistory": [
-    {
-      "drink": "DON JULIO SHOT",
-      "menu": "Pool Party",
-      "timestamp": "2026-04-26T16:12:56"
-    },
-    {
-      "drink": "GREYHOUND",
-      "menu": "Pool Party",
-      "timestamp": "2026-04-26T16:11:30"
-    },
-    {
-      "drink": "SCREWDRIVER",
-      "menu": "Pool Party",
-      "timestamp": "2026-04-26T16:11:15"
-    },
-    {
-      "drink": "VODKA POMEGRANATE",
-      "menu": "Pool Party",
-      "timestamp": "2026-04-26T16:05:38"
-    },
-    {
-      "drink": "VODKA SHOT",
-      "menu": "Pool Party",
-      "timestamp": "2026-04-26T16:05:28"
-    },
-    {
-      "drink": "DON JULIO SHOT",
-      "menu": "Pool Party",
-      "timestamp": "2026-04-26T16:05:20"
-    },
-    {
-      "drink": "DON JULIO SHOT",
-      "menu": "Pool Party",
-      "timestamp": "2026-04-26T16:05:13"
-    },
-    {
-      "drink": "TEQUILA POMEGRANATE",
-      "menu": "Pool Party",
-      "timestamp": "2026-04-26T16:05:04"
-    }
-  ]
+  "DarkMode": false
 }
