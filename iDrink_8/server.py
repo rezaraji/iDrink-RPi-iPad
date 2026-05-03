@@ -46,10 +46,10 @@ NUM_PUMPS         = 8
 # ---------------------------------------------------------------------------
 # State
 # ---------------------------------------------------------------------------
-is_pouring  = False
-pour_status = {"active": False, "drink": "", "progress": 0, "menu": ""}
-pumps_ON    = [0] * NUM_PUMPS
-pour_lock   = threading.Lock()
+is_pouring    = False
+pour_status   = {"active": False, "drink": "", "progress": 0, "menu": ""}
+pumps_ON      = [0] * NUM_PUMPS
+pour_lock     = threading.Lock()
 
 # ---------------------------------------------------------------------------
 # Menu helpers
@@ -143,7 +143,8 @@ def pour_drink_thread(menu_idx: int, drink_name: str, recipe_override: list = No
     pour_status = {"active": True, "drink": drink_name, "progress": 0, "menu": menu_name}
 
     # Start pumps
-    pumps_ON = [0] * NUM_PUMPS
+    pumps_ON = [0] * NUM_PUMPS   # 1 = running forward
+
     for x in range(NUM_PUMPS):
         if recipe[x] != 0:
             drive_pump(x + 1, 'FORWARD')
@@ -151,16 +152,18 @@ def pour_drink_thread(menu_idx: int, drink_name: str, recipe_override: list = No
 
     time_epoch = time.time() * 1000  # milliseconds
 
-    # Wait loop — check each pump's time quota
+    # Wait loop — FORWARD → OFF when quota reached
     while any(pumps_ON):
         elapsed = time.time() * 1000 - time_epoch
         pour_status['progress'] = min(99, int(elapsed / total_ms * 100))
+
         for x in range(NUM_PUMPS):
             if pumps_ON[x] == 1:
                 quota = recipe[x] * PUMP_POUR_RATE * DRINK_SIZE_FACTOR
                 if elapsed >= quota:
                     drive_pump(x + 1, 'OFF')
                     pumps_ON[x] = 0
+
         sleep(0.05)
 
     pour_status = {"active": False, "drink": drink_name, "progress": 100, "menu": menu_name}
@@ -368,9 +371,10 @@ def restore():
 
 @app.route('/api/stop', methods=['POST'])
 def stop_pour():
-    """Immediately stop all pumps and cancel the active pour."""
+    """Stop the active pour immediately."""
     global is_pouring, pumps_ON
-    pumps_ON = [0] * NUM_PUMPS  # causes the pour thread's while-loop to exit
+
+    pumps_ON = [0] * NUM_PUMPS
     all_pumps_off()
     is_pouring = False
     pour_status['active']   = False
