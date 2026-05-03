@@ -9,6 +9,7 @@ Major new changes:
 - New DARK mode
 - Drink sugegstion engine with built in library of 300 drink. Suggest based on the ingredient/bottle list available). With search.
 - Full backup and restore capability (from a PC/mac browser) for the menus and pour history (ZIP file interface)
+- Lots of cool/cute visial animations (e.g in drink pour and pour finish pop-up screens)
 
 
 Some Hardware updates too:
@@ -19,5 +20,5 @@ Some Hardware updates too:
 
 Notes:
 - Run the setup.sh after loading a new RPi SD disk image
-- Make sure the menu and history files are epreserved and written over.
+- Make sure the menu and history files are preserved and NOT written over.
 
