@@ -13,12 +13,11 @@ Major new changes:
 
 
 Some Hardware updates too:
-- New stainless steel drink nozzel array (3/16 ID size for better flow and surface tension to hold the liquid vaccum)
+- New stainless steel Iinsted of brass) drink nozzel array; 3/16" ID size for better flow and surface tension to hold the liquid vaccum
 - New 3D printed mount to hold the tips horizontal-prevents drips post-pour
 - Full diode bridge circuit on each motor line at the relay board to protect against back-EMF
 - RC snubbers (0.1uF cap + 47 Ohm resistor) at the relay contacts and motor leads
 
 Notes:
 - Run the setup.sh after loading a new RPi SD disk image
-- Make sure the menu and history files are preserved and NOT written over.
-
+- Make sure the menu and history files are preserved and NOT written over
